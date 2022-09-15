@@ -1,3 +1,3 @@
-# production_scripts
+# Excel Processing Scripts
 
-This is a collection of scripts used for processing data for use in production
+This is a collection of python scripts for processing excel files and inserting the data into a mysql database
