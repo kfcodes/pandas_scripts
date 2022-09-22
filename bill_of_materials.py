@@ -48,4 +48,7 @@ for root, directories, filea in os.walk(path):
             df['Component Type'] = df.apply(get_component,axis=1)
             components = df.loc[:, ['Component Type', 'Code']]
             d = components.dropna()
-            print (d.set_index('Component Type').T)
+            dd = d.set_index('Component Type').T
+            dd['Subassembly Code'] = subassembly_code
+            dd['Subassembly Quantity'] = subassembly_quantity
+            print(dd)
