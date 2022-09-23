@@ -46,9 +46,9 @@ for root, directories, filea in os.walk(path):
             subassembly_quantity = subassembly_row.tolist()[2]
             subassembly_code = subassembly_row.tolist()[0]
             df['Component Type'] = df.apply(get_component,axis=1)
-            components = df.loc[:, ['Component Type', 'Code']]
+            components = df.loc[:, ['Component Type', 'Code', 'Quantity']]
             d = components.dropna()
             dd = d.set_index('Component Type').T
-            dd['Subassembly Code'] = subassembly_code
-            dd['Subassembly Quantity'] = subassembly_quantity
+            dd.at['Code','Subassembly'] = subassembly_code
+            dd.at['Quantity','Subassembly'] = subassembly_quantity
             print(dd)
