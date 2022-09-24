@@ -1,3 +1,5 @@
+# Pandas now processes the components into one line table that can be inserted into db
+import sys
 import pandas as pd
 import sqlalchemy as sqlalchemy
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
@@ -48,7 +50,10 @@ for root, directories, filea in os.walk(path):
             df['Component Type'] = df.apply(get_component,axis=1)
             components = df.loc[:, ['Component Type', 'Code', 'Quantity']]
             d = components.dropna()
-            dd = d.set_index('Component Type').T
-            dd.at['Code','Subassembly'] = subassembly_code
-            dd.at['Quantity','Subassembly'] = subassembly_quantity
-            print(dd)
+            p = d.set_index('Component Type')
+            df1=p.stack().swaplevel()
+            ndf = df1.to_frame().T
+            ndf.columns = ndf.columns.map('{0[1]}_{0[0]}'.format)
+            ndf['Subassembly_Code'] = subassembly_code
+            ndf['Subassembly_Quantity'] = subassembly_quantity
+            ndf['Bom_Name'] = bom_name
