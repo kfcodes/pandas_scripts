@@ -37,6 +37,15 @@ def get_component(row):
         if os.getenv('COMPONENT_DESCRIPTION10') in lowercase_component_name:
             return os.getenv('TYPE10')
 
+def insert_into_db(product):
+    try:
+    # GET THE CONNECTION OBJECT (ENGINE) FOR THE DATABASE
+        engine = db_connection.create_connection()
+        product.to_sql('product', engine, if_exists='append', index=False)
+        print('inserted')
+    except Exception as ex:
+        print("Connection could not be made due to the following error: \n", ex)
+
 for root, directories, filea in os.walk(path):
     for file in filea:
         if file.endswith(".xlsx"):
@@ -56,4 +65,9 @@ for root, directories, filea in os.walk(path):
             ndf.columns = ndf.columns.map('{0[1]}_{0[0]}'.format)
             ndf['Subassembly_Code'] = subassembly_code
             ndf['Subassembly_Quantity'] = subassembly_quantity
-            ndf['Bom_Name'] = bom_name
+            ndf['product_id'] = bom_name
+            ndf= ndf.rename(columns=str.lower)
+            # product = ndf.columns.str.lower()
+            # ndf.columns.str.lower()
+            # print(ndf)
+            insert_into_db(ndf)
