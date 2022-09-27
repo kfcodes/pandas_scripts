@@ -8,10 +8,8 @@ import os
 from dotenv import load_dotenv
 load_dotenv(".env")
 
-try:
-# GET THE CONNECTION OBJECT (ENGINE) FOR THE DATABASE
-    engine = db_connection.create_connection()
-    test_table = pd.read_sql(os.getenv('test_table'),engine)
-    print(test_table)
-except Exception as ex:
-    print("Connection could not be made due to the following error: \n", ex)
+database_output_file = os.getenv('DATABASE_FILE')
+
+sage_dataframe = pd.read_excel(database_output_file)
+
+print(database_output_file)
