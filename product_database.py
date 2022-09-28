@@ -1,4 +1,4 @@
-# Select the desired columns from the input file
+# Change column names to match db
 import pandas as pd
 import sqlalchemy as sqlalchemy
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
@@ -14,4 +14,6 @@ sage_dataframe = pd.read_excel(database_output_file)
 
 sage_column_data = sage_dataframe.loc[:, [ os.getenv('Column1'), os.getenv('Column2'), os.getenv('Column3'), os.getenv('Column4')]]
 
-print(sage_column_data)
+correct_column_names = sage_column_data.rename(columns={os.getenv('Column1'):os.getenv('Column_1'),os.getenv('Column2'):os.getenv('Column_2'),os.getenv('Column3'):os.getenv('Column_3'),os.getenv('Column4'):os.getenv('Column_4'),})
+
+print(correct_column_names)
