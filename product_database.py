@@ -1,4 +1,4 @@
-# Change column names to match db
+# Changed data to lower case
 import pandas as pd
 import sqlalchemy as sqlalchemy
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
@@ -15,5 +15,8 @@ sage_dataframe = pd.read_excel(database_output_file)
 sage_column_data = sage_dataframe.loc[:, [ os.getenv('Column1'), os.getenv('Column2'), os.getenv('Column3'), os.getenv('Column4')]]
 
 correct_column_names = sage_column_data.rename(columns={os.getenv('Column1'):os.getenv('Column_1'),os.getenv('Column2'):os.getenv('Column_2'),os.getenv('Column3'):os.getenv('Column_3'),os.getenv('Column4'):os.getenv('Column_4'),})
+
+correct_column_names[os.getenv('Column_1')] = correct_column_names[os.getenv('Column_1')].str.lower()
+correct_column_names[os.getenv('Column_2')] = correct_column_names[os.getenv('Column_2')].str.lower()
 
 print(correct_column_names)
