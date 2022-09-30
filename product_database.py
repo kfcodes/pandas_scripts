@@ -1,4 +1,4 @@
-# Changed data to lower case
+# Write the processed data to db
 import pandas as pd
 import sqlalchemy as sqlalchemy
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
@@ -19,4 +19,6 @@ correct_column_names = sage_column_data.rename(columns={os.getenv('Column1'):os.
 correct_column_names[os.getenv('Column_1')] = correct_column_names[os.getenv('Column_1')].str.lower()
 correct_column_names[os.getenv('Column_2')] = correct_column_names[os.getenv('Column_2')].str.lower()
 
-print(correct_column_names)
+engine = db_connection.create_connection()
+correct_column_names.to_sql(os.getenv('pdb_table'), engine, if_exists='append', index=False)
+
