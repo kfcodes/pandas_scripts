@@ -1,4 +1,4 @@
-# Write the processed data to db
+# Put db connection in try catch block
 import pandas as pd
 import sqlalchemy as sqlalchemy
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
@@ -19,6 +19,10 @@ correct_column_names = sage_column_data.rename(columns={os.getenv('Column1'):os.
 correct_column_names[os.getenv('Column_1')] = correct_column_names[os.getenv('Column_1')].str.lower()
 correct_column_names[os.getenv('Column_2')] = correct_column_names[os.getenv('Column_2')].str.lower()
 
-engine = db_connection.create_connection()
-correct_column_names.to_sql(os.getenv('pdb_table'), engine, if_exists='append', index=False)
-
+try:
+# GET THE CONNECTION OBJECT (ENGINE) FOR THE DATABASE
+    engine = db_connection.create_connection()
+    correct_column_names.to_sql(os.getenv('pdb_table'), engine, if_exists='append', index=False)
+    print("Data was inserted into the database")
+except Exception as ex:
+    print("Connection could not be made due to the following error: \n", ex)
