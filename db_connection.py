@@ -1,9 +1,8 @@
-import pandas as pd
 import sqlalchemy as sqlalchemy
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
-import mysql.connector
+from sqlalchemy import create_engine
 import os
 from dotenv import load_dotenv
+
 load_dotenv(".env")
 
 connection_credentials = {'usr': os.getenv("USR"),
@@ -15,5 +14,5 @@ connection_credentials = {'usr': os.getenv("USR"),
 connection_string = 'mysql+mysqlconnector://{usr}:{pwd}@{hst}:{prt}/{dbn}'
 
 # Create Database Connection
-def create_connection():
+def database_connection():
     return create_engine(connection_string.format(**connection_credentials))
