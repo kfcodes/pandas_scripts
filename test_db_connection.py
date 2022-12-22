@@ -1,8 +1,7 @@
 # import pandas as pd
 import pandas as pd
 import sqlalchemy as sqlalchemy
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
-import mysql.connector
+from sqlalchemy import create_engine
 import db_connection
 import os
 from dotenv import load_dotenv
@@ -10,7 +9,7 @@ load_dotenv(".env")
 
 try:
 # GET THE CONNECTION OBJECT (ENGINE) FOR THE DATABASE
-    engine = db_connection.create_connection()
+    engine = db_connection.database_connection()
     test_table = pd.read_sql(os.getenv('test_table'),engine)
     print(test_table)
 except Exception as ex:
