@@ -1,4 +1,4 @@
-# import products from database
+# import brands from database
 import pandas as pd
 import sqlalchemy as sqlalchemy
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
@@ -14,4 +14,7 @@ load_dotenv(".env")
 engine = db_connection.create_connection()
 
 products = pd.read_sql(os.getenv('pdb_table'), engine, columns=[os.getenv('Column_1'), os.getenv('Column_2')])
-print(products)
+
+brands = pd.read_sql(os.getenv('b_table'), engine, columns = [os.getenv('Column_6')], index_col=os.getenv('Column_5'))
+
+print(brands)
