@@ -1,4 +1,4 @@
-# Create product options list
+# Read production schedule excel file
 import pandas as pd
 import sqlalchemy as sqlalchemy
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
@@ -18,4 +18,6 @@ products = pd.read_sql(os.getenv('pdb_table'), engine, columns=[os.getenv('Colum
 brands = pd.read_sql(os.getenv('b_table'), engine, columns = [os.getenv('Column_6')], index_col=os.getenv('Column_5'))
 
 product_options = products[os.getenv('Column_1')].tolist()
-print(product_options)
+
+production_schedules = pd.ExcelFile(os.getenv('PRODUCTION_SCHEDULES'))
+print(production_schedules)
