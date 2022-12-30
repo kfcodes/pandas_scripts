@@ -1,5 +1,5 @@
 import sqlalchemy as sqlalchemy
-import db_connection
+from sql import db_connection
 import os
 from dotenv import load_dotenv
 load_dotenv(".env")
