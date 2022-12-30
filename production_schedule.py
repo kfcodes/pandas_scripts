@@ -1,4 +1,4 @@
-# Read production schedule excel file
+# Added function to convert all data to lowercase
 import pandas as pd
 import sqlalchemy as sqlalchemy
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
@@ -21,3 +21,9 @@ product_options = products[os.getenv('Column_1')].tolist()
 
 production_schedules = pd.ExcelFile(os.getenv('PRODUCTION_SCHEDULES'))
 print(production_schedules)
+
+def lower_case(dataframe):
+    dataframe[os.getenv('Column7')] = dataframe[os.getenv('Column7')].astype(str).str.lower()
+    dataframe[os.getenv('Column8')] = dataframe[os.getenv('Column8')].astype(str).str.lower()
+    dataframe[os.getenv('Column9')] = dataframe[os.getenv('Column9')].astype(str).str.lower()
+    dataframe[os.getenv('Column10')] = dataframe[os.getenv('Column10')].astype(str).str.lower()
