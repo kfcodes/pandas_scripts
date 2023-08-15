@@ -11,7 +11,8 @@ connection_credentials = {'usr': os.getenv("USR"),
         'prt': os.getenv("PORT"),
         'dbn': os.getenv("DATABASE")}
 
-connection_string = 'mysql+mysqlconnector://{usr}:{pwd}@{hst}:{prt}/{dbn}'
+#connection_string = 'mysql+mysqlconnector://{usr}:{pwd}@{hst}:{prt}/{dbn}'
+connection_string = 'mariadb+pymysql://{usr}:{pwd}@{hst}:{prt}/{dbn}'
 
 # Create Database Connection
 def database_connection():
