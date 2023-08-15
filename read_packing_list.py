@@ -13,5 +13,6 @@ product_database_dataframe = pd.ExcelFile(os.getenv('PACKING_LIST'))
 def get_pallet_data():
     for sheet in product_database_dataframe.sheet_names:
         sheet_data = product_database_dataframe.parse(sheet, usecols="f:g,h")
+        noNa = sheet_data.dropna(axis=0, how = 'all')
         print("this is the pallet data")
-        print(sheet_data)
+        print(noNa)
