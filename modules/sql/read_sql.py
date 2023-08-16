@@ -1,16 +1,12 @@
-# import pandas as pd
-import pandas as pd
-import sqlalchemy as sqlalchemy
-import db_connection
 import os
 from dotenv import load_dotenv
 load_dotenv(".env")
+import pandas as pd
+from db_connection import database_connection
 
-def read_database(database_table):
+def getData(name):
     try:
-    # GET THE CONNECTION OBJECT (ENGINE) FOR THE DATABASE
-        engine = db_connection.database_connection()
-        sql_table = pd.read_sql(os.getenv(database_table),engine)
-        print(sql_table)
+        sql_data = pd.read_sql(os.getenv(name),database_connection())
+        return(sql_data)
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
