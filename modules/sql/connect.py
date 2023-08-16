@@ -13,6 +13,5 @@ connection_credentials = {'usr': os.getenv("USR"),
 connection_string = 'mariadb+pymysql://{usr}:{pwd}@{hst}:{prt}/{dbn}'
 
 def database_connection():
-    print("Connected to the DB")
     return create_engine(connection_string.format(**connection_credentials))
 

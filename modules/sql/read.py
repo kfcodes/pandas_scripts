@@ -1,8 +1,7 @@
-import os
 from dotenv import load_dotenv
-load_dotenv(".env")
+load_dotenv("../../.env")
 import pandas as pd
-from db_connection import database_connection
+from connect import database_connection
 
 def getData(name):
     try:

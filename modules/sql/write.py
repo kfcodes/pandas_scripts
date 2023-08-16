@@ -1,9 +1,7 @@
 import os
 from dotenv import load_dotenv
-load_dotenv(".env")
-import pandas as pd
-from db_connection import database_connection
-import sqlalchemy as sqlalchemy
+load_dotenv("../../.env")
+from connect import database_connection
 
 def write_to_database(data, name):
     try:
