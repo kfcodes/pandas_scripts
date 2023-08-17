@@ -6,6 +6,6 @@ from connect import database_connection
 def write_to_database(data, name):
     try:
         data.to_sql(os.getenv(name), database_connection(), index=False)
-        print("Data was inserted into the database")
+        print("Data was inserted into database")
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
