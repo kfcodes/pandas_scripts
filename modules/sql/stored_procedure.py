@@ -1,12 +1,8 @@
-from dotenv import load_dotenv
-load_dotenv(".env")
-from connect import database_connection
-import sqlalchemy as sqlalchemy
-
+from connect import database_connection as db
 
 def call_stored_procedure():
     try:
-        cursor = database_connection().raw_connection().cursor();
+        connection = db().raw_connection()
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
 
