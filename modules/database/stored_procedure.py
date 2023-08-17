@@ -1,7 +1,7 @@
-from connect import database_connection as db
 import os
 from dotenv import load_dotenv
 load_dotenv("../../.env")
+from .connect import database_connection as db
 
 def call_stored_procedure(procedure):
     try:
@@ -15,4 +15,3 @@ def call_stored_procedure(procedure):
         print("Connection could not be made due to the following error: \n", ex)
 
 
-call_stored_procedure("STOREDPROCEDURE1");
