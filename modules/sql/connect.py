@@ -1,8 +1,7 @@
-import sqlalchemy as sqlalchemy
-from sqlalchemy import create_engine
 import os
 from dotenv import load_dotenv
 load_dotenv("../../.env")
+from sqlalchemy import create_engine
 
 connection_credentials = {'usr': os.getenv("USR"),
         'pwd': os.getenv("PASSWORD"),
@@ -13,5 +12,6 @@ connection_credentials = {'usr': os.getenv("USR"),
 connection_string = 'mariadb+pymysql://{usr}:{pwd}@{hst}:{prt}/{dbn}'
 
 def database_connection():
-    return create_engine(connection_string.format(**connection_credentials))
+    engine = create_engine(connection_string.format(**connection_credentials))
+    return engine;
 
