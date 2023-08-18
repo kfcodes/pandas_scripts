@@ -16,3 +16,11 @@ def update_po(data):
         call_stored_procedure("STOREDPROCEDURE4");
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
+
+def update_poi(data):
+    try:
+        call_stored_procedure("STOREDPROCEDURE5");
+        write_to_database(data, 'tpoi_table')
+        call_stored_procedure("STOREDPROCEDURE6");
+    except Exception as ex:
+        print("Connection could not be made due to the following error: \n", ex)
