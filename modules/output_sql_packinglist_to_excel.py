@@ -1,13 +1,10 @@
-from os import wait
 import requests
-import pandas as pd
+from process_data.process_packing_list_data import process_data
+from .xlsx.write_file import write_xlsx_file
 
-# The API endpoint that I want to hit to get the packing list data
-# api-endpoint
-URL = "Test"
+URL = "test"
 r = requests.get(url = URL)
 data = r.json()
-df = pd.json_normalize(data)
+new_data = process_data(data)
+write_xlsx_file(new_data)
 
-selected_columns.to_excel("packing_list.xlsx")
-print("The packing list was outputted to the file")
