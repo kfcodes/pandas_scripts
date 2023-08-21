@@ -4,7 +4,7 @@ from .write import write_to_database
 def update_db(data):
     try:
         call_stored_procedure("STOREDPROCEDURE1");
-        write_to_database(data, 'tpdb_table')
+        write_to_database(data, 'DB')
         call_stored_procedure("STOREDPROCEDURE2");
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
@@ -12,7 +12,7 @@ def update_db(data):
 def update_po(data):
     try:
         call_stored_procedure("STOREDPROCEDURE3");
-        write_to_database(data, 'tpo_table')
+        write_to_database(data, 'PO')
         call_stored_procedure("STOREDPROCEDURE4");
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
@@ -20,7 +20,15 @@ def update_po(data):
 def update_poi(data):
     try:
         call_stored_procedure("STOREDPROCEDURE5");
-        write_to_database(data, 'tpoi_table')
+        write_to_database(data, 'POI')
         call_stored_procedure("STOREDPROCEDURE6");
+    except Exception as ex:
+        print("Connection could not be made due to the following error: \n", ex)
+
+def update_components(data):
+    try:
+        call_stored_procedure("STOREDPROCEDURE7");
+        write_to_database(data, 'COMPONENTS')
+        call_stored_procedure("STOREDPROCEDURE8");
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
