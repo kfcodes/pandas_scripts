@@ -3,10 +3,10 @@ import os
 from dotenv import load_dotenv
 load_dotenv("../.env")
 
-def process_data(data):
+def process_db_data(data):
     try:
-        database_data = data.loc[:, [ os.getenv('Column1'), os.getenv('Column2'), os.getenv('Column3'), os.getenv('Column4')]]
-        new_data = database_data.rename(columns={os.getenv('Column1'):os.getenv('Column_1'),os.getenv('Column2'):os.getenv('Column_2'),os.getenv('Column3'):os.getenv('Column_3'),os.getenv('Column4'):os.getenv('Column_4'),})
+        database_data = data.loc[:, [ os.getenv('DBINPUT1'), os.getenv('DBINPUT2'), os.getenv('DBINPUT3'), os.getenv('DBINPUT4')]]
+        new_data = database_data.rename(columns={os.getenv('DBINPUT1'):os.getenv('DBOUTPUT1'),os.getenv('DBINPUT2'):os.getenv('DBOUTPUT2'),os.getenv('DBINPUT3'):os.getenv('DBOUTPUT3'),os.getenv('DBINPUT4'):os.getenv('DBOUTPUT4'),})
         return(new_data)
     except Exception as ex:
         print("Data could not be processed: \n", ex)
