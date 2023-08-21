@@ -1,8 +1,9 @@
 from xlsx.read_database_file import read_xlsx_file
-from process_data.process_po_data import process_data
+from process_data.process_po_data import process_po_data
 from database.index import update_po, update_poi
 
-inputdata= read_xlsx_file('PO_FILE')
-data = process_data(inputdata);
+inputdata = read_xlsx_file('POFILE')
+po_name_data = read_xlsx_file('PONAMEFILE')
+data = process_po_data(inputdata, po_name_data);
 update_po(data[0]);
 update_poi(data[1]);
