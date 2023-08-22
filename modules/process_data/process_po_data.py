@@ -18,5 +18,6 @@ def process_po_data(data, po_name_data):
         po_item_data = data_table;
 
         return(po_data, po_item_data);
+
     except Exception as ex:
         print("Data could not be processed: \n", ex)
