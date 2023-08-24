@@ -15,9 +15,9 @@ def process_po_data(data, po_name_data):
         name_table.dropna();
         name_table[os.getenv('POOUTPUT1')].drop_duplicates().reset_index(drop=True)
 
-        # print(name_table);
-
         po_data = name_table;
+
+        print(po_data)
         #
         # po_items = data.loc[:, [ os.getenv('POINPUT4'), os.getenv('POINPUT5'), os.getenv('POINPUT6'), os.getenv('POINPUT7')]]
         #
