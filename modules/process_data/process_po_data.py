@@ -19,7 +19,7 @@ def process_po_data(data, po_name_data):
 
         # po_data = name_table[[ os.getenv('POOUTPUT1'), os.getenv('POOUTPUT2'), os.getenv('POOUTPUT3') ]]
 
-        po = data.loc[:,[os.getenv('POINPUT5'), os.getenv('POINPUT6'), os.getenv('POINPUT7'), os.getenv('POINPUT8')]]
+        po = data.loc[:, [ os.getenv('POINPUT5'), os.getenv('POINPUT6'), os.getenv('POINPUT7'), os.getenv('POINPUT8')]]
 
         po.dropna();
         po = po[~po[os.getenv('POINPUT8')].str.contains(os.getenv('PODELETE5'))]
@@ -27,8 +27,12 @@ def process_po_data(data, po_name_data):
         po = po[~po[os.getenv('POINPUT5')].str.contains(os.getenv('PODELETE3'))]
         po = po[~po[os.getenv('POINPUT6')].str.contains(os.getenv('PODELETE4'), na=False)]
 
-
-        return(po);
-
+        po_details = po.loc[:, [ os.getenv('POINPUT5'), os.getenv('POINPUT6'), os.getenv('POINPUT7')]]
+        data_table = po_details.rename(columns={os.getenv('POINPUT5'):os.getenv('POOUTPUT5'), os.getenv('POINPUT6'):os.getenv('POOUTPUT6'), os.getenv('POINPUT7'):os.getenv('POOUTPUT7'),})
+        
+        po_item_data = data_table;
+       
+        return(po_item_data);
+        
     except Exception as ex:
         print("Data could not be processed: \n", ex)
