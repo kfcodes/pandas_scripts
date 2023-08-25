@@ -7,21 +7,21 @@ load_dotenv("../.env")
 def process_po_data(po_name_data):
     try:
 
-        # po_names = po_name_data.loc[:, [ os.getenv('POINPUT1'), os.getenv('POINPUT2'), os.getenv('POINPUT3'), os.getenv('POINPUT4')]]
-        po_names = po_name_data.loc[:, [ os.getenv('POINPUT1'), os.getenv('POINPUT2')]]
+        po_names = po_name_data.loc[:, [ os.getenv('POINPUT1'), os.getenv('POINPUT2'), os.getenv('POINPUT3'), os.getenv('POINPUT4')]]
 
         # Select Only the rows we want
-        # po_names = po_names[po_names[os.getenv('POINPUT4')].str.contains(os.getenv('PODELETE1'))]
+        po_names = po_names[po_names[os.getenv('POINPUT4')].str.contains(os.getenv('PODELETE1'))]
+        po_names.drop(columns=[os.getenv('POINPUT4')])
+        po_names = po_names[~po_names[os.getenv('POINPUT1')].str.contains(os.getenv('PODELETE2'))]
+        po_names = po_names[~po_names[os.getenv('POINPUT1')].str.contains(os.getenv('PODELETE3'))]
 
-        # name_table = po_names.rename(columns={os.getenv('POINPUT1'):os.getenv('POOUTPUT1'),os.getenv('POINPUT2'):os.getenv('POOUTPUT2'),os.getenv('POINPUT3'):os.getenv('POOUTPUT3'),})
-        name_table = po_names.rename(columns={os.getenv('POINPUT1'):os.getenv('POOUTPUT1'),os.getenv('POINPUT2'):os.getenv('POOUTPUT2'),})
+        name_table = po_names.rename(columns={os.getenv('POINPUT1'):os.getenv('POOUTPUT1'),os.getenv('POINPUT2'):os.getenv('POOUTPUT2'),os.getenv('POINPUT3'):os.getenv('POOUTPUT3'),})
 
-        name_table = name_table[~name_table[os.getenv('POOUTPUT1')].str.contains(os.getenv('PODELETE2'))]
 
-        name_table.dropna();
-        name_table[os.getenv('POOUTPUT1')].drop_duplicates().reset_index(drop=True)
+        # name_table.dropna();
+        # name_table[os.getenv('POOUTPUT1')].drop_duplicates().reset_index(drop=True)
 
-        po_data = name_table;
+        po_data = name_table[[ os.getenv('POOUTPUT1'), os.getenv('POOUTPUT2'), os.getenv('POOUTPUT3') ]]
 
         print(po_data)
 
