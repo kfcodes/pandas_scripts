@@ -7,8 +7,5 @@ inputdata = read_xlsx_file_remove_first_row('POFILE')
 po_name_data = read_xlsx_file('PONAMEFILE')
 # process_po_data(inputdata,po_name_data);
 data = process_po_data(inputdata, po_name_data);
-print(data);
-# update_po(data);
-# update_po(data[0]);
-# update_poi(data[1]);
-# update_poi(data);
+update_po(data[0]);
+update_poi(data[1]);
