@@ -20,7 +20,11 @@ def process_po_data(data, po_name_data):
 
         po_data = name_table[[ os.getenv('POOUTPUT1'), os.getenv('POOUTPUT2'), os.getenv('POOUTPUT3') ]]
 
-        return(po_data)
+        po_details = data.loc[:,[os.getenv('POINPUT5'), os.getenv('POINPUT6'), os.getenv('POINPUT7')]]
+
+        print(po_details);
+
+
 
     except Exception as ex:
         print("Data could not be processed: \n", ex)
