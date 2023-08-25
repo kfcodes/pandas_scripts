@@ -9,3 +9,10 @@ def read_xlsx_file(file):
         return(df)
     except Exception as ex:
         print("Could not read the file: \n", ex)
+
+def read_xlsx_file_remove_first_row(file):
+    try:
+        df = pd.read_excel(os.getenv(file), skiprows=1 )
+        return(df)
+    except Exception as ex:
+        print("Could not read the file: \n", ex)
