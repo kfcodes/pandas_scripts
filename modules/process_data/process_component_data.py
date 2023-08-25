@@ -13,7 +13,6 @@ def process_component_data(data):
         processed_data = processed_data[~processed_data[os.getenv('COMPONENTOUTPUT1')].str.contains(os.getenv('COMPONENTDELETE1'))]
         processed_data = processed_data[~processed_data[os.getenv('COMPONENTOUTPUT1')].str.contains(os.getenv('COMPONENTDELETE2'))]
 
-
         return(processed_data)
     except Exception as ex:
         print("Data could not be processed: \n", ex)
