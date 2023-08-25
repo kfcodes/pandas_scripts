@@ -20,10 +20,19 @@ def process_po_data(data, po_name_data):
 
         po_data = name_table[[ os.getenv('POOUTPUT1'), os.getenv('POOUTPUT2'), os.getenv('POOUTPUT3') ]]
 
+
         po_details = data.loc[:,[os.getenv('POINPUT5'), os.getenv('POINPUT6'), os.getenv('POINPUT7')]]
 
-        print(po_details);
+        data_table = po_details.rename(columns={os.getenv('POINPUT5'):os.getenv('POOUTPUT5'), os.getenv('POINPUT6'):os.getenv('POOUTPUT6'), os.getenv('POINPUT7'):os.getenv('POOUTPUT7'),})
 
+        data_table = data_table[~data_table[os.getenv('POOUTPUT6')].str.contains(os.getenv('POIDELETE1'))]
+        data_table.dropna();
+
+        po_item_data = data_table;
+        
+        print(po_item_data);
+
+        # return(po_data, po_item_data);
 
 
     except Exception as ex:
