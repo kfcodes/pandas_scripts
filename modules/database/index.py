@@ -21,7 +21,6 @@ def update_poi(data):
     try:
         call_stored_procedure("STOREDPROCEDURE5");
         write_to_database(data, 'POI')
-        # call_stored_procedure("STOREDPROCEDURE6");
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
 
@@ -37,6 +36,5 @@ def update_labels(data):
     try:
         call_stored_procedure("STOREDPROCEDURE9");
         write_to_database(data, 'LABEL')
-        call_stored_procedure("STOREDPROCEDURE10");
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
