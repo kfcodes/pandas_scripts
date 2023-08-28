@@ -4,5 +4,4 @@ from database.index import update_components
 
 data = read_xlsx_file('COMPONENTSFILE')
 processed_data = process_component_data(data);
-# print("Done");
 update_components(processed_data);

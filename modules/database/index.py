@@ -28,13 +28,12 @@ def update_components(data):
     try:
         call_stored_procedure("STOREDPROCEDURE7");
         write_to_database(data, 'COMPONENT')
-        call_stored_procedure("STOREDPROCEDURE8");
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
 
 def update_labels(data):
     try:
-        call_stored_procedure("STOREDPROCEDURE9");
+        call_stored_procedure("STOREDPROCEDURE8");
         write_to_database(data, 'LABEL')
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
