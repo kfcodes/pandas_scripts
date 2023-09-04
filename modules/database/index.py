@@ -37,3 +37,11 @@ def update_labels(data):
         write_to_database(data, 'LABEL')
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
+
+def update_schedule(data):
+    try:
+        call_stored_procedure("STOREDPROCEDURE9");
+        write_to_database(data, 'SCHEDULE')
+        call_stored_procedure("STOREDPROCEDURE10");
+    except Exception as ex:
+        print("Connection could not be made due to the following error: \n", ex)
