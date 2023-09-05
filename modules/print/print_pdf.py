@@ -3,7 +3,9 @@ import os
 from dotenv import load_dotenv
 load_dotenv("../../.env")
 
-def print_A4_page(file_path, printer_name):
+def print_a4_pdf(file_path):
+
+    printer_name = os.getenv('A4PRINTER')
 
     conn = cups. Connection()
     printers = conn.getPrinters()
