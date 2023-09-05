@@ -3,7 +3,7 @@ from .read import read_select_to_dataframe
 def get_production_documentation(id):
     try:
 
-        select = "TEST"
+        select = "PRODUCTIONINFO"
         data = read_select_to_dataframe(select, id)
 
         return(data);
