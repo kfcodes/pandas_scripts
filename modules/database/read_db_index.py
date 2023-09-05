@@ -1,6 +1,6 @@
 from .read import read_select_to_dataframe
 
-def read_production_documentation(id):
+def get_production_documentation(id):
     try:
 
         select = "TEST"

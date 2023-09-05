@@ -1,7 +1,7 @@
-from database.index import get_production_data
+from database.read_db_index import get_production_documentation
 
 # Get the info from the DB
-production_in(id);
+get_production_documentation(id);
 # Create the PDF file
 pdf = create_pdf_file(data);
 # Print the PDF file
