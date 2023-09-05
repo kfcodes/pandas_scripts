@@ -4,9 +4,9 @@ load_dotenv("../../.env")
 import pandas as pd
 from .connect import database_connection
 
-def getData(name):
+def read_to_dataframe(name):
     try:
-        sql_data = pd.read_sql(os.getenv(name),database_connection())
-        return(sql_data)
+        data = pd.read_sql(os.getenv(name),database_connection())
+        return(data)
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
