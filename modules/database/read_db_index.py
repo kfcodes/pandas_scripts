@@ -1,9 +1,12 @@
-from .read import read_to_dataframe
+from .read import read_select_to_dataframe
 
 def read_production_documentation(id):
     try:
 
-        data = read_to_dataframe(id)
+        select = "test"
+
+        data = read_select_to_dataframe(select, id)
+
         return(data);
 
     except Exception as ex:
