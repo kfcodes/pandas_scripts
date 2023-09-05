@@ -16,9 +16,8 @@ def read_to_dataframe(name):
 def read_select_to_dataframe(SELECTION, id):
     try:
 
-        selection = os.getenv(SELECTION)+id
-
-        data = pd.read_sql(selection ,database_connection())
+        select_data = os.getenv(SELECTION)+id
+        data = pd.read_sql(select_data ,database_connection())
 
         return(data)
 
