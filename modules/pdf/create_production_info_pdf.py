@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv("../.env")
 
-def create_production_info_pdf(data):
+def create_production_info_pdf(data, components):
     try:
 
         production_file=os.getenv('PRODUCTIONINFO')
