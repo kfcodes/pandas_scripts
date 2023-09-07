@@ -1,4 +1,4 @@
-from xlsx.read_database_file import read_xlsx_file_by_sheet
+from xlsx.read_xlsx_file import read_xlsx_file_by_sheet
 from process_data.process_label_data import process_label_data
 from database.write_db_index import update_labels
 import os
