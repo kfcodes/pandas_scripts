@@ -6,5 +6,5 @@ from print.print_pdf import print_a4_pdf
 id = str(sys.argv[1])
 info = get_production_documentation(id);
 components = get_product_components(id);
-pdf_file = create_production_info_pdf(info,components);
+pdf_file = create_production_info_pdf(info, components);
 # print_a4_pdf(pdf_file)

@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv("../.env")
 
-def create_production_info_pdf(data, components):
+def create_production_info_pdf(finished_product, product_components):
     try:
 
         production_file=os.getenv('PRODUCTIONINFO')
@@ -12,7 +12,10 @@ def create_production_info_pdf(data, components):
         pdf.add_page()
 
         pdf.set_font('Arial', 'B', 16)
-        pdf.cell(40, 10, 'Hello World!2')
+        pdf.cell(40, 10, finished_product)
+
+        pdf.set_font('Arial', 'B', 16)
+        pdf.cell(40, 10, product_components)
 
         pdf.output(production_file, 'F')
 
