@@ -3,14 +3,14 @@ import os
 from dotenv import load_dotenv
 load_dotenv("../.env")
 
-def read_xlsx_file(file):
+def read_full_xlsx_file(file):
     try:
         df = pd.read_excel(os.getenv(file))
         return(df)
     except Exception as ex:
         print("Could not read the file: \n", ex)
 
-def read_xlsx_file_remove_first_row(file):
+def read_xlsx_file_skip_first_row(file):
     try:
         df = pd.read_excel(os.getenv(file), skiprows=1 )
         return(df)
@@ -20,6 +20,13 @@ def read_xlsx_file_remove_first_row(file):
 def read_xlsx_file_by_sheet(file, sheet):
     try:
         df = pd.read_excel(os.getenv(file), sheet_name=sheet)
+        return(df)
+    except Exception as ex:
+        print("Could not read the file: \n", ex)
+
+def read_selected_columns_from_xlsx(file, columns):
+    try:
+        df = pd.read_excel(os.getenv(file), usecols=columns)
         return(df)
     except Exception as ex:
         print("Could not read the file: \n", ex)
