@@ -32,7 +32,9 @@ def process_schedule_data(data):
         schedule_data = schedule_data[~mask2]
 
         # SET VALUES FOR COLUMN 1 BASED ON THE VALUE IN COLUMN 2
-        schedule_data[os.getenv('SCHEDULEOUTPUT1')] = pd.np.where(schedule_data[os.getenv('SCHEDULEOUTPUT2')].str.contains(os.getenv('SCHEDULETYPE1')), "test1", pd.np.where(schedule_data[os.getenv('SCHEDULEOUTPUT2')].str.contains(os.getenv('SCHEDULETYPE2')), "test2", pd.np.where(schedule_data[os.getenv('SCHEDULEOUTPUT2')].str.contains(os.getenv('SCHEDULETYPE3')), "test3", "task")))
+        schedule_data.loc[schedule_data[os.getenv('SCHEDULEOUTPUT2')].str.contains(os.getenv('SCHEDULETYPE1')), os.getenv('SCHEDULEOUTPUT1')]= 1
+        schedule_data.loc[schedule_data[os.getenv('SCHEDULEOUTPUT2')].str.contains(os.getenv('SCHEDULETYPE2')), os.getenv('SCHEDULEOUTPUT1')]= 1
+        schedule_data.loc[schedule_data[os.getenv('SCHEDULEOUTPUT2')].str.contains(os.getenv('SCHEDULETYPE3')), os.getenv('SCHEDULEOUTPUT1')]= 1
 
         schedule_data.to_excel("output.xlsx")
 
