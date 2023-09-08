@@ -20,6 +20,9 @@ def process_schedule_data(data):
 
         vertical_concat = pd.concat([renamed_data_part_1, renamed_data_part_2, renamed_data_part_3, renamed_data_part_4,], axis=0)
 
+        vertical_concat.dropna();
+
+
         print(vertical_concat)
 
 
