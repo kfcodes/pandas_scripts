@@ -18,15 +18,13 @@ def process_schedule_data(data):
         renamed_data_part_3 = sheet_data_part_3.rename(columns={os.getenv('SCHEDULEINPUT11'):os.getenv('SCHEDULEOUTPUT11'),os.getenv('SCHEDULEINPUT12'):os.getenv('SCHEDULEOUTPUT12'),os.getenv('SCHEDULEINPUT13'):os.getenv('SCHEDULEOUTPUT13'),})
         renamed_data_part_4 = sheet_data_part_4.rename(columns={os.getenv('SCHEDULEINPUT16'):os.getenv('SCHEDULEOUTPUT16'),os.getenv('SCHEDULEINPUT17'):os.getenv('SCHEDULEOUTPUT17'),os.getenv('SCHEDULEINPUT18'):os.getenv('SCHEDULEOUTPUT18'),})
 
+        # COMBINE THE DATA
         vertical_concat = pd.concat([renamed_data_part_1, renamed_data_part_2, renamed_data_part_3, renamed_data_part_4,], axis=0)
 
-        vertical_concat.dropna();
+        # SELECT WHERE COLUMN IS NOT NA
+        schedule_data = vertical_concat[vertical_concat[os.getenv('SCHEDULEOUTPUT2')].notna()]
 
-
-        print(vertical_concat)
-
-
-
+        print(schedule_data)
 
     except Exception as ex:
 
