@@ -40,8 +40,8 @@ def update_labels(data):
 
 def update_schedule(data):
     try:
-        call_stored_procedure("STOREDPROCEDURE9");
+        # call_stored_procedure("STOREDPROCEDURE9");
         write_to_database(data, 'SCHEDULE')
-        call_stored_procedure("STOREDPROCEDURE10");
+        # call_stored_procedure("STOREDPROCEDURE10");
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)

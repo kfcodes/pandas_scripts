@@ -1,5 +1,5 @@
 import pandas as pd
-import numpy as np
+import numpy as np 
 import os
 from dotenv import load_dotenv
 load_dotenv("../.env")
@@ -25,17 +25,14 @@ def process_schedule_data(data):
         # SELECT WHERE COLUMN IS NOT NULL
         schedule_data = vertical_concat[vertical_concat[os.getenv('SCHEDULEOUTPUT2')].notna()]
 
-        # Remove selecte ROws using masks
+        # REMOVED ROWS WITH UNWANTED DATA
         mask = schedule_data[os.getenv('SCHEDULEOUTPUT2')] == os.getenv('REMOVE1')
-
-        # select all rows except the ones that contain 'Coca Cola'
         schedule_data = schedule_data[~mask]
-
-        # create a Boolean mask for the rows to remove
         mask2 = schedule_data[os.getenv('SCHEDULEOUTPUT2')] == os.getenv('REMOVE2')
-
-        # select all rows except the ones that contain 'Coca Cola'
         schedule_data = schedule_data[~mask2]
+
+        # SET VALUES FOR COLUMN 1 BASED ON THE VALUE IN COLUMN 2
+        schedule_data[os.getenv('SCHEDULEOUTPUT1')] = pd.np.where(schedule_data[os.getenv('SCHEDULEOUTPUT2')].str.contains(os.getenv('SCHEDULETYPE1')), "test1", pd.np.where(schedule_data[os.getenv('SCHEDULEOUTPUT2')].str.contains(os.getenv('SCHEDULETYPE2')), "test2", pd.np.where(schedule_data[os.getenv('SCHEDULEOUTPUT2')].str.contains(os.getenv('SCHEDULETYPE3')), "test3", "task")))
 
         schedule_data.to_excel("output.xlsx")
 
