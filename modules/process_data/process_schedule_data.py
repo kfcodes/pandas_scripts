@@ -21,10 +21,10 @@ def process_schedule_data(data):
         # COMBINE THE DATA
         vertical_concat = pd.concat([renamed_data_part_1, renamed_data_part_2, renamed_data_part_3, renamed_data_part_4,], axis=0)
 
-        # SELECT WHERE COLUMN IS NOT NA
+        # SELECT WHERE COLUMN IS NOT NULL
         schedule_data = vertical_concat[vertical_concat[os.getenv('SCHEDULEOUTPUT2')].notna()]
 
-        print(schedule_data)
+        return(schedule_data)
 
     except Exception as ex:
 
