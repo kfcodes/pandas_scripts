@@ -36,6 +36,8 @@ def process_schedule_data(data):
         schedule_data.loc[schedule_data[os.getenv('SCHEDULEOUTPUT2')].str.contains(os.getenv('SCHEDULETYPE2')), os.getenv('SCHEDULEOUTPUT1')]= 1
         schedule_data.loc[schedule_data[os.getenv('SCHEDULEOUTPUT2')].str.contains(os.getenv('SCHEDULETYPE3')), os.getenv('SCHEDULEOUTPUT1')]= 1
 
+        schedule_data.fillna(method="ffill", inplace=True)
+
         schedule_data.to_excel("output.xlsx")
 
         return(schedule_data)
