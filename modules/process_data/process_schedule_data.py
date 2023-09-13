@@ -38,8 +38,6 @@ def process_schedule_data(data):
 
         schedule_data.fillna(method="ffill", inplace=True)
 
-        schedule_data.to_excel("output.xlsx")
-
         return(schedule_data)
 
     except Exception as ex:
