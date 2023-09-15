@@ -12,9 +12,10 @@ def get_production_info(selection):
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
 
-def get_database_info2(selection):
+def get_production_components(selection):
     try:
         info = pd.read_sql(selection ,database_connection())
-        return(info);
+        values = info.to_dict(orient='index')
+        return values
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
