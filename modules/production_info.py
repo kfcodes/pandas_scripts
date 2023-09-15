@@ -1,9 +1,10 @@
+import pprint
 import os
 from dotenv import load_dotenv
 load_dotenv("../.env")
 import pandas as pd
 from database.read_db_index import get_production_info, get_production_components
-import pprint
+from pdf.create_production_info_pdf import create_production_info_pdf
 
 def get_component_data(id):
     try:
@@ -12,8 +13,7 @@ def get_component_data(id):
         uid = product_info[os.getenv("UID")][0]
         production_components = f"{os.getenv('COMPONENTS')}'{uid}'"
         components = get_production_components(production_components);
-        pp = pprint.PrettyPrinter(indent=4)
-        pp.pprint(f" Components: {components}")
+        create_production_info_pdf(product_info, components);
 
     except Exception as ex:
         print("Data could not be processed: \n", ex)
