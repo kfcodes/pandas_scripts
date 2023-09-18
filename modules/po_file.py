@@ -12,3 +12,4 @@ def process_po_files():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
+process_po_files()
