@@ -10,3 +10,4 @@ def process_db_file():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
+process_db_file()

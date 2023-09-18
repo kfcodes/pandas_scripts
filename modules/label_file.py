@@ -13,3 +13,4 @@ def process_label_file():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
+process_label_file()

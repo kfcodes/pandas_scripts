@@ -10,3 +10,4 @@ def process_schedule_file(sheet):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
+process_schedule_file()

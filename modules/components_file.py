@@ -9,3 +9,5 @@ def process_components_file():
         update_components(processed_data);
     except Exception as ex:
         print("Data could not be processed: \n", ex)
+
+process_components_file()
