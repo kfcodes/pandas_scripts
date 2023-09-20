@@ -28,7 +28,10 @@ def create_production_info_pdf(finished_product, product_components):
         pp = pprint.PrettyPrinter(indent=4)
         # ADD PRODUCT COMPONENTS TO THE PDF
         pp.pprint(product_components)
-        print(product_components)
+
+        for component in product_components:
+            print_info = f" {product_components[component][os.getenv('COMP1')]}  |   {product_components[component][os.getenv('COMP2')]}  |  QTY: {product_components[component][os.getenv('COMP3')]}"
+            pdf.multi_cell(190, 20, print_info , 1, 'C')
 
         pdf.output(production_file, 'F')
 
