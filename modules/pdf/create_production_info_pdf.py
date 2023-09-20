@@ -1,3 +1,4 @@
+import pprint
 from fpdf import FPDF
 import os
 from dotenv import load_dotenv
@@ -13,6 +14,7 @@ def create_production_info_pdf(finished_product, product_components):
         # ADD THE UNIQUE PRODUCT IDENTIFIERS TO THE PDF
         pdf.set_font('Arial', 'B', 40)
         pdf.multi_cell(190, 20, finished_product[os.getenv("UID")][0], 1, 'C')
+
         pdf.set_font('Arial', '', 20)
         pdf.multi_cell(190, 15, finished_product[os.getenv("DESC")][0], 1, 'C')
         lot = f"LOT:    {finished_product[os.getenv('L')][0]}"
@@ -23,8 +25,10 @@ def create_production_info_pdf(finished_product, product_components):
         pdf.multi_cell(190, 15, bbe, 1, 'C')
         pdf.multi_cell(190, 15, order_info, 1, 'C')
 
-
-        # print(product_components)
+        pp = pprint.PrettyPrinter(indent=4)
+        # ADD PRODUCT COMPONENTS TO THE PDF
+        pp.pprint(product_components)
+        print(product_components)
 
         pdf.output(production_file, 'F')
 
