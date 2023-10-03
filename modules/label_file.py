@@ -1,9 +1,9 @@
-from xlsx.read_xlsx_file import read_xlsx_file_by_sheet
-from process_data.process_label_data import process_label_data
-from database.write_db_index import update_labels
+from modules.xlsx.read_xlsx_file import read_xlsx_file_by_sheet
+from modules.process_data.process_label_data import process_label_data
+from modules.database.write_db_index import update_labels
 import os
 from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv(".env")
 
 def process_label_file():
     try:
@@ -12,5 +12,3 @@ def process_label_file():
         update_labels(processed_data);
     except Exception as ex:
         print("Data could not be processed: \n", ex)
-
-process_label_file()
