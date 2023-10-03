@@ -1,13 +1,12 @@
-import pprint
 from fpdf import FPDF
 import os
 from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv(".env")
 
 def create_production_info_pdf(finished_product, product_components):
+
     try:
         production_file = os.getenv('PRODUCTIONINFOFILE')
-
         pdf = FPDF()
         pdf.add_page()
 
@@ -32,9 +31,7 @@ def create_production_info_pdf(finished_product, product_components):
                 pdf.multi_cell(190, 15, print_info , 0, 'L')
 
         pdf.output(production_file, 'F')
-
         print("done")
-
         return(production_file)
 
     except Exception as ex:
