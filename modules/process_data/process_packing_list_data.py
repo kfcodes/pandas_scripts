@@ -1,6 +1,6 @@
 import pandas as pd
 from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv(".env")
 
 def process_data(data):
     try:

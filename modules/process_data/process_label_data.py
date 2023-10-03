@@ -1,7 +1,6 @@
-import pandas as pd
 import os
 from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv(".env")
 
 def process_label_data(data):
     try:
@@ -17,5 +16,3 @@ def process_label_data(data):
     except Exception as ex:
 
         print("Data could not be processed: \n", ex)
-
-
