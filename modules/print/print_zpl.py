@@ -1,7 +1,7 @@
 import socket              
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.env")
+load_dotenv(".env")
 mysocket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)         
 
 def print_large_label():
@@ -15,6 +15,3 @@ def print_large_label():
 
 	except Exception as ex:
 		print("Could not print label due to the following: \n", ex)
-
-
-print_large_label()

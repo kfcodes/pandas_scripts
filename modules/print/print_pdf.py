@@ -1,7 +1,7 @@
 import cups
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.env")
+load_dotenv(".env")
 
 def print_a4_pdf(file_path):
     printer_name = os.getenv('A4PRINTER')
