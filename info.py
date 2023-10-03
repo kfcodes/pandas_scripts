@@ -1,5 +1,5 @@
 import sys
-from modules.production_info import get_component_data
+from controllers.production_info import get_component_data
 
 id = str(sys.argv[1])
 
