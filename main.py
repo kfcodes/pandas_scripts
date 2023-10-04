@@ -7,7 +7,7 @@ from controllers.po_file import process_po_files
 from controllers.schedule_file import process_schedule_file
 
 load_dotenv(".env")
-sheet = os.getenv("sheet");
+sheet = os.getenv("SHEETINPUT");
 
 process_db_file()
 process_components_file();
