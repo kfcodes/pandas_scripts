@@ -15,9 +15,9 @@ def create_production_info_pdf(finished_product, product_components):
         pdf.multi_cell(190, 15, finished_product[os.getenv("UID")][0], 1, 'C')
         pdf.set_font('Arial', '', 20)
         pdf.multi_cell(190, 15, finished_product[os.getenv("DESC")][0], 1, 'C')
-        lot = f"LOT:    {finished_product[os.getenv('L')][0]}"
-        bbe = f"BBE:    {finished_product[os.getenv('B')][0]}"
-        order_info = f"ORDER ID:     {str(finished_product[os.getenv('P')][0])}        |          ORDER QTY:    {str(finished_product[os.getenv('POQ')][0])}"
+        lot = f"LOT:    {finished_product[os.getenv('LOT')][0]}"
+        bbe = f"BBE:    {finished_product[os.getenv('BBE')][0]}"
+        order_info = f"ORDER ID:     {str(finished_product[os.getenv('POID')][0])}        |          ORDER QTY:    {str(finished_product[os.getenv('POQ')][0])}"
         pdf.set_font('Arial', 'B', 15)
         pdf.multi_cell(190, 12, lot, 1, 'C')
         pdf.multi_cell(190, 12, bbe, 1, 'C')
