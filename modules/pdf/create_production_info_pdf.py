@@ -4,13 +4,13 @@ from dotenv import load_dotenv
 load_dotenv(".env")
 
 def create_production_info_pdf(finished_product, product_components):
-
     try:
+        # LOAD THE PDF AND ADD THE PAGE FOR THE PRODUCT INFORMATION
         production_file = os.getenv('PRODUCTIONINFOFILE')
         pdf = FPDF()
         pdf.add_page()
 
-        # ADD THE UNIQUE PRODUCT IDENTIFIERS TO THE PDF
+        # ADD THE UNIQUE PRODUCT IDENTIFIERS TO THE PDF HEADER
         pdf.set_font('Arial', 'B', 30)
         pdf.multi_cell(190, 15, finished_product[os.getenv("UID")][0], 1, 'C')
         pdf.set_font('Arial', '', 20)
@@ -23,16 +23,16 @@ def create_production_info_pdf(finished_product, product_components):
         pdf.multi_cell(190, 12, bbe, 1, 'C')
         pdf.multi_cell(190, 12, order_info, 1, 'C')
 
-        # ADD PRODUCT COMPONENTS TO THE PDF
+        # ADD PRODUCT COMPONENTS TO THE PDF THE PDF
         if product_components != None:
             pdf.set_font('Arial', '', 11)
             for component in product_components:
                 print_info = f"CODE:    {product_components[component][os.getenv('COMP1')]}     |  QTY: {product_components[component][os.getenv('COMP3')]} | {product_components[component][os.getenv('COMP2')]}"
                 pdf.multi_cell(190, 15, print_info , 0, 'L')
 
-        pdf.output(production_file, 'F')
-        print("done")
-        return(production_file)
 
+        # OUTPUT THE DATA TO THE PDF FILE
+        pdf.output(production_file, 'F')
+        return(production_file)
     except Exception as ex:
         print("Data could not be processed: \n", ex)
