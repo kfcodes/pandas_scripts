@@ -1,24 +1,20 @@
 import os
 from dotenv import load_dotenv
-
-from modules.database.read_db_index import get_label_info
-
-from modules.zpl.create_production_label_zpl import create_label_outline, add_info_to_label
+from modules.database.read_db_index import get_label_data
+from modules.zpl.create_production_label import create_production_label_file
 
 # from modules.print.print_pdf import print_a4_pdf
 
 load_dotenv(".env")
 
-def get_label_data(id):
+def print_label_with_data(id):
     try:
         
-        label_info = get_label_info(f"{os.getenv('PRODUCTIONLABELINFO')}{id}")
-
-        # write the label outline to the file
-        label_outline = create_label_outline(label_info)
+        label_info = get_label_data(f"{os.getenv('PRODUCTIONLABELINFO')}{id}")
 
         # write the label data to the file
-        label_outline_and_data = add_info_to_label(label_info)
+        label_file = create_production_label_file(label_info)
+        print(label_file)
 
         # print_zpl_file(label_file)
 
