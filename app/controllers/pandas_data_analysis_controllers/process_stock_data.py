@@ -1,8 +1,9 @@
 import os
 from dotenv import load_dotenv
-load_dotenv(".env")
+load_dotenv("../../../.env")
 
 def process_stock_data(data):
+
     try:
 
         database_data = data.loc[:, [ os.getenv('STOCKINPUT1'), os.getenv('STOCKINPUT2'), os.getenv('STOCKINPUT3'), os.getenv('STOCKINPUT4')]]

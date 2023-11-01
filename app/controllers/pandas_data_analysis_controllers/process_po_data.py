@@ -1,8 +1,9 @@
 import os
 from dotenv import load_dotenv
-load_dotenv(".env")
+load_dotenv("../../../.env")
 
 def process_po_data(data, po_name_data):
+
     try:
 
         po_names = po_name_data.loc[:, [ os.getenv('POINPUT1'), os.getenv('POINPUT2'), os.getenv('POINPUT3'), os.getenv('POINPUT4')]]
