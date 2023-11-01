@@ -1,5 +1,5 @@
-from .stored_procedure import call_stored_procedure
-from .write import write_to_database
+from app.modules.database.stored_procedure import call_stored_procedure
+from app.modules.database.write import write_to_database
 
 def update_db(data):
     try:

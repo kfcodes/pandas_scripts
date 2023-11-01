@@ -1,6 +1,6 @@
-from modules.xlsx.read_xlsx_file import read_xlsx_file_by_sheet
-from modules.process_data.process_label_data import process_label_data
-from modules.database.write_db_index import update_labels
+from app.modules.xlsx.read_xlsx_file import read_xlsx_file_by_sheet
+from app.modules.process_data.process_label_data import process_label_data
+from app.modules.database.write_db_index import update_labels
 import os
 from dotenv import load_dotenv
 load_dotenv(".env")

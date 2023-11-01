@@ -1,7 +1,8 @@
+from app.modules.database.connect import database_connection
+
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.env")
-from .connect import database_connection
+load_dotenv("../../../.env")
 
 def write_to_database(data, name):
     try:

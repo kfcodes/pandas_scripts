@@ -1,6 +1,6 @@
-from modules.xlsx.read_xlsx_file import read_full_xlsx_file
-from modules.process_data.process_database_data import process_db_data
-from modules.database.write_db_index import update_db
+from app.modules.xlsx.read_xlsx_file import read_full_xlsx_file
+from app.modules.process_data.process_database_data import process_db_data
+from app.modules.database.write_db_index import update_db
 
 def process_db_file():
     try:

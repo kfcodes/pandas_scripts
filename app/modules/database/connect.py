@@ -1,7 +1,8 @@
+from sqlalchemy import create_engine
+
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.env")
-from sqlalchemy import create_engine
+load_dotenv("../../../.env")
 
 connection_credentials = {'usr': os.getenv("USR"),
         'pwd': os.getenv("PASSWORD"),

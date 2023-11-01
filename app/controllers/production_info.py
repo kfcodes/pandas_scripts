@@ -1,8 +1,9 @@
+from app.modules.database.read_db_index import get_production_info, get_production_components
+from app.modules.pdf.create_production_info_pdf import create_production_info_pdf
+from app.modules.print.print_pdf import print_a4_pdf
+
 import os
 from dotenv import load_dotenv
-from modules.database.read_db_index import get_production_info, get_production_components
-from modules.pdf.create_production_info_pdf import create_production_info_pdf
-from modules.print.print_pdf import print_a4_pdf
 load_dotenv(".env")
 
 def get_component_data(id):

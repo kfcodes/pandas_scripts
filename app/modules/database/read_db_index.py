@@ -1,7 +1,8 @@
+import pandas as pd
+from app.modules.database.connect import database_connection
+
 from dotenv import load_dotenv
 load_dotenv(".env")
-import pandas as pd
-from modules.database.connect import database_connection
 
 def get_production_info(selection):
     try:

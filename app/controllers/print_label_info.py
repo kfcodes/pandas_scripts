@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
-from modules.database.read_db_index import get_label_data
-from modules.zpl.create_production_label import create_production_label_file
+from app.modules.database.read_db_index import get_label_data
+from app.modules.zpl.create_production_label import create_production_label_file
 
 # from modules.print.print_pdf import print_a4_pdf
 

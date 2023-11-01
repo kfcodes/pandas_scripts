@@ -1,6 +1,6 @@
-from modules.xlsx.read_xlsx_file import read_xlsx_file_sheet_skip_first_row
-from modules.process_data.process_schedule_data import process_schedule_data
-from modules.database.write_db_index import update_schedule
+from app.modules.xlsx.read_xlsx_file import read_xlsx_file_sheet_skip_first_row
+from app.modules.process_data.process_schedule_data import process_schedule_data
+from app.modules.database.write_db_index import update_schedule
 
 def process_schedule_file(sheet):
     try:

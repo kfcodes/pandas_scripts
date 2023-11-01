@@ -1,6 +1,6 @@
-from modules.xlsx.read_xlsx_file import read_full_xlsx_file , read_xlsx_file_skip_first_row
-from modules.process_data.process_po_data import process_po_data
-from modules.database.write_db_index import update_po, update_poi
+from app.modules.xlsx.read_xlsx_file import read_full_xlsx_file , read_xlsx_file_skip_first_row
+from app.modules.process_data.process_po_data import process_po_data
+from app.modules.database.write_db_index import update_po, update_poi
 
 def process_po_files():
     try:

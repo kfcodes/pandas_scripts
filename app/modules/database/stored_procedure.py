@@ -1,7 +1,8 @@
+from app.modules.database.connect import database_connection as db
+
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.env")
-from .connect import database_connection as db
+load_dotenv("../../../.env")
 
 def call_stored_procedure(procedure):
     try:
