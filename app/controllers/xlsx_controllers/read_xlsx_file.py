@@ -1,37 +1,38 @@
 import pandas as pd
+
 import os
 from dotenv import load_dotenv
-load_dotenv(".env")
+load_dotenv("../../../.env")
 
-def read_full_xlsx_file(file):
+def read_data(file):
     try:
         df = pd.read_excel(os.getenv(file))
         return(df)
     except Exception as ex:
         print("Could not read the file: \n", ex)
 
-def read_xlsx_file_skip_first_row(file):
+def read_data_after_first_row(file):
     try:
         df = pd.read_excel(os.getenv(file), skiprows=1)
         return(df)
     except Exception as ex:
         print("Could not read the file: \n", ex)
 
-def read_xlsx_file_by_sheet(file, sheet):
+def read_data_in_sheet(file, sheet):
     try:
         df = pd.read_excel(os.getenv(file), sheet_name=sheet)
         return(df)
     except Exception as ex:
         print("Could not read the file: \n", ex)
 
-def read_selected_columns_from_xlsx(file, sheet):
+def data_from_columns(file, columns):
     try:
         df = pd.read_excel(os.getenv(file), usecols=columns)
         return(df)
     except Exception as ex:
         print("Could not read the file: \n", ex)
 
-def read_xlsx_file_sheet_skip_first_row(file, sheet):
+def data_from_columns_in_sheet(file, sheet):
     try:
         df = pd.read_excel(os.getenv(file), skiprows=1, sheet_name=sheet )
         return(df)

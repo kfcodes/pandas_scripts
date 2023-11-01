@@ -1,4 +1,4 @@
-from app.modules.database.connect import database_connection
+from .connect import database_connection
 
 import os
 from dotenv import load_dotenv

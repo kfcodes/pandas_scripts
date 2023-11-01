@@ -1,4 +1,4 @@
-from app.modules.database.connect import database_connection as db
+from .connect import database_connection as db
 
 import os
 from dotenv import load_dotenv
@@ -14,5 +14,3 @@ def call_stored_procedure(procedure):
         print("Called the stored function")
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
-
-
