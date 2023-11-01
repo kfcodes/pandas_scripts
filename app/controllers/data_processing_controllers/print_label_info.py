@@ -1,10 +1,10 @@
-import os
-from dotenv import load_dotenv
 from app.modules.database.read_db_index import get_label_data
 from app.modules.zpl.create_production_label import create_production_label_file
 
 # from modules.print.print_pdf import print_a4_pdf
 
+import os
+from dotenv import load_dotenv
 load_dotenv(".env")
 
 def print_label_with_data(id):
