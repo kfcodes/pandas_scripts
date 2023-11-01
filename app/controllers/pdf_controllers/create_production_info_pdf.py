@@ -1,7 +1,8 @@
 from fpdf import FPDF
+
 import os
 from dotenv import load_dotenv
-load_dotenv(".env")
+load_dotenv("../../../.env")
 
 def create_production_info_pdf(finished_product, product_components):
     try:
@@ -29,7 +30,6 @@ def create_production_info_pdf(finished_product, product_components):
             for component in product_components:
                 print_info = f"CODE:    {product_components[component][os.getenv('COMP1')]}     |  QTY: {product_components[component][os.getenv('COMP3')]} | {product_components[component][os.getenv('COMP2')]}"
                 pdf.multi_cell(190, 15, print_info , 0, 'L')
-
 
         # OUTPUT THE DATA TO THE PDF FILE
         pdf.output(production_file, 'F')
