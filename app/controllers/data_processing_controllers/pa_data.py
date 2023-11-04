@@ -1,5 +1,5 @@
 from ..xlsx_controllers.read_xlsx_file import read_data, read_data_after_first_row
-from ..pandas_data_analysis_controllers.process_po_data import process_po_data
+from ..pandas_controllers.process_po_data import process_po_data
 from ..database_controllers.write_db_index import update_po, update_poi
 
 import os

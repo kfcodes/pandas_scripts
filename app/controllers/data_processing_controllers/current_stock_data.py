@@ -1,5 +1,5 @@
 from ..xlsx_controllers.read_xlsx_file import read_data
-from ..pandas_data_analysis_controllers.process_stock_data import process_stock_data
+from ..pandas_controllers.process_stock_data import process_stock_data
 from ..database_controllers.write_db_index import update_stock
 
 import os

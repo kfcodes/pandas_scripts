@@ -1,5 +1,5 @@
 from ..xlsx_controllers.read_xlsx_file import read_data_after_first_row
-from ..pandas_data_analysis_controllers.process_schedule_data import process_schedule_data
+from ..pandas_controllers.process_schedule_data import process_schedule_data
 from ..database_controllers.write_db_index import update_schedule
 
 import os
