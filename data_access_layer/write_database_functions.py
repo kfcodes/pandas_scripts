@@ -1,5 +1,4 @@
-from .stored_procedure import call_stored_procedure
-from .write import write_to_database
+from .stored_procedure_function import call_stored_procedure
 
 import os
 from dotenv import load_dotenv
