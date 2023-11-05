@@ -1,6 +1,17 @@
 from .stored_procedure import call_stored_procedure
 from .write import write_to_database
 
+import os
+from dotenv import load_dotenv
+load_dotenv("../.env")
+
+def write_to_database(data, name):
+    try:
+        data.to_sql(os.getenv(name), database_connection(),if_exists='append', index=False)
+        print("Data was inserted into database")
+    except Exception as ex:
+        print("Connection could not be made due to the following error: \n", ex)
+
 def update_db(data):
     try:
         call_stored_procedure("STOREDPROCEDURE1");
