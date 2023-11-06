@@ -1,6 +1,6 @@
-from ..xlsx_controllers.read_xlsx_file import read_data_in_sheet
-from ..pandas_controllers.process_label_data import process_label_data
-from ..database_controllers.write_db_index import update_labels
+from business_logic_layer.xlsx_controllers.read_xlsx_file import read_data_in_sheet
+from business_logic_layer.pandas_controllers.process_label_data import process_label_data
+from data_access_layer.write_database_functions import update_labels
 
 import os
 from dotenv import load_dotenv

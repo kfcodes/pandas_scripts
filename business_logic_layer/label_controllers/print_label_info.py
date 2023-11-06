@@ -1,4 +1,4 @@
-from ..database_controllers.read_db_index import get_label_data
+import ...data_access_layer.read_database_functions.get_label_data 
 from ..zpl_controllers.create_label import create_label
 
 import os
@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 load_dotenv("../../../.env")
 
 def print_label_with_data(id):
+
     try:
         
         label_info = get_label_data(f"{os.getenv('PRODUCTIONLABELINFO')}{id}")
@@ -14,7 +15,6 @@ def print_label_with_data(id):
         label_file = create_label(label_info)
 
         print(label_file)
-
         # print_zpl_file(label_file)
 
     except Exception as ex:
