@@ -1,9 +1,7 @@
 import pandas as pd
 from .database_connection import database_connection
-
+from sqlalchemy import text
 import os
-from dotenv import load_dotenv
-load_dotenv("../.env")
 
 def read_to_dataframe(name):
     try:
