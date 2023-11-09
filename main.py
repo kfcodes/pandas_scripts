@@ -1,8 +1,7 @@
-from presentation_layer.data_processing_controllers.database_data import process_db_file
-from presentation_layer.data_processing_controllers.label_data import process_label_file
-# from presentation_layer.data_processing_controllers.product_components import process_components_file
-# from presentation_layer.data_processing_controllers.po_data import process_po_files
-# from presentation_layer.data_processing_controllers.schedule_data import process_schedule_file
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
+from presentation_layer.packing_list_controllers.get_packing_list_data_controllers import get_all_packing_lists
 
 import os
 from dotenv import load_dotenv
@@ -10,8 +9,37 @@ load_dotenv(".env")
 
 sheet = os.getenv("SHEETINPUT");
 
-process_db_file()
-# process_components_file();
-process_label_file();
-# process_po_files();
-# process_schedule_file(sheet);
+app = FastAPI()
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+def generate_html_response():
+    html_content = """
+    <html>
+        <head>
+            <title>Some HTML in here</title>
+        </head>
+        <body>
+            <h1>Look ma! Packing LISTS!</h1>
+        </body>
+    </html>
+    """
+    return HTMLResponse(content=html_content, status_code=200)
+
+@app.get("/", response_class=HTMLResponse)
+async def read_items():
+    get_all_packing_lists();
+    return generate_html_response()
