@@ -5,9 +5,8 @@ def get_all_packing_lists():
     try:
 
         # Read the data from the database
-        # packing_lists = read_to_dataframe('PACKINGLISTS')
-        read_to_dataframe('PACKINGLISTS')
-        # print(packing_lists)
+        packing_lists = read_to_dataframe('PACKINGLISTS')
+        print(packing_lists)
 
         # Processs the data into html
         # html_data = data_html(packing_lists);
@@ -17,3 +16,6 @@ def get_all_packing_lists():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
+import os
+from dotenv import load_dotenv
+load_dotenv(".env")
