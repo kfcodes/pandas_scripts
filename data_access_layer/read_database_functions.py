@@ -4,11 +4,8 @@ import os
 
 def read_to_dataframe(name):
     try:
-        # print(f"accessing the data with {os.getenv(name)}")
-        print(database_connection())
-        # data = pd.read_sql(os.getenv(name),database_connection())
-        # print(data)
-        # return(data)
+        data = pd.read_sql(os.getenv(name),database_connection())
+        return(data)
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
 
