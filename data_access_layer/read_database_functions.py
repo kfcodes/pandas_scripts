@@ -1,11 +1,14 @@
 import pandas as pd
-from .database_connection import database_connection
+from data_access_layer.database_connection import database_connection
 import os
 
 def read_to_dataframe(name):
     try:
-        data = pd.read_sql(os.getenv(name),database_connection())
-        return(data)
+        # print(f"accessing the data with {os.getenv(name)}")
+        print(database_connection())
+        # data = pd.read_sql(os.getenv(name),database_connection())
+        # print(data)
+        # return(data)
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
 

@@ -5,9 +5,9 @@ def get_all_packing_lists():
     try:
 
         # Read the data from the database
-        packing_lists = read_to_dataframe('PACKINGLISTS')
-        # get_packing_lists_data()
-        print(packing_lists)
+        # packing_lists = read_to_dataframe('PACKINGLISTS')
+        read_to_dataframe('PACKINGLISTS')
+        # print(packing_lists)
 
         # Processs the data into html
         # html_data = data_html(packing_lists);
