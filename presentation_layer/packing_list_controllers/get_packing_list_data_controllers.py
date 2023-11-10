@@ -1,6 +1,5 @@
 from data_access_layer.read_database_functions import read_to_dataframe
 
-
 def get_all_packing_lists():
 
     try:
@@ -17,3 +16,4 @@ def get_all_packing_lists():
 
     except Exception as ex:
         print("Data could not be processed: \n", ex)
+

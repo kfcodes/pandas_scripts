@@ -1,6 +1,5 @@
 import pandas as pd
 from .database_connection import database_connection
-from sqlalchemy import text
 import os
 
 def read_to_dataframe(name):
