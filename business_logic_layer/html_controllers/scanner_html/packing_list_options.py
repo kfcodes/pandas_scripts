@@ -1,4 +1,5 @@
-def packing_lists():
+def packing_lists(list):
+    print(list)
     html = """
             <h1>Look ma! Packing LISTS!</h1>
         """
