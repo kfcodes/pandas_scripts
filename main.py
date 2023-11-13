@@ -34,11 +34,11 @@ async def scanner_packing_lists():
     return HTMLResponse(content=html_data, status_code=200)
 
 @app.get("/packing_list/{id}", response_class=HTMLResponse)
-async def scanner_packing_list(id):
+async def scanner_packing_list(id: int):
     html_data = get_packing_list(id);
     return HTMLResponse(content=html_data, status_code=200)
 
 @app.get("/pallet/{id}", response_class=HTMLResponse)
-async def scanner_pallet_info(id):
+async def scanner_pallet_info(id: int):
     html_data = get_pallet_info(id);
     return HTMLResponse(content=html_data, status_code=200)
