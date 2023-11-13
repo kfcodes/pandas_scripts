@@ -1,9 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
-from presentation_layer.packing_list_controllers.get_packing_list_data_controllers import get_all_packing_lists
-from presentation_layer.packing_list_controllers.get_packing_list_data_controllers import get_packing_list
-from presentation_layer.packing_list_controllers.get_packing_list_data_controllers import get_pallet_info
+from presentation_layer.scanner_controllers.get_packing_list_data_controllers import get_all_packing_lists, get_packing_list, get_pallet_info
 
 import os
 from dotenv import load_dotenv
