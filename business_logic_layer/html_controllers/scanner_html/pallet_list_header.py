@@ -5,5 +5,6 @@ def scanner_pallet_list_header():
                     <title>Packing list Pallets</title>
                 </head>
             <body>
+            <ul>
         """
     return html
