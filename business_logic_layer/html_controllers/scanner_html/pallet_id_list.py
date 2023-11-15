@@ -1,20 +1,5 @@
 def pallet_list(pallets):
-
     html = ""
-    html = """
-             <hr>
-             <form method='post' action='/pallet'>
-                  <table>
-                    <tr>
-                      <td><input id='id' name='id' value=''></td>
-                    </tr>
-                  </table>
-                  <input type='submit' name='submit' value='Submit'>
-                </form>
-                <script>
-                  window.onload = function() { document.getElementById('id').focus(); }
-                </script>
-            """
     
     for row in pallets.iterrows():
         html = f"""
@@ -24,8 +9,13 @@ def pallet_list(pallets):
         """
 
     html = html + """
-             <hr>
             </ul>
+                <form method='post' action='/pallet'>
+                    <input id='id' name='id' value=''>
+                </form>
+                <script>
+                    window.onload = function() { document.getElementById('id').focus(); }
+                </script>
             """
 
     return html
