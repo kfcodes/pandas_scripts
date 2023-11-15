@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.params import Body
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from presentation_layer.scanner_controllers.get_packing_list_data_controllers import get_all_packing_lists, get_packing_list, get_pallet_info
@@ -36,7 +37,9 @@ async def scanner_packing_list(id: int):
     html_data = get_packing_list(id);
     return HTMLResponse(content=html_data, status_code=200)
 
-@app.get("/pallet/{id}", response_class=HTMLResponse)
-async def scanner_pallet_info(id: int):
-    html_data = get_pallet_info(id);
-    return HTMLResponse(content=html_data, status_code=200)
+@app.post("/pallet", response_class=HTMLResponse)
+async def scanner_pallet_info(request: Request):
+    # html_data = get_pallet_info(id);
+    # await request.json()
+    print(request)
+    # return HTMLResponse(content=html_data, status_code=200)
