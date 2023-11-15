@@ -24,10 +24,14 @@ def get_packing_list(id):
 
 def get_pallet_info(id):
     try:
+        id = str(id).split('=')
+        body_id_2 = id[1].split("'")
+        id = body_id_2[0]
         required_pallet_info = f"{os.getenv('SCANNERPALLETINFO')}{id}"
         pallet_info = read_selected_data_to_dataframe(required_pallet_info)
         print(pallet_info)
         # html_data = pallet_info_html(pallet_info);
-        # return html_data
+        html_data = f"<h1>{id}</h1>"
+        return html_data
     except Exception as ex:
         print("Data could not be processed: \n", ex)
