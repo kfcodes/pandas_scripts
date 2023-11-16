@@ -1,9 +1,17 @@
-from .stored_procedure_function import call_stored_procedure
-from .database_connection import database_connection
+# from sqlalchemy import update
+from data_access_layer.stored_procedure_function import call_stored_procedure
+from data_access_layer.database_connection import database_connection
 
 import os
 from dotenv import load_dotenv
 load_dotenv("../.env")
+
+# def update_data(nid):
+#     try:
+#         stmt = (update("pallet_info") where(user_table.c.id == f"{nid}") values(verified= True));
+#         print(stmt)
+#     except Exception as ex:
+#         print("Connection could not be made due to the following error: \n", ex)
 
 def write_to_database(data, name):
     try:

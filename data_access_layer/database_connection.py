@@ -1,7 +1,8 @@
 from sqlalchemy import create_engine
+
 import os
 from dotenv import load_dotenv
-load_dotenv(".env")
+load_dotenv("../.env")
 
 usr = os.getenv("USR")
 pwd = os.getenv("PASSWORD")
