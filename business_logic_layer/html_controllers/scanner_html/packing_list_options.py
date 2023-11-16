@@ -8,12 +8,12 @@ def packing_lists(list):
 
         html = f"""
         {html}
-        <a href="/packing_list/{id}"
-            <button>
-                {name} 
-            </button>
-        </a>
-        </br>
+            <a href="/packing_list/{id}"
+                <button>
+                    {name} 
+                </button>
+            </a>
+            </br>
         """
 
     return html
