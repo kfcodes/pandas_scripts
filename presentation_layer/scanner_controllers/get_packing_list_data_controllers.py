@@ -1,4 +1,5 @@
 from data_access_layer.read_database_functions import read_to_dataframe, read_selected_data_to_dataframe, read_selection_to_list
+from data_access_layer.write_database_functions import dispatch_pallet
 from presentation_layer.html_controllers.scanner_html_controllers import packing_lists_html, pallet_list_html, pallet_info_html
 
 import os
@@ -40,8 +41,12 @@ async def load_pallet_and_get_packing_list(id):
         packing_list_id = read_selection_to_list(packing_list)
         packing_list_id = packing_list_id['packing_list'][0]
 
-        # dispatched = f"{os.getenv('PALLETDISPATCHED')}{id}"
+        dispatched_pallet_sql = f"{os.getenv('PALLETDISPATCHED')}{id}"
+        dispatch_pallet(dispatched_pallet_sql)
 
+        # print(dispatched_pallet)
+
+        # dispatched_pallet = f"{os.getenv('PALLETDISPATCHED')}{id}"
         # html_data = get_packing_list(packing_list_id);
 
         return packing_list_id
