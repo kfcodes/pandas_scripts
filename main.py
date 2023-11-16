@@ -1,7 +1,7 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, Request, status
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
-from presentation_layer.scanner_controllers.get_packing_list_data_controllers import get_all_packing_lists, get_packing_list, get_pallet_info
+from presentation_layer.scanner_controllers.get_packing_list_data_controllers import get_all_packing_lists, get_packing_list, get_pallet_info, load_pallet_and_get_packing_list
 
 import os
 from dotenv import load_dotenv
@@ -40,3 +40,8 @@ async def scanner_packing_list(id: int):
 async def scanner_pallet_info(request: Request):
     html_data = get_pallet_info(await request.body());
     return HTMLResponse(content=html_data, status_code=200)
+
+@app.get("/load_pallet/{id}", response_class=HTMLResponse)
+async def load_pallet(id: int):
+    packing_list_id = load_pallet_and_get_packing_list(id);
+    return RedirectResponse(url=f"/packing_list/{packing_list_id}", status_code=status.HTTP_303_SEE_OTHER)
