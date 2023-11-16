@@ -7,7 +7,6 @@ def pallet_info(info):
         height = row[1]["GrossHeight"]
         size = row[1]["PalletType"]
     
-        print(type(info))
         html = f"""
 
                     <H1>
