@@ -43,5 +43,5 @@ async def scanner_pallet_info(request: Request):
 
 @app.get("/load_pallet/{id}", response_class=HTMLResponse)
 async def load_pallet(id: int):
-    packing_list_id = load_pallet_and_get_packing_list(id);
+    packing_list_id = await load_pallet_and_get_packing_list(id);
     return RedirectResponse(url=f"/packing_list/{packing_list_id}", status_code=status.HTTP_303_SEE_OTHER)
