@@ -1,21 +1,27 @@
-import ...data_access_layer.read_database_functions.get_label_data 
-from ..zpl_controllers.create_label import create_label
+# from ...data_access_layer.read_database_functions import get_label_data
+# from ...business_logic_layer.zpl_controllers.create_small_label import create_small_label_data,  create_small_label_outline
+from business_logic_layer.zpl_controllers.create_small_label import create_small_label_data,  create_small_label_outline
+from business_logic_layer.print_controllers.print_zpl import print_zpl_file
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../../.env")
+load_dotenv("../.env")
 
-def print_label_with_data(id):
+def print_small_label_with_data():
 
     try:
         
-        label_info = get_label_data(f"{os.getenv('PRODUCTIONLABELINFO')}{id}")
+        # label_info = get_label_data(f"{os.getenv('PRODUCTIONLABELINFO')}{id}")
+        label_info = "test"
 
-        # write the label data to the file
-        label_file = create_label(label_info)
+        outline = create_small_label_outline()
+        body = create_small_label_data(label_info)
+    
+        label_data = outline + body
 
-        print(label_file)
-        # print_zpl_file(label_file)
+        print(label_data)
+
+        print_zpl_file(label_file)
 
     except Exception as ex:
         print("Data could not be processed: \n", ex)
