@@ -1,5 +1,4 @@
 import sys
-from .business_logic_layer.production_documentation_controllers import get_component_data
+from presentation_layer.label_controllers.print_label_info import print_small_label_with_data
 
-id = str(sys.argv[1])
-get_component_data(id);
+print_small_label_with_data()
