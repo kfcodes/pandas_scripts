@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv("../../.env")
 
-def create_large_product_label_outline():
+def create_large_pallet_label_outline():
     try:
         zpl = """
             ^XA^CFD^FWN
@@ -22,8 +22,7 @@ def create_large_product_label_outline():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-def create_large_product_label_data(label_info):
-
+def create_large_pallet_label_data(label_info):
     try:
         zpl = f"""
             ^PQ3

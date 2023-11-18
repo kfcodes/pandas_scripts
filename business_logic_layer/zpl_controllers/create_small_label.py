@@ -28,7 +28,7 @@ def create_small_label_data(label_info):
         zpl = f"""
             ^PQ3
             ^CF0,40
-            ^FO30,25^FDCOMPANY NAME^FS
+            ^FO60,25^FDCOMPANY NAME^FS
             ^CF0,30
             ^FO330,90 ^FDPRODUCT^FS
             ^FO330,130 ^FDFLAVOUR^FS
