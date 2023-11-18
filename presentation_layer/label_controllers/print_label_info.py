@@ -1,7 +1,7 @@
 # from ...data_access_layer.read_database_functions import get_label_data
 from business_logic_layer.zpl_controllers.create_small_label import create_small_label_data,  create_small_label_outline
-from ...business_logic_layer.zpl_controllers.create_large_product_label import create_large_product_label_data,  create_large_product_label_outline
-from ...business_logic_layer.zpl_controllers.create_large_pallet_label import create_pallet_label_data, create_pallet_label_outline
+from business_logic_layer.zpl_controllers.create_large_product_label import create_large_product_label_data,  create_large_product_label_outline
+from business_logic_layer.zpl_controllers.create_large_pallet_label import create_pallet_label_data, create_pallet_label_outline
 from business_logic_layer.print_controllers.print_zpl import print_small_label
 
 import os
