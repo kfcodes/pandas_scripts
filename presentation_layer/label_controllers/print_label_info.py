@@ -1,4 +1,4 @@
-# from ...data_access_layer.read_database_functions import get_label_data
+from data_access_layer.read_database_functions import get_label_data
 from business_logic_layer.zpl_controllers.create_small_label import create_small_label_data,  create_small_label_outline
 from business_logic_layer.zpl_controllers.create_large_product_label import create_large_product_label_data,  create_large_product_label_outline
 from business_logic_layer.zpl_controllers.create_large_pallet_label import create_pallet_label_data, create_pallet_label_outline
@@ -30,13 +30,17 @@ def print_large_product_label():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-def print_pallet_label():
+async def print_pallet_label(id):
     try:
-        # label_info = get_label_data(f"{os.getenv('PRODUCTIONLABELINFO')}{id}")
-        label_info = "test"
+        label_info = get_label_data(f"{os.getenv('PALLETLABELPART1')} {int(id)} {os.getenv('PALLETLABELPART2')}")
+        print(label_info)
         outline = create_pallet_label_outline()
-        body = create_pallet_label_data(label_info)
+        body = create_pallet_label_data("test")
         label_data = outline + body
-        print_pallet_label(label_data)
+        # data = await print_pallet_label(label_data)
+        # print(data)
+        print(label_data)
+
+        return f"printed pallet label for {id}"
     except Exception as ex:
         print("Data could not be processed: \n", ex)

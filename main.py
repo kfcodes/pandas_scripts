@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request, status
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 from presentation_layer.scanner_controllers.get_packing_list_data_controllers import get_all_packing_lists, get_packing_list, get_pallet_info, load_pallet_and_get_packing_list
+from presentation_layer.label_controllers.print_label_info import print_large_product_label, print_small_product_label, print_pallet_label
 
 import os
 from dotenv import load_dotenv
@@ -38,3 +39,8 @@ async def scanner_pallet_info(request: Request):
 async def load_pallet(id: int):
     packing_list_id = await load_pallet_and_get_packing_list(id);
     return RedirectResponse(url=f"/packing_list/{packing_list_id}", status_code=status.HTTP_303_SEE_OTHER)
+
+@app.get("/print_pallet_label/{id}", response_class=HTMLResponse)
+async def print_pallet_label_function(id: int):
+    pallet_label = await print_pallet_label(id);
+    return pallet_label;

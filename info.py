@@ -1,4 +1,4 @@
 import sys
-from presentation_layer.label_controllers.print_label_info import print_small_label_with_data
+from presentation_layer.label_controllers.print_label_info import print_pallet_label
 
-print_small_label_with_data()
+print_pallet_label(9909)
