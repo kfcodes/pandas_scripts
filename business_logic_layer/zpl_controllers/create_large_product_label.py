@@ -4,43 +4,47 @@ load_dotenv("../../.env")
 
 def create_large_product_label_outline():
     try:
-        zpl = """
-            ^XA^CFD^FWN
-            ^FO10,70^GB795,10,7^FS
-            ^CF0,30
-            ^FO30,90 ^FDPRODUCT^FS
-            ^FO30,130 ^FDFLAVOUR^FS
-            ^FO30,170 ^FDQUANTITY^FS
-            ^FO30,210 ^FDUNIT WEIGHT (KG)^FS
-            ^FO30,250 ^FDBBE^FS
-            ^FO30,290 ^FDLOT^FS
-            ^FO30,330 ^FDBATCH^FS
+        zpl = f"""
+                ^XA^CFD^FWR^LH2,20
+                ^FO650,20^A0,50^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD1")}:^FS
+                ^FO600,20^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD2")}:^FS
+                ^FO550,20^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD3")}:^FS
+                ^FO500,20^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD4")}:^FS
+                ^FO450,20^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD5")}:^FS
+                ^FO400,20^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD6")}:^FS
+                ^FO350,20^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD7")}:^FS
+                ^FO300,20^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD8")}:^FS
             """
-
         return(zpl)
-
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-def create_large_product_label_data(label_info):
-
+def create_large_product_label_data(label_info, qty):
     try:
+        field_9 = os.getenv("LABELFIELD9")
+        field_10 = os.getenv("LABELFIELD10")
+        field_11 = os.getenv("LABELFIELD11")
+        field_12 = os.getenv("LABELFIELD12")
+        field_13 = os.getenv("LABELFIELD13")
+        field_14 = os.getenv("LABELFIELD14")
+        field_15 = os.getenv("LABELFIELD15")
+        field_16 = os.getenv("LABELFIELD16")
+        field_17 = os.getenv("LABELFIELD17")
+        field_18 = os.getenv("LABELFIELD18")
+
         zpl = f"""
-            ^PQ3
-            ^CF0,40
-            ^FO60,25^FDCOMPANY NAME^FS
-            ^CF0,30
-            ^FO330,90 ^FDPRODUCT^FS
-            ^FO330,130 ^FDFLAVOUR^FS
-            ^FO330,170 ^FDQUANTITY^FS
-            ^FO330,210 ^FDUNIT WEIGHT (KG)^FS
-            ^FO330,250 ^FDBBE^FS
-            ^FO330,290 ^FDLOT^FS
-            ^FO330,330 ^FDBATCH^FS
-            ^XZ
+                ^PQ${qty},10,1,Y
+                ^FO700,250^A0,90^FD{label_info[field_9][0]}^FS
+                ^FO650,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_10][0]}^FS
+                ^FO600,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_11][0]}^FS
+                ^FO550,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_12][0]}^FS
+                ^FO500,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_13][0]}^FS
+                ^FO450,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_14][0]}^FS
+                ^FO400,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_15][0]}^FS
+                ^FO350,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_16][0]}^FS
+                ^FO300,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_17][0]}^FS
+                ^BY8^FO70,200^BER,210,Y,N,N,N,N^FD{label_info[field_18][0]}^FS ^XZ
             """
-
         return(zpl)
-
     except Exception as ex:
         print("Data could not be processed: \n", ex)
