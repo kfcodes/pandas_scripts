@@ -40,6 +40,16 @@ async def load_pallet(id: int):
     packing_list_id = await load_pallet_and_get_packing_list(id);
     return RedirectResponse(url=f"/packing_list/{packing_list_id}", status_code=status.HTTP_303_SEE_OTHER)
 
+@app.get("/print_small_product_label/{id}", response_class=HTMLResponse)
+async def print_small_product_label_function(id: int):
+    product_label = await print_small_product_label(id);
+    return product_label;
+
+@app.get("/print_large_product_label/{id}", response_class=HTMLResponse)
+async def print_large_product_label_function(id: int):
+    product_label = await print_large_product_label(id);
+    return product_label;
+
 @app.get("/print_pallet_label/{id}", response_class=HTMLResponse)
 async def print_pallet_label_function(id: int):
     pallet_label = await print_pallet_label(id);
