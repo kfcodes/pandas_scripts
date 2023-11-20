@@ -47,8 +47,8 @@ async def print_small_product_label_function(id: int):
 
 @app.get("/print_large_product_label/{id}", response_class=HTMLResponse)
 async def print_large_product_label_function(id: int):
-    product_label = await print_large_product_label(id);
-    return product_label;
+    await print_large_product_label(id);
+    print("Done")
 
 @app.get("/print_pallet_label/{id}", response_class=HTMLResponse)
 async def print_pallet_label_function(id: int):
