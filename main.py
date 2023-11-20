@@ -1,8 +1,9 @@
 from fastapi import FastAPI, Request, status
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from presentation_layer.scanner_controllers.get_packing_list_data_controllers import get_all_packing_lists, get_packing_list, get_pallet_info, load_pallet_and_get_packing_list
 from presentation_layer.label_controllers.print_label_info import print_large_product_label, print_small_product_label, print_pallet_label
+from presentation_layer.product_controllers.product_controllers import get_all_products, get_product_by_id, get_finished_product_by_id, get_all_finished_products
 
 import os
 from dotenv import load_dotenv
@@ -56,4 +57,29 @@ async def print_large_product_label_function(id: int):
 async def print_pallet_label_function(id: int):
     await print_pallet_label(id);
     print("Done")
+
+# PRODUCT ROUTES
+@app.get("/products")
+async def find_all_products():
+    return_item = await get_all_products()
+    return JSONResponse(content=return_item)
+@app.get("/products/{id}")
+async def find_product_by_id(id):
+    return_item = await get_product_by_id(id)
+    return JSONResponse(content=return_item)
+@app.get("/finished_products")
+async def find_all_Finished_Products():
+    return_item = get_all_finished_products()
+    return JSONResponse(content=return_item)
+@app.get("/finished_products/{id}")
+async def find_finished_product_by_id(id):
+    return_item = await get_finished_product_by_id(id)
+    return JSONResponse(content=return_item)
+
+
+# RETRIEVE ALL proDUCTS
+# router.get("/finished_products", ProductDB.findFinishedProducts);
+# RETRIEVE A SINGLE PRODUCT WITH PRODUCTID
+# router.get("/product/:id", ProductDB.findOne);
+# router.get("/finished_products/:id", ProductDB.findOneFinishedProduct);
 
