@@ -4,9 +4,9 @@ import os
 from dotenv import load_dotenv
 load_dotenv("../../.env")
 
-async def create_pallet_item_with_id():
+async def create_pallet_item_with_id(id):
     try:
-        pallet_item = read_selection_to_list(f"{os.getenv('')}")
+        pallet_item = read_selection_to_list(f"{os.getenv('')}'{id}'")
         return pallet_item
     except Exception as ex:
         print("Data could not be processed: \n", ex)

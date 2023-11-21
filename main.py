@@ -124,9 +124,22 @@ async def delete_pallet():
 async def pallet_group():
     pallets = await get_pallet_group(id)
     return JSONResponse(content=pallets)
+
 @app.get("/all_pallets")
 async def find_all_pallets():
     pallets = await get_all_pallets()
+    return JSONResponse(content=pallets)
+@app.get("/pallet_details/{id}")
+async def find_pallet_details(id):
+    details = await get_pallet_details(id)
+    return JSONResponse(content=details)
+@app.put("/combine_pallets")
+async def combine():
+    response = await combine_pallets()
+    return JSONResponse(content=response)
+@app.get("/possible_pallets")
+async def find_possible_pallets():
+    pallets = await get_possible_pallets()
     return JSONResponse(content=pallets)
 
 # PALLET ITEM ROUTES
