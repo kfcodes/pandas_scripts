@@ -25,13 +25,6 @@ async def get_pallet_details(id):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-async def combine_pallets():
-    try:
-        pallets = read_selection_to_list(f"{os.getenv('')}'{id}'")
-        return pallets
-    except Exception as ex:
-        print("Data could not be processed: \n", ex)
-
 async def get_possible_pallets():
     try:
         pallets = read_selection_to_list(f"{os.getenv('')}")

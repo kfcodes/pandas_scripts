@@ -11,7 +11,6 @@ async def create_pallet():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-
 async def get_pallet_by_id(id):
     try:
         pallet = read_selection_to_list(f"{os.getenv('')}'{id}'")
@@ -33,16 +32,9 @@ async def delete_pallet_by_id(id):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-async def get_pallet_group(id):
+async def combine_pallets():
     try:
         pallets = read_selection_to_list(f"{os.getenv('')}'{id}'")
-        return pallets
-    except Exception as ex:
-        print("Data could not be processed: \n", ex)
-
-async def get_all_pallets():
-    try:
-        pallets = read_selection_to_list(f"{os.getenv('')}")
         return pallets
     except Exception as ex:
         print("Data could not be processed: \n", ex)

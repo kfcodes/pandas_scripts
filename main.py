@@ -7,7 +7,8 @@ from presentation_layer.product_controllers.product_controllers import get_all_p
 from presentation_layer.brand_controllers.brand_controller import get_all_brands, get_products_from_brand, get_product_components
 from presentation_layer.production_schedule_controllers.production_schedule_controller import get_all_production, get_current_production, get_production_records_by_id
 from presentation_layer.pallet_controllers.pallet_controllers import create_pallet, get_pallet_by_id, update_pallet_by_id, delete_pallet_by_id, get_pallet_group, get_all_pallets
-from presentation_layer.pallet_controllers.pallet_item_controllers import create_pallet_item_with_id, get_items_on_pallet, get_all_pallet_items, update_pallet_item_by_id
+from presentation_layer.pallet_controllers.pallet_item_controllers import create_pallet_item_with_id, get_items_on_pallet,combine_pallets , update_pallet_item_by_id
+from presentation_layer.pallet_controllers.pallet_list_controllers import get_all_pallets, get_pallet_group, get_possible_pallets, get_pallet_details
 
 import os
 from dotenv import load_dotenv
@@ -124,23 +125,10 @@ async def delete_pallet():
 async def pallet_group():
     pallets = await get_pallet_group(id)
     return JSONResponse(content=pallets)
-
-@app.get("/all_pallets")
-async def find_all_pallets():
-    pallets = await get_all_pallets()
-    return JSONResponse(content=pallets)
-@app.get("/pallet_details/{id}")
-async def find_pallet_details(id):
-    details = await get_pallet_details(id)
-    return JSONResponse(content=details)
 @app.put("/combine_pallets")
 async def combine():
     response = await combine_pallets()
     return JSONResponse(content=response)
-@app.get("/possible_pallets")
-async def find_possible_pallets():
-    pallets = await get_possible_pallets()
-    return JSONResponse(content=pallets)
 
 # PALLET ITEM ROUTES
 @app.post("/pallet_item/{id}")
@@ -163,3 +151,18 @@ async def delete_pallet_item(id):
 async def find_all_pallet_items():
     pallet_items = await get_all_pallet_items(id)
     return JSONResponse(content=pallet_items)
+
+# PALLET LIST ROUTES
+@app.get("/all_pallets")
+async def find_all_pallets():
+    pallets = await get_all_pallets()
+    return JSONResponse(content=pallets)
+@app.get("/pallet_details/{id}")
+async def find_pallet_details(id):
+    details = await get_pallet_details(id)
+    return JSONResponse(content=details)
+@app.get("/possible_pallets")
+async def find_possible_pallets():
+    pallets = await get_possible_pallets()
+    return JSONResponse(content=pallets)
+
