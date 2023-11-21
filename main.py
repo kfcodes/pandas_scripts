@@ -7,6 +7,7 @@ from presentation_layer.product_controllers.product_controllers import get_all_p
 from presentation_layer.brand_controllers.brand_controller import get_all_brands, get_products_from_brand, get_product_components
 from presentation_layer.production_schedule_controllers.production_schedule_controller import get_all_production, get_current_production, get_production_records_by_id
 from presentation_layer.pallet_controllers.pallet_controllers import create_pallet, get_pallet_by_id, update_pallet_by_id, delete_pallet_by_id, get_pallet_group, get_all_pallets
+from presentation_layer.pallet_controllers.pallet_item_controllers import create_pallet_item_with_id, get_items_on_pallet, get_all_pallet_items, update_pallet_item_by_id
 
 import os
 from dotenv import load_dotenv
@@ -127,3 +128,25 @@ async def pallet_group():
 async def find_all_pallets():
     pallets = await get_all_pallets()
     return JSONResponse(content=pallets)
+
+# PALLET ITEM ROUTES
+@app.post("/pallet_item/{id}")
+async def create_pallet_item(id):
+    return_item = await create_pallet_item_with_id(id)
+    return JSONResponse(content=return_item)
+@app.get("/pallet_items/{id}")
+async def find_pallet_items(id):
+    items = await get_items_on_pallet(id)
+    return JSONResponse(content=items)
+@app.put("/pallet_item/{id}")
+async def update_pallet_item(id):
+    return_item = await update_pallet_item_by_id(id)
+    return JSONResponse(content=return_item)
+@app.delete("/pallet_item/{id}")
+async def delete_pallet_item(id):
+    return_item = await delete_pallet_item_by_id(id)
+    return JSONResponse(content=return_item)
+@app.get("/pallet_items")
+async def find_all_pallet_items():
+    pallet_items = await get_all_pallet_items(id)
+    return JSONResponse(content=pallet_items)
