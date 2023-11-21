@@ -1,14 +1,15 @@
 from fastapi import FastAPI, Request, status
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+
 from presentation_layer.scanner_controllers.get_packing_list_data_controllers import get_all_packing_lists, get_packing_list, get_pallet_info, load_pallet_and_get_packing_list
 from presentation_layer.label_controllers.print_label_info import print_large_product_label, print_small_product_label, print_pallet_label
 from presentation_layer.product_controllers.product_controllers import get_all_products, get_product_by_id, get_finished_product_by_id, get_all_finished_products
 from presentation_layer.brand_controllers.brand_controller import get_all_brands, get_products_from_brand, get_product_components
 from presentation_layer.production_schedule_controllers.production_schedule_controller import get_all_production, get_current_production, get_production_records_by_id
-from presentation_layer.pallet_controllers.pallet_controllers import create_pallet, get_pallet_by_id, update_pallet_by_id, delete_pallet_by_id, get_pallet_group, get_all_pallets
-from presentation_layer.pallet_controllers.pallet_item_controllers import create_pallet_item_with_id, get_items_on_pallet,combine_pallets , update_pallet_item_by_id
-from presentation_layer.pallet_controllers.pallet_list_controllers import get_all_pallets, get_pallet_group, get_possible_pallets, get_pallet_details
+from presentation_layer.pallet_controllers.pallet_controllers import create_pallet, get_pallet_by_id, update_pallet_by_id, delete_pallet_by_id, combine_pallets
+from presentation_layer.pallet_controllers.pallet_item_controllers import create_pallet_item_with_id, get_items_on_pallet,get_all_pallet_items , update_pallet_item_by_id, delete_pallet_item_by_id
+from presentation_layer.pallet_controllers.pallet_list_controllers import get_all_pallets, get_pallet_group, get_possible_pallets, get_pallet_details, get_data, get_picklist, get_latest_pallet_data, get_pallet_data, get_recent_pallets 
 
 import os
 from dotenv import load_dotenv
@@ -106,7 +107,7 @@ async def find_production_record_by_id():
 
 # PALLET ROUTES
 @app.post("/pallet")
-async def create_pallet():
+async def create_new_pallet():
     pallet_id = await create_pallet()
     return JSONResponse(content=pallet_id)
 @app.get("/pallet/{id}")
@@ -165,4 +166,23 @@ async def find_pallet_details(id):
 async def find_possible_pallets():
     pallets = await get_possible_pallets()
     return JSONResponse(content=pallets)
-
+@app.get("/pallets")
+async def find_recent_pallets():
+    pallets = await get_recent_pallets()
+    return JSONResponse(content=pallets)
+@app.get("/pallet_data")
+async def find_pallet_data():
+    pallet_data = await get_pallet_data()
+    return JSONResponse(content=pallet_data)
+@app.get("/latest_pallet_data")
+async def find_latest_pallet_data():
+    pallet_data = await get_latest_pallet_data()
+    return JSONResponse(content=pallet_data)
+@app.get("/picklist")
+async def find_picklist():
+    pallet_data = await get_picklist()
+    return JSONResponse(content=pallet_data)
+@app.get("/data")
+async def find_data():
+    data = await get_data()
+    return JSONResponse(content=data)

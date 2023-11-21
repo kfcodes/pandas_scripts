@@ -31,3 +31,38 @@ async def get_possible_pallets():
         return pallets
     except Exception as ex:
         print("Data could not be processed: \n", ex)
+
+async def get_recent_pallets():
+    try:
+        pallets = read_selection_to_list(f"{os.getenv('')}")
+        return pallets
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
+
+async def get_pallet_data():
+    try:
+        pallets = read_selection_to_list(f"{os.getenv('')}")
+        return pallets
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
+
+async def get_latest_pallet_data():
+    try:
+        pallets = read_selection_to_list(f"{os.getenv('')}")
+        return pallets
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
+
+async def get_picklist():
+    try:
+        pallets = read_selection_to_list(f"{os.getenv('')}")
+        return pallets
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
+
+async def get_data():
+    try:
+        pallets = read_selection_to_list(f"{os.getenv('')}")
+        return pallets
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
