@@ -10,7 +10,7 @@ from presentation_layer.production_schedule_controllers.production_schedule_cont
 from presentation_layer.pallet_controllers.pallet_controllers import create_pallet, get_pallet_by_id, update_pallet_by_id, delete_pallet_by_id, combine_pallets
 from presentation_layer.pallet_controllers.pallet_item_controllers import create_pallet_item_with_id, get_items_on_pallet,get_all_pallet_items , update_pallet_item_by_id, delete_pallet_item_by_id
 from presentation_layer.pallet_controllers.pallet_list_controllers import get_all_pallets, get_pallet_group, get_possible_pallets, get_pallet_details, get_data, get_picklist, get_latest_pallet_data, get_pallet_data, get_recent_pallets 
-from presentation_layer.finished_product_controllers.finished_product_controllers import create_finished_product, get_finished_product_by_id, update_finished_product_by_id, delete_finished_product_by_id
+from presentation_layer.finished_product_controllers.finished_product_controllers import create_finished_product, get_finished_product_by_id, update_finished_product_by_id, delete_finished_product_by_id, get_finished_product_group
 
 import os
 from dotenv import load_dotenv
@@ -206,6 +206,6 @@ async def delete_finished_product(id):
     finished_product = await delete_finished_product_by_id(id)
     return JSONResponse(content=finished_product)
 @app.get("/finished_products/{id}")
-async def finished_product_group(id):
-    finished_products = await get_finished_product_group(id)
+async def finished_product_group(group_id):
+    finished_products = await get_finished_product_group(group_id)
     return JSONResponse(content=finished_products)
