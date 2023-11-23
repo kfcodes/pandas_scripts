@@ -18,9 +18,9 @@ async def get_products_from_brand(id):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-async def get_product_components(id):
+async def get_assembly_information(id):
     try:
-        components = read_selection_to_list(f"{os.getenv('GETPRODUCTCOMPONENTS')}'{id}'")
+        components = read_selection_to_list(f"{os.getenv('GETASSEMBLYINFORMATION')}'{id}'")
         return components
     except Exception as ex:
         print("Data could not be processed: \n", ex)
