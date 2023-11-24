@@ -47,15 +47,15 @@ async def load_pallet_function(id: int):
     return RedirectResponse(url=f"/packing_list/{packing_list_id}", status_code=status.HTTP_303_SEE_OTHER)
 
 # LABEL PRINTER API ROUTES
-@app.get("/print_small_product_label/{id}", response_class=HTMLResponse)
+@app.get("/print_small_product_label/{id}")
 async def print_small_product_label_function_function(id: int):
     await print_small_product_label(id);
     print("PRINTED LABEL")
-@app.get("/print_large_product_label/{id}", response_class=HTMLResponse)
+@app.get("/print_large_product_label/{id}")
 async def print_large_product_label_function_function(id: int):
     await print_large_product_label(id);
     print("PRINTED LABEL")
-@app.get("/print_pallet_label/{id}", response_class=HTMLResponse)
+@app.get("/print_pallet_label/{id}")
 async def print_pallet_label_function_function(id: int):
     await print_pallet_label(id);
     print("PRINTED LABEL")
