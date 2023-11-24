@@ -14,8 +14,7 @@ async def print_small_product_label(id):
         outline = create_small_label_outline()
         body = create_small_label_data(label_info, 1)
         label_data = outline + body
-        print(label_data)
-        # print_small_label(label_data)
+        print_small_label(label_data)
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
