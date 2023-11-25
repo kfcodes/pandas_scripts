@@ -9,8 +9,8 @@ async def create_pallet():
     try:
         db(f"{os.getenv('CREATEPALLET')}")
         pallet_id = read_selection_to_list(f"{os.getenv('GETID')}")
-        id = pallet_id['pallet_id'][0]
-        return id
+        new_pallet_id = pallet_id['pallet_id'][0]
+        return new_pallet_id
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
@@ -30,7 +30,7 @@ async def update_pallet(id):
 
 async def delete_pallet(id):
     try:
-        pallet = db(f"{os.getenv('DELETEPALLET')}'{id}'")
+        pallet = db(f"{os.getenv('DELETEPALLET')}{id}")
         return pallet
     except Exception as ex:
         print("Data could not be processed: \n", ex)
@@ -41,4 +41,3 @@ async def combine_pallets():
         return pallets
     except Exception as ex:
         print("Data could not be processed: \n", ex)
-
