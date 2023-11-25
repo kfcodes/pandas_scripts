@@ -1,4 +1,0 @@
-import sys
-from presentation_layer.label_controllers.print_label_info import print_pallet_label
-
-print_pallet_label(9909)
