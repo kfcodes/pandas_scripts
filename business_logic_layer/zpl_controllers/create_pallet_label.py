@@ -19,7 +19,7 @@ def create_pallet_label_outline():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-def create_pallet_label_data_part_1(label_info):
+def create_pallet_label_data(label_info):
     try:
         pallet_label_field_1 = os.getenv("PALLETLABEL1")
         pallet_label_field_2 = os.getenv("PALLETLABEL2")
