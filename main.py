@@ -11,6 +11,12 @@ from presentation_layer.pallet_controllers.pallet_crud_controllers import create
 from presentation_layer.pallet_controllers.pallet_item_crud_controllers import create_pallet_item_with_id, get_items_on_pallet,get_all_pallet_items , update_pallet_item_by_id, delete_pallet_item_by_id
 from presentation_layer.pallet_controllers.pallet_group_controllers import get_all_pallets, get_pallet_group, get_possible_pallets, get_pallet_details, get_data, get_picklist, get_latest_pallet_data, get_pallet_data, get_recent_pallets 
 from presentation_layer.finished_product_controllers.finished_product_controllers import create_finished_product, get_finished_product_by_id, update_finished_product_by_id, delete_finished_product_by_id, get_finished_product_group
+from presentation_layer.data_processing_controllers.database_data import process_db_file
+from presentation_layer.data_processing_controllers.label_data import process_label_file
+from presentation_layer.data_processing_controllers.product_components import process_components_file
+from presentation_layer.data_processing_controllers.po_data import process_po_files
+from presentation_layer.data_processing_controllers.schedule_data import process_schedule_file
+from presentation_layer.packing_list_controllers.get_packing_list_data_controllers import get_all_packing_lists
 
 import os
 from dotenv import load_dotenv
@@ -112,21 +118,17 @@ async def create_new_pallet_function():
     pallet_id = await create_pallet()
     return pallet_id
 @app.get("/pallet/{id}")
-async def find_pallet_function():
+async def find_pallet_function(id):
     pallet = await get_pallet(id)
     return JSONResponse(content=pallet)
 @app.put("/pallet/{id}")
-async def update_pallet_function():
+async def update_pallet_function(id):
     pallet = await update_pallet(id)
     return JSONResponse(content=pallet)
 @app.delete("/pallet/{id}")
-async def delete_pallet_function():
+async def delete_pallet_function(id):
     pallet = await delete_pallet(id)
     return JSONResponse(content=pallet)
-@app.get("/pallets/{id}")
-async def pallet_group_function():
-    pallets = await get_pallet_group(id)
-    return JSONResponse(content=pallets)
 @app.put("/combine_pallets")
 async def combine_function():
     response = await combine_pallets()
@@ -154,6 +156,10 @@ async def find_all_pallet_items_function():
     return JSONResponse(content=pallet_items)
 
 # PALLET LIST ROUTES
+@app.get("/pallets/{id}")
+async def pallet_group_function(id):
+    pallets = await get_pallet_group(id)
+    return JSONResponse(content=pallets)
 @app.get("/all_pallets")
 async def find_all_pallets_function():
     pallets = await get_all_pallets()
@@ -208,3 +214,13 @@ async def delete_finished_product_function(id):
 async def finished_product_group_function(group_id):
     finished_products = await get_finished_product_group(group_id)
     return JSONResponse(content=finished_products)
+
+@app.get("/process_files")
+async def process_files():
+    process_db_file()
+    process_label_file();
+    process_components_file();
+    process_po_files();
+    process_schedule_file(sheet);
+    get_all_packing_lists()
+    return {"message": "files processed"}
