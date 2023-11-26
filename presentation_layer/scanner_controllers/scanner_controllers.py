@@ -42,9 +42,6 @@ async def load_pallet_and_get_packing_list(id):
         packing_list_id = packing_list_id['packing_list'][0]
         dispatched_pallet_sql = f"{os.getenv('PALLETDISPATCHED')}{id}"
         db(dispatched_pallet_sql)
-        # dispatched_pallet = f"{os.getenv('PALLETDISPATCHED')}{id}"
-        # html_data = get_packing_list(packing_list_id);
         return packing_list_id
-        # return html_data
     except Exception as ex:
         print("Data could not be processed: \n", ex)
