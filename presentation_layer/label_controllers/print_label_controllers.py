@@ -6,7 +6,7 @@ from business_logic_layer.print_controllers.print_zpl import print_small_label, 
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv("../../.env")
 
 async def print_small_product_label(id):
     try:
@@ -34,9 +34,6 @@ async def print_pallet_label(id):
         outline = create_pallet_label_outline()
         body = create_pallet_label_data(label_info)
         label_data = outline + body
-        # data = await print_pallet_label(label_data)
-        # print(data)
-        # return f"printed pallet label for {id}"
-        return label_data
+        print_large_label(label_data)
     except Exception as ex:
         print("Data could not be processed: \n", ex)
