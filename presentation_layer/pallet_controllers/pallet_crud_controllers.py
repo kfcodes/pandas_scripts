@@ -8,7 +8,7 @@ load_dotenv("../../.env")
 async def create_pallet():
     try:
         db(f"{os.getenv('CREATEPALLET')}")
-        pallet_id = read_selection_to_list(f"{os.getenv('GETID')}")
+        pallet_id = read_selection_to_list(f"{os.getenv('GETNEWPALLETID')}")
         new_pallet_id = pallet_id['pallet_id'][0]
         return new_pallet_id
     except Exception as ex:
