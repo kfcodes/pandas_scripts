@@ -2,15 +2,15 @@ from fastapi import FastAPI, Request, status
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
-from presentation_layer.scanner_controllers.get_packing_list_data_controllers import get_all_packing_lists, get_packing_list, get_pallet_info, load_pallet_and_get_packing_list
-from presentation_layer.label_controllers.print_label_info import print_large_product_label, print_small_product_label, print_pallet_label
+from presentation_layer.scanner_controllers.scanner_controllers import get_all_packing_lists, get_packing_list, get_pallet_info, load_pallet_and_get_packing_list
+from presentation_layer.label_controllers.print_label_controllers import print_large_product_label, print_small_product_label, print_pallet_label
 from presentation_layer.product_controllers.product_controllers import get_all_products, get_product_by_id, get_finished_product_by_id, get_all_finished_products
-from presentation_layer.brand_controllers.brand_controller import get_all_brands, get_products_from_brand, get_assembly_information
+from presentation_layer.assembly_controllers.assembly_information_controllers import get_all_brands, get_products_from_brand, get_assembly_information
 from presentation_layer.production_schedule_controllers.production_schedule_controller import get_all_production, get_current_production, get_production_records_by_id
 from presentation_layer.pallet_controllers.pallet_crud_controllers import create_pallet, get_pallet, update_pallet, delete_pallet, combine_pallets
-from presentation_layer.pallet_controllers.pallet_item_crud_controllers import create_pallet_item_with_id, get_items_on_pallet,get_all_pallet_items , update_pallet_item_by_id, delete_pallet_item_by_id
+from presentation_layer.pallet_controllers.pallet_item_crud_controllers import create_pallet_item_with_id, get_items_on_pallet,get_items_on_pallet , update_pallet_item, delete_pallet_item
 from presentation_layer.pallet_controllers.pallet_group_controllers import get_all_pallets, get_pallet_group, get_possible_pallets, get_pallet_details, get_data, get_picklist, get_latest_pallet_data, get_pallet_data, get_recent_pallets 
-from presentation_layer.finished_product_controllers.finished_product_controllers import create_finished_product, get_finished_product_by_id, update_finished_product_by_id, delete_finished_product_by_id, get_finished_product_group
+from presentation_layer.finished_product_controllers.finished_product_crud_controllers import create_finished_product, get_finished_product, update_finished_product, delete_finished_product_by_id
 from presentation_layer.data_processing_controllers.database_data import process_db_file
 from presentation_layer.data_processing_controllers.label_data import process_label_file
 from presentation_layer.data_processing_controllers.product_components import process_components_file
@@ -143,15 +143,15 @@ async def find_pallet_items_function(id):
     return JSONResponse(content=items)
 @app.put("/pallet_item/{id}")
 async def update_pallet_item_function(id):
-    return_item = await update_pallet_item_by_id(id)
+    return_item = await update_pallet_item(id)
     return JSONResponse(content=return_item)
 @app.delete("/pallet_item/{id}")
 async def delete_pallet_item_function(id):
-    return_item = await delete_pallet_item_by_id(id)
+    return_item = await delete_pallet_item(id)
     return JSONResponse(content=return_item)
 @app.get("/pallet_items")
 async def find_all_pallet_items_function():
-    pallet_items = await get_all_pallet_items(id)
+    pallet_items = await get_items_on_pallet(id)
     return JSONResponse(content=pallet_items)
 
 # PALLET LIST ROUTES
@@ -203,7 +203,7 @@ async def find_finished_product_function(id):
     return JSONResponse(content=finished_product)
 @app.put("/finished_product/{id}")
 async def update_finished_product_function(id):
-    finished_product = await update_finished_product_by_id(id)
+    finished_product = await update_finished_product(id)
     return JSONResponse(content=finished_product)
 @app.delete("/finished_product/{id}")
 async def delete_finished_product_function(id):
@@ -211,7 +211,7 @@ async def delete_finished_product_function(id):
     return JSONResponse(content=finished_product)
 @app.get("/finished_products/{id}")
 async def finished_product_group_function(group_id):
-    finished_products = await get_finished_product_group(group_id)
+    finished_products = await get_finished_product_by_id(group_id)
     return JSONResponse(content=finished_products)
 
 @app.get("/process_files")
