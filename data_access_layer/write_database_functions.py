@@ -1,4 +1,4 @@
-from sqlalchemy import text
+from sqlalchemy import text, insert
 from data_access_layer.stored_procedure_function import call_stored_procedure
 from data_access_layer.database_connection import database_connection
 
@@ -17,6 +17,13 @@ def db(sql):
         print("Connection could not be made due to the following error: \n", ex)
     return result
 
+def insert_db_data(table, data):
+    try:
+        with database_connection().connect() as connection:
+            connection.execute(insert(table), data,)
+            connection.commit()
+    except Exception as ex:
+        print("Connection could not be made due to the following error: \n", ex)
 
 def write_to_database(data, name):
     try:
