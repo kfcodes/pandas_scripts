@@ -1,15 +1,13 @@
-from ..xlsx_controllers.read_xlsx_file import read_data
-from ..pandas_controllers.process_stock_data import process_stock_data
-from ..database_controllers.write_db_index import update_stock
+from business_logic_layer.xlsx_logic_module.read_xlsx_file import read_data
+from business_logic_layer.pandas_logic_module.process_stock_data import process_stock_data
+from data_access_layer.write_database_functions import update_stock
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../../.env")
+load_dotenv("../../.env")
 
 def process_stock_file():
-
     try:
-
         data = read_data('STOCKFILE')
         processed_data = process_stock_data(data);
 
