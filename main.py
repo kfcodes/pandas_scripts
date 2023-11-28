@@ -73,15 +73,15 @@ async def create_new_pallet_function():
 @app.get("/pallet/{id}")
 async def find_pallet_function(id):
     pallet = await get_pallet(id)
-    return JSONResponse(content=pallet)
+    return pallet
 @app.put("/pallet/{id}")
 async def update_pallet_function(id):
     pallet = await update_pallet(id)
-    return JSONResponse(content=pallet)
+    return pallet
 @app.delete("/pallet/{id}")
 async def delete_pallet_function(id):
     pallet = await delete_pallet(id)
-    return JSONResponse(content=pallet)
+    return pallet
 @app.put("/combine_pallets")
 async def combine_function():
     response = await combine_pallets()
