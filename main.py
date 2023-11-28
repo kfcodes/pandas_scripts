@@ -107,6 +107,7 @@ async def delete_pallet_item_function(id):
 async def find_all_pallet_items_function():
     pallet_items = await get_items_on_pallet(id)
     return JSONResponse(content=pallet_items)
+
 # PALLET LIST ROUTES
 @app.get("/pallets/{id}")
 async def pallet_group_function(id):
@@ -168,6 +169,14 @@ async def delete_finished_product_function(id):
 async def finished_product_group_function(group_id):
     finished_products = await get_finished_product_by_id(group_id)
     return finished_products
+@app.get("/all_finished_products")
+async def find_all_Finished_Products_function():
+    return_item = get_all_finished_products()
+    return return_item
+@app.get("/finished_products/{id}")
+async def find_finished_product_by_id_function(id):
+    return_item = await get_finished_product_by_id(id)
+    return return_item
 
 # PRODUCT ROUTES
 @app.get("/products")
@@ -177,14 +186,6 @@ async def find_all_products_function():
 @app.get("/products/{id}")
 async def find_product_by_id_function(id):
     return_item = await get_product_by_id(id)
-    return return_item
-@app.get("/finished_products")
-async def find_all_Finished_Products_function():
-    return_item = get_all_finished_products()
-    return return_item
-@app.get("/finished_products/{id}")
-async def find_finished_product_by_id_function(id):
-    return_item = await get_finished_product_by_id(id)
     return return_item
 
 # BRAND ROUTES
