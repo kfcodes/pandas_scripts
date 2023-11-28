@@ -30,9 +30,9 @@ async def print_large_product_label(id):
 
 async def print_pallet_label(id):
     try:
-        label_info = get_label_data(f"{os.getenv('PALLETLABELPART1')} {int(id)} {os.getenv('PALLETLABELPART2')}")
+        label_info = get_label_data(f"{os.getenv('PALLETLABELPART1')}{int(id)}")
         outline = create_pallet_label_outline()
-        body = create_pallet_label_data(label_info)
+        body = create_pallet_label_data(label_info[0])
         label_data = outline + body
         print_large_label(label_data)
     except Exception as ex:
