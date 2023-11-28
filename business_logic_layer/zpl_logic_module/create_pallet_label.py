@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.env")
+load_dotenv(".env")
 
 def create_pallet_label_outline():
     try:
@@ -20,18 +20,18 @@ def create_pallet_label_outline():
         print("Data could not be processed: \n", ex)
 
 def create_pallet_label_data(label_info):
+    print(label_info)
     try:
         pallet_label_field_1 = os.getenv("PALLETLABEL1")
         pallet_label_field_2 = os.getenv("PALLETLABEL2")
         pallet_label_field_3 = os.getenv("PALLETLABEL3")
+        field_3 = (label_info[f"{pallet_label_field_3}"])
         pallet_label_field_4 = os.getenv("PALLETLABEL4")
-        pallet_label_field_5 = os.getenv("PALLETLABEL5")
         zpl = f"""
-                ^FO660,250^BY5 ^BC90,120,Y,N,N^FD{label_info[pallet_label_field_1][0]}^FS
-                ^FO60,150^A0,80^FD^FS^FD{label_info[pallet_label_field_2][0]}^FS
-                ^FO490,20^A0,60^FD^FS^FD{label_info[pallet_label_field_3][0]}^FS
-                ^FO490,450^A0,60^FD^FS^FD{label_info[pallet_label_field_4][0]}^FS
-                ^FO490,900^A0,60^FD^FS^FD{label_info[pallet_label_field_5][0]}^FS
+                ^FO660,250^BY5^BC90,120,Y,N,N^FD{label_info[f"{pallet_label_field_1}"]}^FS
+                ^FO40,60^A0,110^FD{label_info[f"{pallet_label_field_2}"]}^FS
+                ^FO490,450^A0,60^FD{label_info[f"{pallet_label_field_4}"]}^FS
+                ^FO470,880^A0,100^FD{field_3}^FS
                 ^XZ
                 """
         return(zpl)
