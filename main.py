@@ -55,61 +55,15 @@ async def load_pallet_function(id: int):
 @app.get("/print_small_product_label/{id}")
 async def print_small_product_label_function_function(id: int):
     await print_small_product_label(id);
-    print("PRINTED LABEL")
+    return "PRINTED LABEL"
 @app.get("/print_large_product_label/{id}")
 async def print_large_product_label_function_function(id: int):
     await print_large_product_label(id);
-    print("PRINTED LABEL")
+    return "PRINTED LABEL"
 @app.get("/print_pallet_label/{id}")
 async def print_pallet_label_function_function(id: int):
     await print_pallet_label(id);
-    print("PRINTED LABEL")
-
-# PRODUCT ROUTES
-@app.get("/products")
-async def find_all_products_function():
-    return_item = await get_all_products()
-    return JSONResponse(content=return_item)
-@app.get("/products/{id}")
-async def find_product_by_id_function(id):
-    return_item = await get_product_by_id(id)
-    return JSONResponse(content=return_item)
-@app.get("/finished_products")
-async def find_all_Finished_Products_function():
-    return_item = get_all_finished_products()
-    return JSONResponse(content=return_item)
-@app.get("/finished_products/{id}")
-async def find_finished_product_by_id_function(id):
-    return_item = await get_finished_product_by_id(id)
-    return JSONResponse(content=return_item)
-
-# BRAND ROUTES
-@app.get("/brands/")
-async def find_all_brands_function():
-    return_item = await get_all_brands()
-    return JSONResponse(content=return_item)
-@app.get("/brandproducts/{id}")
-async def brand_products_function(id):
-    return_item = await get_products_from_brand(id)
-    return JSONResponse(content=return_item)
-@app.get("/assembly/{id}")
-async def assembly_info_function(id):
-    return_item = await get_assembly_information(id)
-    return JSONResponse(content=return_item)
-
-# PRODUCTION ROUTES
-@app.get("/production")
-async def find_current_production_function():
-    return_item = await get_current_production()
-    return JSONResponse(content=return_item)
-@app.get("/production/{id}")
-async def find_all_production_by_id_function(id):
-    return_item = await get_all_production(id)
-    return JSONResponse(content=return_item)
-@app.get("/production_record/{id}")
-async def find_production_record_by_id_function():
-    return_item = await get_production_records_by_id(id)
-    return JSONResponse(content=return_item)
+    return "PRINTED LABEL"
 
 # PALLET ROUTES
 @app.post("/pallet")
@@ -153,7 +107,6 @@ async def delete_pallet_item_function(id):
 async def find_all_pallet_items_function():
     pallet_items = await get_items_on_pallet(id)
     return JSONResponse(content=pallet_items)
-
 # PALLET LIST ROUTES
 @app.get("/pallets/{id}")
 async def pallet_group_function(id):
@@ -194,25 +147,74 @@ async def find_data_function():
 
 # FINISHED PRODUCTS ROUTES
 @app.post("/finished_product")
-async def create_new_finished_product_function():
-    finished_product_id = await create_finished_product()
-    return JSONResponse(content=finished_product_id)
+async def create_new_finished_product_function(request: Request):
+    data =  await request.json();
+    response = await create_finished_product(data)
+    return response;
 @app.get("/finished_product/{id}")
 async def find_finished_product_function(id):
     finished_product = await get_finished_product_by_id(id)
-    return JSONResponse(content=finished_product)
+    return finished_product
 @app.put("/finished_product/{id}")
-async def update_finished_product_function(id):
-    finished_product = await update_finished_product(id)
-    return JSONResponse(content=finished_product)
+async def update_finished_product_function(id, request: Request):
+    data =  await request.json();
+    finished_product = await update_finished_product(id, data)
+    return finished_product
 @app.delete("/finished_product/{id}")
 async def delete_finished_product_function(id):
     finished_product = await delete_finished_product_by_id(id)
-    return JSONResponse(content=finished_product)
+    return finished_product
 @app.get("/finished_products/{id}")
 async def finished_product_group_function(group_id):
     finished_products = await get_finished_product_by_id(group_id)
-    return JSONResponse(content=finished_products)
+    return finished_products
+
+# PRODUCT ROUTES
+@app.get("/products")
+async def find_all_products_function():
+    return_item = await get_all_products()
+    return return_item
+@app.get("/products/{id}")
+async def find_product_by_id_function(id):
+    return_item = await get_product_by_id(id)
+    return return_item
+@app.get("/finished_products")
+async def find_all_Finished_Products_function():
+    return_item = get_all_finished_products()
+    return return_item
+@app.get("/finished_products/{id}")
+async def find_finished_product_by_id_function(id):
+    return_item = await get_finished_product_by_id(id)
+    return return_item
+
+# BRAND ROUTES
+@app.get("/brands/")
+async def find_all_brands_function():
+    return_item = await get_all_brands()
+    return return_item
+@app.get("/brandproducts/{id}")
+async def brand_products_function(id):
+    return_item = await get_products_from_brand(id)
+    return return_item
+@app.get("/assembly/{id}")
+async def assembly_info_function(id):
+    return_item = await get_assembly_information(id)
+    return return_item
+
+# PRODUCTION ROUTES
+@app.get("/production")
+async def find_current_production_function():
+    return_item = await get_current_production()
+    return JSONResponse(content=return_item)
+@app.get("/production/{id}")
+async def find_all_production_by_id_function(id):
+    return_item = await get_all_production(id)
+    return JSONResponse(content=return_item)
+@app.get("/production_record/{id}")
+async def find_production_record_by_id_function():
+    return_item = await get_production_records_by_id(id)
+    return JSONResponse(content=return_item)
+
 
 @app.get("/process_files")
 async def process_files():
