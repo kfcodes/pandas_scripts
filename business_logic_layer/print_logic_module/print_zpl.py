@@ -12,21 +12,23 @@ def print_large_label(label_data):
 		port = int(port)
 		label =  label_data.encode(encoding="ascii",errors="ignore")
 		mysocket.connect((host, port)) #connecting to host
-		mysocket.send(label)#using bytes
+		mysocket.send(label) #using bytes
 		mysocket.close () #closing connection
+		print(label_data)
 		return f"Printed the Label to {host}, {port}"
 	except Exception as ex:
 		print("Could not print label due to the following: \n", ex)
 
 def print_small_label(label_data):
 	try:
-		host = os.getenv("SMALLLABELPRINTER1") 
-		port = os.getenv("SMALLLABELPRINTERPORT1") 
-		port = int(port)
-		label =  label_data.encode(encoding="ascii",errors="ignore")
-		mysocket.connect((host, port)) #connecting to host
-		mysocket.send(label)#using bytes
-		mysocket.close () #closing connection
-		return f"Printed the Label to {host}, {port}"
+		# host = os.getenv("SMALLLABELPRINTER1") 
+		# port = os.getenv("SMALLLABELPRINTERPORT1") 
+		# port = int(port)
+		# label =  label_data.encode(encoding="ascii",errors="ignore")
+		# mysocket.connect((host, port)) #connecting to host
+		# mysocket.send(label)#using bytes
+		# mysocket.close () #closing connection
+		# return f"Printed the Label to {host}, {port}"
+		print(label_data)
 	except Exception as ex:
 		print("Could not print label due to the following: \n", ex)
