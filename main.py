@@ -112,39 +112,39 @@ async def find_all_pallet_items_function():
 @app.get("/pallets/{id}")
 async def pallet_group_function(id):
     pallets = await get_pallet_group(id)
-    return JSONResponse(content=pallets)
+    return pallets;
 @app.get("/all_pallets")
 async def find_all_pallets_function():
     pallets = await get_all_pallets()
-    return JSONResponse(content=pallets)
+    return pallets;
 @app.get("/pallet_details/{id}")
 async def find_pallet_details_function(id):
     details = await get_pallet_details(id)
-    return JSONResponse(content=details)
+    return details;
 @app.get("/possible_pallets")
 async def find_possible_pallets_function():
     pallets = await get_possible_pallets()
-    return JSONResponse(content=pallets)
+    return pallets;
 @app.get("/pallets")
 async def find_recent_pallets_function():
     pallets = await get_recent_pallets()
-    return JSONResponse(content=pallets)
+    return pallets;
 @app.get("/pallet_data")
 async def find_pallet_data_function():
     pallet_data = await get_pallet_data()
-    return JSONResponse(content=pallet_data)
+    return pallet_data;
 @app.get("/latest_pallet_data")
 async def find_latest_pallet_data_function():
     pallet_data = await get_latest_pallet_data()
-    return JSONResponse(content=pallet_data)
+    return pallet_data;
 @app.get("/picklist")
 async def find_picklist_function():
     pallet_data = await get_picklist()
-    return JSONResponse(content=pallet_data)
+    return pallet_data;
 @app.get("/data")
 async def find_data_function():
     data = await get_data()
-    return JSONResponse(content=data)
+    return data;
 
 # FINISHED PRODUCTS ROUTES
 @app.post("/finished_product")
@@ -206,23 +206,37 @@ async def assembly_info_function(id):
 @app.get("/production")
 async def find_current_production_function():
     return_item = await get_current_production()
-    return JSONResponse(content=return_item)
+    return return_item;
 @app.get("/production/{id}")
 async def find_all_production_by_id_function(id):
     return_item = await get_all_production(id)
-    return JSONResponse(content=return_item)
+    return return_item;
 @app.get("/production_record/{id}")
 async def find_production_record_by_id_function():
     return_item = await get_production_records_by_id(id)
-    return JSONResponse(content=return_item)
+    return return_item;
 
-
-@app.get("/process_files")
-async def process_files():
+@app.get("/process_files/process_db_file")
+async def process_db_file_function():
     process_db_file()
-    process_label_file();
-    process_components_file();
-    process_po_files();
-    process_schedule_file(sheet);
-    get_all_packing_lists()
     return {"message": "files processed"}
+@app.get("/process_files/process_label_file")
+async def process_label_file_function():
+    process_label_file();
+    return {"message": "files processed"}
+@app.get("/process_files/process_components_file")
+async def process_db_components_function():
+    process_components_file();
+    return {"message": "files processed"}
+@app.get("/process_files/process_po_file")
+async def process_po_file_function():
+    process_po_files();
+    return {"message": "files processed"}
+@app.get("/process_files/process_schedule_file")
+async def process_schedule_file_function():
+    process_schedule_file(sheet);
+    return {"message": "files processed"}
+@app.get("/packing_lists")
+async def find_all_packing_lists():
+    get_all_packing_lists()
+    return {"message": "found packing Lists"}
