@@ -125,10 +125,10 @@ async def find_pallet_details_function(id):
 async def find_possible_pallets_function():
     pallets = await get_possible_pallets()
     return pallets;
-@app.get("/pallets")
+@app.get("/new_pallets")
 async def find_recent_pallets_function():
     pallets = await get_recent_pallets()
-    return pallets;
+    return pallets
 @app.get("/pallet_data")
 async def find_pallet_data_function():
     pallet_data = await get_pallet_data()
