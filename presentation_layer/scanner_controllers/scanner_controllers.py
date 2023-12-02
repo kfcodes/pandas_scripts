@@ -1,6 +1,6 @@
 from data_access_layer.read_database_functions import read_to_dataframe, read_selected_data_to_dataframe, read_selection_to_list
 from data_access_layer.write_database_functions import db
-from presentation_layer.html_controllers.scanner_html_controllers import packing_lists_html, pallet_list_html, pallet_info_html
+from business_logic_layer.html_logic_module.scanner_html.scanner_html_controllers import packing_lists_html, pallet_list_html, pallet_info_html
 
 import os
 from dotenv import load_dotenv
