@@ -4,10 +4,23 @@ import os
 from dotenv import load_dotenv
 load_dotenv("../../.env")
 
+async def get_recent_pallets():
+    try:
+        pallets = read_to_list_index(f"{os.getenv('GETRECENTPALLETS')}")
+        resultlist = []
+        for key, val in pallets.items():
+            resultlist.append(val)
+        return resultlist
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
+
 async def get_all_pallets():
     try:
         pallets = read_to_list_index(f"{os.getenv('GETALLPALLETS')}")
-        return pallets
+        resultlist = []
+        for key, val in pallets.items():
+            resultlist.append(val)
+        return resultlist
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
@@ -29,17 +42,6 @@ async def get_possible_pallets():
     try:
         pallets = read_selection_to_list(f"{os.getenv('')}")
         return pallets
-    except Exception as ex:
-        print("Data could not be processed: \n", ex)
-
-async def get_recent_pallets():
-    try:
-        resultList = []
-        pallets = read_to_list_index(f"{os.getenv('GETRECENTPALLETS')}")
-        for key, val in pallets.items():
-            resultList.append(val)
-        print(resultList)
-        return resultList
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
