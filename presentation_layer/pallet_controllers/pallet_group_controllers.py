@@ -54,8 +54,11 @@ async def get_pallet_data():
 
 async def get_latest_pallet_data():
     try:
-        pallets = read_selection_to_list(f"{os.getenv('')}")
-        return pallets
+        pallets = read_to_list_index(f"{os.getenv('GETLATESTPALLETDATA')}")
+        pallet_list = []
+        for key, val in pallets.items():
+            pallet_list.append(val)
+        return pallet_list
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
