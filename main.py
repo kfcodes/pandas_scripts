@@ -8,7 +8,7 @@ from presentation_layer.product_controllers.product_controllers import get_all_p
 from presentation_layer.assembly_controllers.assembly_information_controllers import get_all_brands, get_products_from_brand, get_assembly_information
 from presentation_layer.production_schedule_controllers.production_schedule_controller import get_all_production, get_current_production, get_production_records_by_id
 from presentation_layer.pallet_controllers.pallet_crud_controllers import create_pallet, get_pallet, update_pallet, delete_pallet, combine_pallets
-from presentation_layer.pallet_controllers.pallet_item_crud_controllers import create_pallet_item_with_id, get_items_on_pallet,get_items_on_pallet , update_pallet_item, delete_pallet_item
+from presentation_layer.pallet_controllers.pallet_item_crud_controllers import create_pallet_item_with_id, get_items_on_pallet,get_items_on_pallet , update_pallet_item, delete_pallet_item, get_all_pallet_items, get_new_pallet_items
 from presentation_layer.pallet_controllers.pallet_group_controllers import get_all_pallets, get_pallet_group, get_possible_pallets, get_pallet_details, get_data, get_picklist, get_latest_pallet_data, get_pallet_data, get_recent_pallets 
 from presentation_layer.finished_product_controllers.finished_product_crud_controllers import create_finished_product, get_finished_product, update_finished_product, delete_finished_product_by_id
 from presentation_layer.data_processing_controllers.database_data import process_db_file
@@ -85,28 +85,33 @@ async def delete_pallet_function(id):
 @app.put("/combine_pallets")
 async def combine_function():
     response = await combine_pallets()
-    return JSONResponse(content=response)
+    return response
+
 # PALLET ITEM ROUTES
 @app.post("/pallet_item/{id}")
 async def create_pallet_item_function(id):
-    return_item = await create_pallet_item_with_id(id)
-    return JSONResponse(content=return_item)
+    item = await create_pallet_item_with_id(id)
+    return item
 @app.get("/pallet_items/{id}")
 async def find_pallet_items_function(id):
     items = await get_items_on_pallet(id)
-    return JSONResponse(content=items)
+    return items
 @app.put("/pallet_item/{id}")
 async def update_pallet_item_function(id):
-    return_item = await update_pallet_item(id)
-    return JSONResponse(content=return_item)
+    item = await update_pallet_item(id)
+    return item
 @app.delete("/pallet_item/{id}")
 async def delete_pallet_item_function(id):
-    return_item = await delete_pallet_item(id)
-    return JSONResponse(content=return_item)
-@app.get("/pallet_items")
+    item = await delete_pallet_item(id)
+    return item
+@app.get("/new_pallet_items")
+async def find_new_pallet_items_function():
+    pallet_items = await get_new_pallet_items();
+    return pallet_items
+@app.get("/all_pallet_items")
 async def find_all_pallet_items_function():
-    pallet_items = await get_items_on_pallet(id)
-    return JSONResponse(content=pallet_items)
+    pallet_items = await get_all_pallet_items();
+    return pallet_items
 
 # PALLET LIST ROUTES
 @app.get("/pallets/{id}")
