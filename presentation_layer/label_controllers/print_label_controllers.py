@@ -32,7 +32,7 @@ async def print_pallet_label(id):
     try:
         label_info = get_label_data(f"{os.getenv('PALLETLABELPART1')}{int(id)}")
         outline = create_pallet_label_outline()
-        pallet_products = read_to_list_index(f"{os.getenv('GETPRODUCTSONPALLET1')}{int(id)}{os.getenv('GETPRODUCTSONPALLET2')}")
+        pallet_products = read_to_list_index(f"{os.getenv('GETPRODUCTSONPALLET1')} {int(id)} {os.getenv('GETPRODUCTSONPALLET2')}")
         products = add_products_to_label(pallet_products)
         body = create_pallet_label_data(label_info[0])
         label_data = outline + products + body
