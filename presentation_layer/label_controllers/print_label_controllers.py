@@ -35,8 +35,7 @@ async def print_pallet_label(id):
         pallet_products = read_to_list_index(f"{os.getenv('GETPRODUCTSONPALLET')}{int(id)}")
         products = add_products_to_label(pallet_products)
         body = create_pallet_label_data(label_info[0])
-        # label_data = outline + products + body
-        label_data = outline + body
+        label_data = outline + products + body
         print_large_label(label_data)
     except Exception as ex:
         print("Data could not be processed: \n", ex)
