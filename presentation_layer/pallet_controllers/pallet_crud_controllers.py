@@ -16,7 +16,7 @@ async def create_pallet():
 
 async def get_pallet(id):
     try:
-        pallet = read_to_list_index(f"{os.getenv('GETPALLET')}'{id}'")
+        pallet = read_to_list_index(f"{os.getenv('GETPALLET')}'{int(id)}'")
         return pallet
     except Exception as ex:
         print("Data could not be processed: \n", ex)
