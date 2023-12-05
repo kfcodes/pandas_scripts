@@ -25,7 +25,6 @@ def add_products_to_label(pallet_products):
         zpl = ""
 
         if((len(pallet_products))>7):
-            print("many products")
             zpl += f"^FO350,420^A0,22^FDMIXED PALLET^FS\n"
         else:
             for key, product in pallet_products.items():
@@ -45,7 +44,7 @@ def add_products_to_label(pallet_products):
                     position = 260
                 elif(key == 6):
                     position = 230
-                zpl += f"^FO{position},420^A0,22^FD{product['quantity']}^FS^FO{position},480^A0,22^FD{product['product_description']}^FS\n"
+                zpl += f"^FO{position},420^A0,22^FD{product['total']}^FS^FO{position},480^A0,22^FD{product['product_description']}^FS\n"
 
         return(zpl)
 
