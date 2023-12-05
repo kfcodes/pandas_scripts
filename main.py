@@ -60,7 +60,7 @@ async def print_small_product_label_function_function(id: int):
 async def print_large_product_label_function_function(id: int):
     await print_large_product_label(id);
     return "PRINTED LABEL"
-@app.get("/print_pallet_label/{id}")
+@app.get("/label/{id}")
 async def print_pallet_label_function_function(id: int):
     await print_pallet_label(id);
     return "PRINTED LABEL"
