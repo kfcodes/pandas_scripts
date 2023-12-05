@@ -1,7 +1,7 @@
-from data_access_layer.read_database_functions import get_label_data
+from data_access_layer.read_database_functions import get_label_data, read_to_list_index
 from business_logic_layer.zpl_logic_module.create_small_label import create_small_label_data,  create_small_label_outline
 from business_logic_layer.zpl_logic_module.create_large_product_label import create_large_product_label_data,  create_large_product_label_outline
-from business_logic_layer.zpl_logic_module.create_pallet_label import create_pallet_label_outline, create_pallet_label_data
+from business_logic_layer.zpl_logic_module.create_pallet_label import create_pallet_label_outline, create_pallet_label_data, add_products_to_label
 from business_logic_layer.print_logic_module.print_zpl import print_small_label, print_large_label
 
 import os
@@ -32,7 +32,10 @@ async def print_pallet_label(id):
     try:
         label_info = get_label_data(f"{os.getenv('PALLETLABELPART1')}{int(id)}")
         outline = create_pallet_label_outline()
+        pallet_products = read_to_list_index(f"{os.getenv('GETPRODUCTSONPALLET')}{int(id)}")
+        products = add_products_to_label(pallet_products)
         body = create_pallet_label_data(label_info[0])
+        # label_data = outline + products + body
         label_data = outline + body
         print_large_label(label_data)
     except Exception as ex:
