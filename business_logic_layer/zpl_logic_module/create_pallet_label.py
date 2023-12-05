@@ -20,8 +20,28 @@ def create_pallet_label_outline():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
+def add_products_to_label(pallet_products):
+    try:
+        if((len(pallet_products))>5):
+            print("many products")
+        else:
+            for key, product in pallet_products.items():
+                print(product)
+                print(key)
+
+        # zpl = f"""
+        #         ^FO660,250^BY5^BC90,120,Y,N,N^FD{label_info[f"{pallet_label_field_1}"]}^FS
+        #         ^FO40,60^A0,110^FD{label_info[f"{pallet_label_field_2}"]}^FS
+        #         ^FO470,430^A0,100^FD{field_4}^FS
+        #         ^FO470,880^A0,100^FD{field_3}^FS
+        #         ^XZ
+        #         """
+        # return(zpl)
+
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
+
 def create_pallet_label_data(label_info):
-    print(label_info)
     try:
         pallet_label_field_1 = os.getenv("PALLETLABEL1")
         pallet_label_field_2 = os.getenv("PALLETLABEL2")
