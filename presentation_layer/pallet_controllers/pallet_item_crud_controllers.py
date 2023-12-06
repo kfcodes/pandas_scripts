@@ -14,7 +14,7 @@ async def create_pallet_item_with_id(pallet_id):
 
 async def get_items_on_pallet(pallet_id):
     try:
-        pallet_items = read_to_list_index(f"{os.getenv('GETPALLETITEMS')}'{pallet_id}'")
+        pallet_items = read_to_list_index(f"{os.getenv('GETPALLETITEMS')}{int(pallet_id)}")
         resultlist = []
         for key, val in pallet_items.items():
             resultlist.append(val)
