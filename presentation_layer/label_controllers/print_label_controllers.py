@@ -36,6 +36,7 @@ async def print_pallet_label(id):
         products = add_products_to_label(pallet_products)
         body = create_pallet_label_data(label_info[0])
         label_data = outline + products + body
-        print_large_label(label_data)
+        response = print_large_label(label_data)
+        return response
     except Exception as ex:
         print("Data could not be processed: \n", ex)

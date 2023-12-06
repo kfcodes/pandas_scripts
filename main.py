@@ -62,8 +62,8 @@ async def print_large_product_label_function_function(id: int):
     return "PRINTED LABEL"
 @app.get("/label/{id}")
 async def print_pallet_label_function_function(id: int):
-    await print_pallet_label(id);
-    return "PRINTED LABEL"
+    response = await print_pallet_label(id);
+    return response
 
 # PALLET ROUTES
 @app.post("/pallet")
