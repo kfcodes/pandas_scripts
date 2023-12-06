@@ -44,8 +44,9 @@ def add_products_to_label(pallet_products):
                     position = 260
                 elif(key == 6):
                     position = 230
-                zpl += f"^FO{position},420^A0,22^FD{product['total']}^FS^FO{position},480^A0,22^FD{product['product_description']}^FS\n"
+                zpl += f"^FO{position},420^A0,22^FD{int(product['total'])}^FS^FO{position},480^A0,22^FD{product['product_description']}^FS\n"
 
+            zpl += f"\n"
         return(zpl)
 
     except Exception as ex:
