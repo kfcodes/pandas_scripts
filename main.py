@@ -16,6 +16,7 @@ from presentation_layer.data_processing_controllers.label_data import process_la
 from presentation_layer.data_processing_controllers.product_components import process_components_file
 from presentation_layer.data_processing_controllers.po_data import process_po_files
 from presentation_layer.data_processing_controllers.schedule_data import process_schedule_file
+from presentation_layer.production_overview_controllers.production_overview_controllers import get_production_overview
 
 import os
 from dotenv import load_dotenv
@@ -52,10 +53,10 @@ async def load_pallet_function(id: int):
     return RedirectResponse(url=f"/packing_list/{packing_list_id}", status_code=status.HTTP_303_SEE_OTHER)
 
 @app.get("/production_overview", response_class=HTMLResponse)
-async def get_production_overview():
+async def get_production_overview_function():
     html_data = get_production_overview();
     return HTMLResponse(content=html_data, status_code=200)
-@app.websocket("/ws")
+@app.websocket("/production_overview")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     while True:
