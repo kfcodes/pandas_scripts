@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request, status
+from fastapi import FastAPI, Request, status, WebSocket
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -50,6 +50,17 @@ async def scanner_pallet_info_function(request: Request):
 async def load_pallet_function(id: int):
     packing_list_id = await load_pallet_and_get_packing_list(id);
     return RedirectResponse(url=f"/packing_list/{packing_list_id}", status_code=status.HTTP_303_SEE_OTHER)
+
+@app.get("/production_overview", response_class=HTMLResponse)
+async def get_production_overview():
+    html_data = get_production_overview();
+    return HTMLResponse(content=html_data, status_code=200)
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    while True:
+        data = await websocket.receive_text()
+        await websocket.send_text(f"You sent: {data}")
 
 # LABEL PRINTER API ROUTES
 @app.get("/print_small_product_label/{id}")
