@@ -16,7 +16,7 @@ from presentation_layer.data_processing_controllers.label_data import process_la
 from presentation_layer.data_processing_controllers.product_components import process_components_file
 from presentation_layer.data_processing_controllers.po_data import process_po_files
 from presentation_layer.data_processing_controllers.schedule_data import process_schedule_file
-from presentation_layer.production_overview_controllers.production_overview_controllers import get_production_overview
+from presentation_layer.production_overview_controllers.production_overview_controllers import get_production_overview, update_production_overview, set_new_data_for_production
 
 import os
 from dotenv import load_dotenv
@@ -52,7 +52,11 @@ async def load_pallet_function(id: int):
     packing_list_id = await load_pallet_and_get_packing_list(id);
     return RedirectResponse(url=f"/packing_list/{packing_list_id}", status_code=status.HTTP_303_SEE_OTHER)
 
-@app.get("/production_overview", response_class=HTMLResponse)
+@app.get("/update_production_overview", response_class=HTMLResponse)
+async def get_current_production_overview_function():
+    html_data = update_production_overview();
+    return HTMLResponse(content=html_data, status_code=200)
+@app.get("/get_production_overview", response_class=HTMLResponse)
 async def get_production_overview_function():
     html_data = get_production_overview();
     return HTMLResponse(content=html_data, status_code=200)
@@ -61,7 +65,9 @@ async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     while True:
         data = await websocket.receive_text()
-        await websocket.send_text(f"You sent: {data}")
+        # new_data = await set_new_data_for_production(data)
+        # await websocket.send_text(f"The current production is: {new_data}")
+        await websocket.send_text(f"The current production is: {data}")
 
 # LABEL PRINTER API ROUTES
 @app.get("/print_small_product_label/{id}")
