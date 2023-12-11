@@ -81,17 +81,17 @@ async def get_current_production_overview_function():
 async def get_production_overview_function():
     html_data = get_production_overview();
     return HTMLResponse(content=html_data, status_code=200)
-@app.websocket("/ws/{client_id}")
-async def websocket_endpoint(websocket: WebSocket, client_id: int):
+@app.websocket("/current_production")
+async def websocket_endpoint(websocket: WebSocket):
     await manager.connect(websocket)
     try: 
         while True:
             data = await websocket.receive_text()
-            await manager.send_personal_message(f"You wrote: {data}", websocket)
-            await manager.broadcast(f"Client #{client_id} says: {data}")
+            await manager.send_personal_message(f"You have updated the Current product to: {data}", websocket)
+            await manager.broadcast(f"{data}")
     except WebSocketDisconnect:
         manager.disconnect(websocket)
-        await manager.broadcast(f"Client #{client_id} has left the chat")
+        await manager.broadcast(f"Client has left the chat")
 
 
             
