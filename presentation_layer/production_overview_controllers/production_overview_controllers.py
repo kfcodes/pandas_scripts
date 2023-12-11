@@ -8,39 +8,74 @@ load_dotenv("../../.env")
 
 def get_production_overview():
     try:
+
         html = """
-                <!DOCTYPE html>
-                <html>
+            <!DOCTYPE html>
+            <html>
                     <head>
                         <title>Production Overview</title>
                     </head>
                     <body>
                         <h1>Current Production</h1>
-                        <form action="" onsubmit="sendMessage(event)">
-                            <input type="text" id="messageText" autocomplete="off"/>
-                            <button>Send</button>
-                        </form>
                         <ul id='messages'>
                         </ul>
-                        <script>
-                            var ws = new WebSocket("ws://localhost:8000/production_overview");
-                            ws.onmessage = function(event) {
-                                var messages = document.getElementById('messages')
-                                var message = document.createElement('li')
-                                var content = document.createTextNode(event.data)
-                                message.appendChild(content)
-                                messages.appendChild(message)
-                            };
-                            function sendMessage(event) {
-                                var input = document.getElementById("messageText")
-                                ws.send(input.value)
-                                input.value = ''
-                                event.preventDefault()
-                            }
-                        </script>
-                    </body>
-                </html>
+                    <script>
+                        var ws = new WebSocket("ws://localhost:8000/production_overview");
 
+                        ws.onopen = function(event) {
+                        console.log(event)
+                        console.log(event.data)
+                        };
+
+                        ws.onmessage = function(event) {
+                            var messages = document.getElementById('messages')
+                            var message = document.createElement('li')
+                            var content = document.createTextNode(event.data)
+                            message.appendChild(content)
+                            messages.appendChild(message)
+                        };
+                    </script>
+                </body>
+            </html>
+            """
+        return html
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
+
+def update_production_overview():
+    try:
+        html = """
+                <!DOCTYPE html>
+                <html>
+                    <head>
+                        <title>Update Production Overview</title>
+                    </head>
+                    <body>
+                        <h1>Update Current Production</h1>
+                    <form action="" onsubmit="sendMessage(event)">
+                        <input type="text" id="messageText" autocomplete="off"/>
+                        <button>Send</button>
+                    </form>
+                    <ul id='messages'>
+                    </ul>
+                    <script>
+                        var ws = new WebSocket("ws://localhost:8000/production_overview");
+                        ws.onmessage = function(event) {
+                            var messages = document.getElementById('messages')
+                            var message = document.createElement('li')
+                            var content = document.createTextNode(event.data)
+                            message.appendChild(content)
+                            messages.appendChild(message)
+                        };
+                        function sendMessage(event) {
+                            var input = document.getElementById("messageText")
+                            ws.send(input.value)
+                            input.value = ''
+                            event.preventDefault()
+                        }
+                    </script>
+                </body>
+            </html>
                 """
         return html
     except Exception as ex:
@@ -48,3 +83,9 @@ def get_production_overview():
 
 # html_data = packing_lists_html(packing_lists);
 
+def set_new_data_for_production(new_product):
+    try:
+        set_current_product = new_product;
+        return set_current_product;
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
