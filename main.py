@@ -93,11 +93,6 @@ async def websocket_endpoint(websocket: WebSocket):
         manager.disconnect(websocket)
         await manager.broadcast(f"Client has left the chat")
 
-
-            
-
-    
-
 # LABEL PRINTER API ROUTES
 @app.get("/print_small_product_label/{id}")
 async def print_small_product_label_function_function(id: int):
