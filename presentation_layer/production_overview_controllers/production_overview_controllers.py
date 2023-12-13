@@ -10,12 +10,12 @@ def update_production_overview():
     try:
 
         html = """
-
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Production Overview</title>
-           <!-- Bootstrap CSS -->
+        <title>Update Production Overview</title>
+
+        <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
         <script>
@@ -63,30 +63,27 @@ def get_production_overview():
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Websocket Demo</title>
+        <title>Production Overview</title>
+
            <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
            <!-- Jquery CDN import  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
         <script>
             var ws = new WebSocket(`ws://localhost:8000/current_production`);
             ws.onmessage = function(event) {
-                var new_products = document.getElementById('product')
-                var new_product = document.createElement('H4')
                 var content = document.createTextNode(event.data)
-                new_product.appendChild(content)
-                new_products.appendChild(new_product)
-            };
+                get_data(content)
+            }
+            async function get_data(product) {
+              const response = await fetch(`http://localhost:8000//${product}`);
+              const product_data = await response.json();
+              console.log(product_data);
+            }
 
-            $(document).ready(function(){
-              $("button").click(function(){
-                $.get("demo_test.asp", function(data, status){
-                  alert("Data: " + data + "\nStatus: " + status);
-    });
-  });
-});
-        </script>
-
+            </script>
 
     </head>
     <body>
@@ -94,24 +91,25 @@ def get_production_overview():
     <div class="container mt-3">
         <h1>Current Production</h1>
         <hr>
-        <H2 id='product' class="mt-5">
-        You Have set the New Product to: 
-        </H2>
     </div>
     
     </body>
 </html>
 """
-
         return html
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
 # html_data = packing_lists_html(packing_lists);
 
-def set_new_data_for_production(new_product):
+def get_product_overview(product):
     try:
-        set_current_product = new_product;
-        return set_current_product;
+        product_information = get_label_data(f"{os.getenv('GETPRODUCTIONOVERVIEW')}{product}")
+        outline = create_small_label_outline()
+        body = create_small_label_data(label_info, 1)
+        label_data = outline + body
+        print_small_label(label_data)
+        return 
     except Exception as ex:
         print("Data could not be processed: \n", ex)
+        set_current_product = new_product;

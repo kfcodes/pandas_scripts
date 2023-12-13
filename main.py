@@ -16,7 +16,7 @@ from presentation_layer.data_processing_controllers.label_data import process_la
 from presentation_layer.data_processing_controllers.product_components import process_components_file
 from presentation_layer.data_processing_controllers.po_data import process_po_files
 from presentation_layer.data_processing_controllers.schedule_data import process_schedule_file
-from presentation_layer.production_overview_controllers.production_overview_controllers import get_production_overview, update_production_overview, set_new_data_for_production
+from presentation_layer.production_overview_controllers.production_overview_controllers import get_production_overview, update_production_overview, get_product_overview
 
 import os
 from dotenv import load_dotenv
@@ -92,6 +92,10 @@ async def websocket_endpoint(websocket: WebSocket):
     except WebSocketDisconnect:
         manager.disconnect(websocket)
         await manager.broadcast(f"Client has left the chat")
+@app.get("/get_product_overview/{product_id}", response_class=HTMLResponse)
+async def get_product_overview_function(product_id):
+    html_data = get_product_overview(product_id);
+    return HTMLResponse(content=html_data, status_code=200)
 
 # LABEL PRINTER API ROUTES
 @app.get("/print_small_product_label/{id}")
@@ -246,7 +250,8 @@ async def brand_products_function(id):
     return return_item
 @app.get("/assembly/{id}")
 async def assembly_info_function(id):
-    return_item = await get_assembly_information(id)
+    # return_item = await get_assembly_information(id)
+    return_item = "Got Data"
     return return_item
 
 # PRODUCTION ROUTES
