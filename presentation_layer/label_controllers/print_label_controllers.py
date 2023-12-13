@@ -18,6 +18,12 @@ async def print_small_product_label(id):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
+async def print_combined_pallet_label(data):
+    try:
+        print_large_label(data)
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
+
 async def print_large_product_label(id):
     try:
         label_info = get_label_data(f"{os.getenv('PRODUCTIONLABELINFO')}{id}")

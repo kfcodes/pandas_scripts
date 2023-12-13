@@ -3,7 +3,7 @@ from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from presentation_layer.scanner_controllers.scanner_controllers import get_all_packing_lists, get_packing_list, get_pallet_info, load_pallet_and_get_packing_list
-from presentation_layer.label_controllers.print_label_controllers import print_large_product_label, print_small_product_label, print_pallet_label
+from presentation_layer.label_controllers.print_label_controllers import print_large_product_label, print_small_product_label, print_pallet_label, print_combined_pallet_label
 from presentation_layer.product_controllers.product_controllers import get_all_products, get_product_by_id, get_finished_product_by_id, get_all_finished_products
 from presentation_layer.assembly_controllers.assembly_information_controllers import get_all_brands, get_products_from_brand, get_assembly_information
 from presentation_layer.production_schedule_controllers.production_schedule_controller import get_all_production, get_current_production, get_production_records_by_id
@@ -99,12 +99,16 @@ async def get_product_overview_function(product_id):
 
 # LABEL PRINTER API ROUTES
 @app.get("/print_small_product_label/{id}")
-async def print_small_product_label_function_function(id: int):
+async def print_small_product_label_function(id: int):
     await print_small_product_label(id);
     return "PRINTED LABEL"
 @app.get("/print_large_product_label/{id}")
-async def print_large_product_label_function_function(id: int):
+async def print_large_product_label_function(id: int):
     await print_large_product_label(id);
+    return "PRINTED LABEL"
+@app.get("/print_large_combined_label/{data}")
+async def print_large_combined_label_function(data):
+    await print_combined_pallet_label(data);
     return "PRINTED LABEL"
 @app.get("/label/{id}")
 async def print_pallet_label_function_function(id: int):
