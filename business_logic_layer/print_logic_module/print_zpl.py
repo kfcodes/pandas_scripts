@@ -19,6 +19,7 @@ def print_large_label(label_data):
 		return f"Printed the Label to {host}, {port}"
 	except Exception as ex:
 		print("Could not print label due to the following: \n", ex)
+		return "Not printed"
 
 def print_small_label(label_data):
 	try:

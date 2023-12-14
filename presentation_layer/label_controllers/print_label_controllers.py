@@ -20,7 +20,9 @@ async def print_small_product_label(id):
 
 async def print_combined_pallet_label(data):
     try:
-        print_large_label(data)
+        label_info = str(data["label_info"])
+        print_large_label(label_info)
+        return(label_info)
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
