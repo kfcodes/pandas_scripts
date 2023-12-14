@@ -56,21 +56,16 @@ async def load_pallet_function(id: int):
 class ConnectionManager:
     def __init__(self):
         self.active_connections: list[WebSocket] = []
-    
     async def connect(self, websocket: WebSocket):
         await websocket.accept()
         self.active_connections.append(websocket)
-
     def disconnect(self, websocket: WebSocket):
         self.active_connections.remove(websocket)
-
     async def send_personal_message(self, message: str, websocket: WebSocket):
         await websocket.send_text(message)
-    
     async def broadcast(self, message: str):
         for connection in self.active_connections:
             await connection.send_text(message)
-
 manager = ConnectionManager();
 
 @app.get("/update_production_overview", response_class=HTMLResponse)
@@ -137,7 +132,6 @@ async def delete_pallet_function(id):
 async def combine_function():
     response = await combine_pallets()
     return response
-
 # PALLET ITEM ROUTES
 @app.post("/pallet_item/{id}")
 async def create_pallet_item_function(id):
