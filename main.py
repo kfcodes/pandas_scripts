@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Request, status, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-
 from presentation_layer.scanner_controllers.scanner_controllers import get_all_packing_lists, get_packing_list, get_pallet_info, load_pallet_and_get_packing_list
 from presentation_layer.label_controllers.print_label_controllers import print_large_product_label, print_small_product_label, print_pallet_label, print_combined_pallet_label
 from presentation_layer.product_controllers.product_controllers import get_all_products, get_product_by_id, get_finished_product_by_id, get_all_finished_products
@@ -22,8 +21,6 @@ import os
 from dotenv import load_dotenv
 load_dotenv(".env")
 
-sheet = os.getenv("SHEETINPUT");
-
 app = FastAPI()
 
 app.add_middleware(
@@ -33,6 +30,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+sheet = os.getenv("SHEETINPUT");
 
 # SCANNER API ROUTES
 @app.get("/scanner", response_class=HTMLResponse)
