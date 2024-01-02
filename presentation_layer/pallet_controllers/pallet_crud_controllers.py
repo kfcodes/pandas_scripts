@@ -7,10 +7,10 @@ load_dotenv("../../.env")
 
 async def create_pallet():
     try:
-        db(f"{os.getenv('CREATEPALLET')}")
-        pallet_id = read_selection_to_list(f"{os.getenv('GETNEWPALLETID')}")
-        new_pallet_id = pallet_id['pallet_id'][0]
-        return new_pallet_id
+        db(f"{os.getenv('CREATENEWPALLET')}")
+        pallet_id = read_selection_to_list(f"{os.getenv('GETNEWESTPALLETID')}")
+        newest_pallet_id = pallet_id['pallet_id'][0]
+        return newest_pallet_id
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
