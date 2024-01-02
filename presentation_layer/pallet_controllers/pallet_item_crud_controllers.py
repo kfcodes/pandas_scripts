@@ -7,7 +7,7 @@ load_dotenv("../../.env")
 
 async def create_pallet_item_with_id(pallet_id):
     try:
-        new_pallet_item = db(f"{os.getenv('CREATEPALLETITEM')}({pallet_id})")
+        new_pallet_item = db(f"{os.getenv('CREATEPALLETITEM')}({int(pallet_id)})")
         return new_pallet_item
     except Exception as ex:
         print("Data could not be processed: \n", ex)
@@ -23,6 +23,21 @@ async def get_items_on_pallet(pallet_id):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
+async def update_pallet_item(item_id):
+    try:
+        updated_item = db(f"{os.getenv('UPDATEPALLETITEM')}'{item_id}'")
+        return updated_item
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
+
+async def delete_pallet_item(item_id):
+    try:
+        items = db(f"{os.getenv('DELETEPALLETITEM')}'{item_id}'")
+        return items
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
+
+# PALLET ITEMS LIST FUNCTIONS
 async def get_new_pallet_items():
     try:
         resultlist = [];
@@ -40,20 +55,6 @@ async def get_all_pallet_items():
         for key, val in pallet_items.items():
             resultlist.append(val)
         return resultlist;
-    except Exception as ex:
-        print("Data could not be processed: \n", ex)
-
-async def update_pallet_item(item_id):
-    try:
-        updated_item = db(f"{os.getenv('UPDATEPALLETITEM')}'{item_id}'")
-        return updated_item
-    except Exception as ex:
-        print("Data could not be processed: \n", ex)
-
-async def delete_pallet_item(item_id):
-    try:
-        items = db(f"{os.getenv('DELETEPALLETITEM')}'{item_id}'")
-        return items
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
