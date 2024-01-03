@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request, status, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from presentation_layer.scanner_controllers.scanner_controllers import get_all_packing_lists, get_packing_list, get_pallet_info, load_pallet_and_get_packing_list
-from presentation_layer.label_controllers.print_label_controllers import print_large_product_label, print_small_product_label, print_pallet_label, print_combined_pallet_label
+from presentation_layer.label_controllers.print_label_controllers import print_large_product_label, print_small_product_label, print_pallet_label, print_combined_pallet_label, print_blank_pallet_label
 from presentation_layer.product_controllers.product_controllers import get_all_products, get_product_by_id, get_finished_product_by_id, get_all_finished_products
 from presentation_layer.assembly_controllers.assembly_information_controllers import get_all_brands, get_products_from_brand, get_assembly_information
 from presentation_layer.production_schedule_controllers.production_schedule_controller import get_all_production, get_current_production, get_production_records_by_id
@@ -100,10 +100,14 @@ async def print_small_product_label_function(id: int):
 async def print_large_product_label_function(id: int):
     await print_large_product_label(id);
     return "PRINTED LABEL"
-@app.post("/print_large_combined_label/")
+@app.post("/print_large_combined_label")
 async def print_large_combined_label_function(data: Request):
     json_data =  await data.json();
     response = await print_combined_pallet_label(json_data);
+    return response;
+@app.post("/print_blank_labels")
+async def print_blank_label_function():
+    response = await print_blank_pallet_label();
     return response;
 @app.get("/label/{id}")
 async def print_pallet_label_function_function(id: int):
@@ -128,8 +132,8 @@ async def delete_pallet_function(id):
     pallet = await delete_pallet(id)
     return pallet
 @app.put("/combine_pallets")
-async def combine_function():
-    response = await combine_pallets()
+async def combine_function(pallet_list:list,height:int):
+    response = await combine_pallets(pallet_list, height)
     return response
 # PALLET ITEM ROUTES
 @app.post("/pallet_item/{id}")
