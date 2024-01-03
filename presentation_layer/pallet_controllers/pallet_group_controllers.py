@@ -33,8 +33,10 @@ async def get_pallet_group(id):
 
 async def get_pallet_details(id):
     try:
-        pallet = read_selection_to_list(f"{os.getenv('')}'{id}'")
-        return pallet
+        pallet_details = read_to_list_index(f"{os.getenv('GETPALLETDETAILS')}'{int(id)}'")
+        pallet_details_array = []
+        pallet_details_array.append(pallet_details[0])
+        return pallet_details_array
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 

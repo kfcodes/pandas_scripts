@@ -168,8 +168,8 @@ async def find_all_pallets_function():
     return pallets;
 @app.get("/pallet_details/{id}")
 async def find_pallet_details_function(id):
-    details = await get_pallet_details(id)
-    return details;
+    pallet_details = await get_pallet_details(id)
+    return pallet_details;
 @app.get("/possible_pallets")
 async def find_possible_pallets_function():
     pallets = await get_possible_pallets()

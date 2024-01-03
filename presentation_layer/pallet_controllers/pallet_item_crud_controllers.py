@@ -32,7 +32,7 @@ async def update_pallet_item(item_id):
 
 async def delete_pallet_item(item_id):
     try:
-        items = db(f"{os.getenv('DELETEPALLETITEM')}'{item_id}'")
+        items = db(f"{os.getenv('DELETEPALLETITEM')}'{int(item_id)}'")
         return items
     except Exception as ex:
         print("Data could not be processed: \n", ex)
