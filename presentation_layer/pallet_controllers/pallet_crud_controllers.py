@@ -35,7 +35,7 @@ async def delete_pallet(id):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-async def combine_pallets(pallet_list, height):
+async def combine_pallets_import(pallet_list, height):
     try:
         pallets = db(f"{os.getenv('')}'{id}'")
         return pallets

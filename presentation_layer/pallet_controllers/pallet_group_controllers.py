@@ -49,8 +49,18 @@ async def get_possible_pallets():
 
 async def get_pallet_data():
     try:
-        pallets = read_selection_to_list(f"{os.getenv('')}")
-        return pallets
+        pallets = read_to_list_index(f"{os.getenv('GETPALLETDATA')}")
+        pallet_list = [];
+        previousPallet = "0";
+        for key, item in pallets.items():
+            if (item["PALLET"] == previousPallet): 
+                item["WEIGHT"] = None
+                item["DIMENSIONS"] = None
+                item["PALLET"] = None
+            else:
+                previousPallet = item["PALLET"]
+            pallet_list.append(item)
+        return pallet_list
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
