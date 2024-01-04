@@ -1,5 +1,6 @@
 from data_access_layer.read_database_functions import read_selection_to_list, read_to_list_index
 from data_access_layer.write_database_functions import db
+import math
 
 import os
 from dotenv import load_dotenv
@@ -14,12 +15,15 @@ async def create_pallet_item_with_id(pallet_id):
 
 async def get_items_on_pallet(pallet_id):
     try:
-        pallet_items = read_to_list_index(f"{os.getenv('GETPALLETITEMS')}{int(pallet_id)}")
-        print(pallet_items)
-        resultlist = []
-        for key, val in pallet_items.items():
-            resultlist.append(val)
-        return resultlist
+        pallet_items = [];
+        items = read_to_list_index(f"{os.getenv('GETPALLETITEMS')}{int(pallet_id)}")
+        for key, val in items.items():
+            if math.isnan(val["quantity"]):
+                val["quantity"] = 0;
+            else:
+                val["quantity"] = int(val["quantity"]);
+            pallet_items.append(val)
+        return pallet_items;
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
