@@ -2,11 +2,11 @@ from fastapi import FastAPI, Request, status, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from presentation_layer.scanner_controllers.scanner_controllers import get_all_packing_lists, get_packing_list, get_pallet_info, load_pallet_and_get_packing_list
-from presentation_layer.label_controllers.print_label_controllers import print_large_product_label, print_small_product_label, print_pallet_label, print_combined_pallet_label, print_blank_pallet_label
+from presentation_layer.label_controllers.print_label_controllers import print_large_product_label, print_small_product_label, print_pallet_label, print_combined_pallet_label, print_blank_pallet_label, get_label_info
 from presentation_layer.product_controllers.product_controllers import get_all_products, get_product_by_id, get_finished_product_by_id, get_all_finished_products
 from presentation_layer.assembly_controllers.assembly_information_controllers import get_all_brands, get_products_from_brand, get_assembly_information
 from presentation_layer.production_schedule_controllers.production_schedule_controller import get_all_production, get_current_production, get_production_records_by_id
-from presentation_layer.pallet_controllers.pallet_crud_controllers import create_pallet, get_pallet, update_pallet, delete_pallet, combine_pallets
+from presentation_layer.pallet_controllers.pallet_crud_controllers import create_pallet, get_pallet, update_pallet, delete_pallet, combine_pallets_import
 from presentation_layer.pallet_controllers.pallet_item_crud_controllers import create_pallet_item_with_id, get_items_on_pallet,get_items_on_pallet , update_pallet_item, delete_pallet_item, get_all_pallet_items, get_new_pallet_items
 from presentation_layer.pallet_controllers.pallet_group_controllers import get_all_pallets, get_pallet_group, get_possible_pallets, get_pallet_details, get_data, get_picklist, get_latest_pallet_data, get_pallet_data, get_recent_pallets 
 from presentation_layer.finished_product_controllers.finished_product_crud_controllers import create_finished_product, get_finished_product, update_finished_product, delete_finished_product_by_id
@@ -113,6 +113,15 @@ async def print_blank_label_function():
 async def print_pallet_label_function_function(id: int):
     response = await print_pallet_label(id);
     return response
+@app.get("/label_info/{id}")
+async def label_info_function(id:str):
+    response = await get_label_info(id);
+    return response
+
+@app.get("/product/{id}")
+async def get_product_function(id: str):
+    response = await get_product(id);
+    return response
 
 # PALLET ROUTES
 @app.post("/pallet")
@@ -124,17 +133,18 @@ async def find_pallet_function(id):
     pallet = await get_pallet(id)
     return pallet
 @app.put("/pallet/{id}")
-async def update_pallet_function(id):
-    pallet = await update_pallet(id)
+async def update_pallet_function(id: int, request: Request):
+    data =  await request.json();
+    pallet = await update_pallet(id, data)
     return pallet
 @app.delete("/pallet/{id}")
 async def delete_pallet_function(id):
     pallet = await delete_pallet(id)
     return pallet
-@app.put("/combine_pallets")
-async def combine_function(pallet_list:list,height:int):
-    response = await combine_pallets(pallet_list, height)
-    return response
+# @app.post("/combine_pallets")
+# async def combine_function(pallet_list:list,height:int):
+#     response = await combine_pallets_import(pallet_list, height)
+#     return response
 # PALLET ITEM ROUTES
 @app.post("/pallet_item/{id}")
 async def create_pallet_item_function(id):
