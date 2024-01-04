@@ -1,3 +1,4 @@
+from types import NoneType
 from data_access_layer.read_database_functions import read_selection_to_list, read_to_list_index
 from data_access_layer.write_database_functions import db
 import math
@@ -18,8 +19,8 @@ async def get_items_on_pallet(pallet_id):
         pallet_items = [];
         items = read_to_list_index(f"{os.getenv('GETPALLETITEMS')}{int(pallet_id)}")
         for key, val in items.items():
-            if math.isnan(val["quantity"]):
-                val["quantity"] = 0;
+            if val["quantity"] is None or math.isnan(val["quantity"]):
+                val["quantity"] = None;
             else:
                 val["quantity"] = int(val["quantity"]);
             pallet_items.append(val)
