@@ -5,6 +5,7 @@ load_dotenv("../../.env")
 
 def print_large_label(label_data):
 	try:
+		print(label_data)
 		# SETTING THE VARIABLES FOR THE FUNCTION
 		host = os.getenv("BIGLABELID1") 
 		port = int(os.getenv("BIGLABELPORT1"))

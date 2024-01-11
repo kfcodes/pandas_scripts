@@ -33,16 +33,16 @@ def create_large_product_label_data(label_info, qty):
         field_18 = os.getenv("LABELFIELD18")
         zpl = f"""
                 ^PQ{qty},10,1,Y
-                ^FO700,250^A0,90^FD{label_info[field_9][0]}^FS
-                ^FO650,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_10][0]}^FS
-                ^FO600,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_11][0]}^FS
-                ^FO550,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_12][0]}^FS
-                ^FO500,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_13][0]}^FS
-                ^FO450,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_14][0]}^FS
-                ^FO400,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_15][0]}^FS
-                ^FO350,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_16][0]}^FS
-                ^FO300,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_17][0]}^FS
-                ^BY8^FO70,200^BER,210,Y,N,N,N,N^FD{label_info[field_18][0]}^FS ^XZ
+                ^FO700,250^A0,90^FD{label_info[field_9]}^FS
+                ^FO650,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_10]}^FS
+                ^FO600,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_11]}^FS
+                ^FO550,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_12]}^FS
+                ^FO500,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_13]}^FS
+                ^FO450,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_14]}^FS
+                ^FO400,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_15]}^FS
+                ^FO350,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_16]}^FS
+                ^FO300,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_17]}^FS
+                ^BY8^FO70,200^BER,210,Y,N,N,N,N^FD{label_info[field_18]}^FS ^XZ
             """
         return(zpl)
     except Exception as ex:

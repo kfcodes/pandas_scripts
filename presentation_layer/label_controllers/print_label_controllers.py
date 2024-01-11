@@ -24,7 +24,7 @@ async def print_pallet_label(id):
 
 async def print_small_product_label(id):
     try:
-        label_info = get_label_data(f"{os.getenv('PRODUCTIONLABELINFO')}{id}")
+        label_info = read_to_list_index(f"{os.getenv('PRODUCTIONLABELINFO')}{id}")
         outline = create_small_label_outline()
         body = create_small_label_data(label_info, 1)
         label_data = outline + body
@@ -34,9 +34,10 @@ async def print_small_product_label(id):
 
 async def print_large_product_label(id):
     try:
-        label_info = get_label_data(f"{os.getenv('PRODUCTIONLABELINFO')}{id}")
+        label_info = read_to_list_index(f"{os.getenv('PRODUCTIONLABELINFO')}{id}")
         outline = create_large_product_label_outline()
-        body = create_large_product_label_data(label_info, 1)
+        body = create_large_product_label_data(label_info[0], 1)
+        print(body)
         label_data = outline + body
         print_large_label(label_data)
     except Exception as ex:
