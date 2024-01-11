@@ -97,8 +97,10 @@ async def print_small_product_label_function(id: int):
     await print_small_product_label(id);
     return "PRINTED LABEL"
 @app.post("/print_large_product_label/{id}")
-async def print_large_product_label_function(id: int):
-    await print_large_product_label(id);
+async def print_large_product_label_function(id: int, body: Request):
+    body =  await body.json();
+    quantity = int(body["quantity"])
+    await print_large_product_label(id, quantity);
     return "PRINTED LABEL"
 @app.post("/print_large_combined_label")
 async def print_large_combined_label_function(data: Request):
