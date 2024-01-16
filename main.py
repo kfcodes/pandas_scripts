@@ -5,18 +5,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from routes.data_processing_routes import data_processing_router
 from routes.label_routes import label_router
 from routes.scanner_routes import scanner_router
+from routes.pallet_crud_routes import pallet_crud_router
+from routes.pallet_item_crud_routes import load_pallet_function
 
 from presentation_layer.product_controllers.product_controllers import get_all_products, get_product_by_id, get_finished_product_by_id, get_all_finished_products
-
 from presentation_layer.assembly_controllers.assembly_information_controllers import get_all_brands, get_products_from_brand, get_assembly_information
 
 from presentation_layer.production_schedule_controllers.production_schedule_controller import get_all_production, get_current_production, get_production_records_by_id
 
-from presentation_layer.pallet_controllers.pallet_crud_controllers import create_pallet, get_pallet, update_pallet, delete_pallet, combine_pallets_import
-
-from presentation_layer.pallet_controllers.pallet_item_crud_controllers import create_pallet_item_with_id, get_items_on_pallet,get_items_on_pallet , update_pallet_item, delete_pallet_item, get_all_pallet_items, get_new_pallet_items
-
-from presentation_layer.pallet_controllers.pallet_group_controllers import get_all_pallets, get_pallet_group, get_possible_pallets, get_pallet_details, get_data, get_picklist, get_latest_pallet_data, get_pallet_data, get_recent_pallets, get_data_for_id
 
 from presentation_layer.finished_product_controllers.finished_product_crud_controllers import create_finished_product, get_finished_product, update_finished_product, delete_finished_product_by_id
 
