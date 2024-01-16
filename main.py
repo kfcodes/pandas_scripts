@@ -8,7 +8,7 @@ from presentation_layer.assembly_controllers.assembly_information_controllers im
 from presentation_layer.production_schedule_controllers.production_schedule_controller import get_all_production, get_current_production, get_production_records_by_id
 from presentation_layer.pallet_controllers.pallet_crud_controllers import create_pallet, get_pallet, update_pallet, delete_pallet, combine_pallets_import
 from presentation_layer.pallet_controllers.pallet_item_crud_controllers import create_pallet_item_with_id, get_items_on_pallet,get_items_on_pallet , update_pallet_item, delete_pallet_item, get_all_pallet_items, get_new_pallet_items
-from presentation_layer.pallet_controllers.pallet_group_controllers import get_all_pallets, get_pallet_group, get_possible_pallets, get_pallet_details, get_data, get_picklist, get_latest_pallet_data, get_pallet_data, get_recent_pallets 
+from presentation_layer.pallet_controllers.pallet_group_controllers import get_all_pallets, get_pallet_group, get_possible_pallets, get_pallet_details, get_data, get_picklist, get_latest_pallet_data, get_pallet_data, get_recent_pallets, get_data_for_id
 from presentation_layer.finished_product_controllers.finished_product_crud_controllers import create_finished_product, get_finished_product, update_finished_product, delete_finished_product_by_id
 from presentation_layer.data_processing_controllers.database_data import process_db_file
 from presentation_layer.data_processing_controllers.label_data import process_label_file
@@ -209,6 +209,10 @@ async def find_picklist_function():
 @app.get("/data")
 async def find_data_function():
     data = await get_data()
+    return data;
+@app.post("/data/{id}")
+async def find_data_for_id_function(id):
+    data = await get_data_for_id(id)
     return data;
 
 # FINISHED PRODUCTS ROUTES

@@ -81,6 +81,13 @@ async def get_picklist():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
+async def get_data_for_id(id):
+    try:
+        pallets = read_selection_to_list(f"{os.getenv('GETPALLETDATA')}{id}")
+        return pallets
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
+
 async def get_data():
     try:
         pallets = read_selection_to_list(f"{os.getenv('')}")

@@ -59,7 +59,9 @@ async def print_combined_pallet_label(data):
 
 async def get_label_info(id):
     try:
-        label_info = get_label_data(f"{os.getenv('GETLABELINFO')}'{id}'")
-        return label_info[0]
+        label_info_list = [];
+        label_info = get_label_data(f"{os.getenv('GETLABELINFO')}'{id}'");
+        label_info_list.append(label_info[0]);
+        return label_info_list;
     except Exception as ex:
         print("Data could not be processed: \n", ex)
