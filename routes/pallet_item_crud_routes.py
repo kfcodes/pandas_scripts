@@ -1,18 +1,25 @@
 from fastapi import APIRouter
-scanner_router = APIRouter();
-@app.post("/pallet_item/{id}")
+
+from presentation_layer.pallet_controllers.pallet_item_crud_controllers import create_pallet_item_with_id, get_items_on_pallet,get_items_on_pallet , update_pallet_item, delete_pallet_item, get_all_pallet_items, get_new_pallet_items
+
+pallet_item_crud_router = APIRouter();
+
+@pallet_item_crud_router.post("/pallet_item/{id}")
 async def create_pallet_item_function(id):
     item = await create_pallet_item_with_id(id)
     return item
-@app.get("/pallet_items/{id}")
+
+@pallet_item_crud_router.get("/pallet_items/{id}")
 async def find_pallet_items_function(id):
     items = await get_items_on_pallet(id)
     return items
-@app.put("/pallet_item/{id}")
+
+@pallet_item_crud_router.put("/pallet_item/{id}")
 async def update_pallet_item_function(id):
     item = await update_pallet_item(id)
     return item
-@app.delete("/pallet_item/{id}")
+
+@pallet_item_crud_router.delete("/pallet_item/{id}")
 async def delete_pallet_item_function(id):
     item = await delete_pallet_item(id)
     return item

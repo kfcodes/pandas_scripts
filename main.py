@@ -6,13 +6,12 @@ from routes.data_processing_routes import data_processing_router
 from routes.label_routes import label_router
 from routes.scanner_routes import scanner_router
 from routes.pallet_crud_routes import pallet_crud_router
-from routes.pallet_item_crud_routes import load_pallet_function
+from routes.pallet_item_crud_routes import pallet_item_crud_router
 
 from presentation_layer.product_controllers.product_controllers import get_all_products, get_product_by_id, get_finished_product_by_id, get_all_finished_products
 from presentation_layer.assembly_controllers.assembly_information_controllers import get_all_brands, get_products_from_brand, get_assembly_information
 
 from presentation_layer.production_schedule_controllers.production_schedule_controller import get_all_production, get_current_production, get_production_records_by_id
-
 
 from presentation_layer.finished_product_controllers.finished_product_crud_controllers import create_finished_product, get_finished_product, update_finished_product, delete_finished_product_by_id
 
@@ -247,3 +246,5 @@ async def find_all_packing_lists():
 app.include_router(data_processing_router)
 app.include_router(label_router)
 app.include_router(scanner_router)
+app.include_router(pallet_crud_router)
+app.include_router(pallet_item_crud_router)
