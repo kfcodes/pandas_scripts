@@ -1,20 +1,27 @@
 from fastapi import FastAPI, Request, status, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+
+from routes.data_processing_routes import data_processing_router
+
 from presentation_layer.scanner_controllers.scanner_controllers import get_all_packing_lists, get_packing_list, get_pallet_info, load_pallet_and_get_packing_list
+
 from presentation_layer.label_controllers.print_label_controllers import print_large_product_label, print_small_product_label, print_pallet_label, print_combined_pallet_label, print_blank_pallet_label, get_label_info
+
 from presentation_layer.product_controllers.product_controllers import get_all_products, get_product_by_id, get_finished_product_by_id, get_all_finished_products
+
 from presentation_layer.assembly_controllers.assembly_information_controllers import get_all_brands, get_products_from_brand, get_assembly_information
+
 from presentation_layer.production_schedule_controllers.production_schedule_controller import get_all_production, get_current_production, get_production_records_by_id
+
 from presentation_layer.pallet_controllers.pallet_crud_controllers import create_pallet, get_pallet, update_pallet, delete_pallet, combine_pallets_import
+
 from presentation_layer.pallet_controllers.pallet_item_crud_controllers import create_pallet_item_with_id, get_items_on_pallet,get_items_on_pallet , update_pallet_item, delete_pallet_item, get_all_pallet_items, get_new_pallet_items
+
 from presentation_layer.pallet_controllers.pallet_group_controllers import get_all_pallets, get_pallet_group, get_possible_pallets, get_pallet_details, get_data, get_picklist, get_latest_pallet_data, get_pallet_data, get_recent_pallets, get_data_for_id
+
 from presentation_layer.finished_product_controllers.finished_product_crud_controllers import create_finished_product, get_finished_product, update_finished_product, delete_finished_product_by_id
-from presentation_layer.data_processing_controllers.database_data import process_db_file
-from presentation_layer.data_processing_controllers.label_data import process_label_file
-from presentation_layer.data_processing_controllers.product_components import process_components_file
-from presentation_layer.data_processing_controllers.po_data import process_po_files
-from presentation_layer.data_processing_controllers.schedule_data import process_schedule_file
+
 from presentation_layer.production_overview_controllers.production_overview_controllers import get_production_overview, update_production_overview, get_product_overview
 
 import os
@@ -286,27 +293,9 @@ async def find_production_record_by_id_function():
     return_item = await get_production_records_by_id(id)
     return return_item;
 
-@app.get("/process_files/process_db_file")
-async def process_db_file_function():
-    process_db_file()
-    return {"message": "files processed"}
-@app.get("/process_files/process_label_file")
-async def process_label_file_function():
-    process_label_file();
-    return {"message": "files processed"}
-@app.get("/process_files/process_components_file")
-async def process_db_components_function():
-    process_components_file();
-    return {"message": "files processed"}
-@app.get("/process_files/process_po_file")
-async def process_po_file_function():
-    process_po_files();
-    return {"message": "files processed"}
-@app.get("/process_files/process_schedule_file")
-async def process_schedule_file_function():
-    process_schedule_file(sheet);
-    return {"message": "files processed"}
 @app.get("/packing_lists")
 async def find_all_packing_lists():
     get_all_packing_lists()
     return {"message": "found packing Lists"}
+
+app.include_router(data_processing_router)
