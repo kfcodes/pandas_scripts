@@ -3,10 +3,8 @@ from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from routes.data_processing_routes import data_processing_router
-
-from presentation_layer.scanner_controllers.scanner_controllers import get_all_packing_lists, get_packing_list, get_pallet_info, load_pallet_and_get_packing_list
-
-from presentation_layer.label_controllers.print_label_controllers import print_large_product_label, print_small_product_label, print_pallet_label, print_combined_pallet_label, print_blank_pallet_label, get_label_info
+from routes.label_routes import label_router
+from routes.scanner_routes import scanner_router
 
 from presentation_layer.product_controllers.product_controllers import get_all_products, get_product_by_id, get_finished_product_by_id, get_all_finished_products
 
@@ -37,26 +35,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-sheet = os.getenv("SHEETINPUT");
-
-# SCANNER API ROUTES
-@app.get("/scanner", response_class=HTMLResponse)
-async def scanner_packing_lists_function():
-    html_data = get_all_packing_lists();
-    return HTMLResponse(content=html_data, status_code=200)
-@app.get("/scanner/packing_list/{id}", response_class=HTMLResponse)
-async def scanner_packing_list_function(id: int):
-    html_data = get_packing_list(id);
-    return HTMLResponse(content=html_data, status_code=200)
-@app.post("/scanner/pallet_info", response_class=HTMLResponse)
-async def scanner_pallet_info_function(request: Request):
-    html_data = get_pallet_info(await request.body());
-    return HTMLResponse(content=html_data, status_code=200)
-@app.get("/scanner/load_pallet/{id}", response_class=HTMLResponse)
-async def load_pallet_function(id: int):
-    packing_list_id = await load_pallet_and_get_packing_list(id);
-    return RedirectResponse(url=f"/packing_list/{packing_list_id}", status_code=status.HTTP_303_SEE_OTHER)
 
 # WEBSOCKET MANAGER
 class ConnectionManager:
@@ -98,34 +76,6 @@ async def get_product_overview_function(product_id):
     html_data = get_product_overview(product_id);
     return HTMLResponse(content=html_data, status_code=200)
 
-# LABEL PRINTER API ROUTES
-@app.get("/print_small_product_label/{id}")
-async def print_small_product_label_function(id: int):
-    await print_small_product_label(id);
-    return "PRINTED LABEL"
-@app.post("/print_large_product_label/{id}")
-async def print_large_product_label_function(id: int, body: Request):
-    body =  await body.json();
-    quantity = int(body["quantity"])
-    await print_large_product_label(id, quantity);
-    return "PRINTED LABEL"
-@app.post("/print_large_combined_label")
-async def print_large_combined_label_function(data: Request):
-    json_data =  await data.json();
-    response = await print_combined_pallet_label(json_data);
-    return response;
-@app.post("/print_blank_labels")
-async def print_blank_label_function():
-    response = await print_blank_pallet_label();
-    return response;
-@app.get("/label/{id}")
-async def print_pallet_label_function_function(id: int):
-    response = await print_pallet_label(id);
-    return response
-@app.get("/label_info/{id}")
-async def label_info_function(id:str):
-    response = await get_label_info(id);
-    return response
 
 @app.get("/product/{id}")
 async def get_product_function(id: str):
@@ -299,3 +249,5 @@ async def find_all_packing_lists():
     return {"message": "found packing Lists"}
 
 app.include_router(data_processing_router)
+app.include_router(label_router)
+app.include_router(scanner_router)
