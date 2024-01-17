@@ -14,8 +14,7 @@ from routes.assembly_info_routes import assembly_router
 from routes.finished_product_crud_routes import finished_product_router
 from routes.finished_product_list_routes import finished_product_list_router
 # from routes.production_overview import app as fin
-
-from presentation_layer.production_schedule_controllers.production_schedule_controller import get_all_production, get_current_production, get_production_records_by_id
+from routes.production_schedule_routes import schedule_router
 
 import os
 from dotenv import load_dotenv
@@ -36,21 +35,6 @@ app.add_middleware(
 #     response = await get_product(id);
 #     return response
 
-
-# PRODUCTION ROUTES
-@app.get("/production")
-async def find_current_production_function():
-    return_item = await get_current_production()
-    return return_item;
-@app.get("/production/{id}")
-async def find_all_production_by_id_function(id):
-    return_item = await get_all_production(id)
-    return return_item;
-@app.get("/production_record/{id}")
-async def find_production_record_by_id_function():
-    return_item = await get_production_records_by_id(id)
-    return return_item;
-
 # @app.get("/packing_lists")
 # async def find_all_packing_lists():
 #     get_all_packing_lists()
@@ -67,3 +51,5 @@ app.include_router(pallet_item_list_router)
 app.include_router(assembly_router)
 app.include_router(finished_product_router)
 app.include_router(finished_product_list_router)
+# app.include_router()
+app.include_router(schedule_router)
