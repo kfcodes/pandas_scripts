@@ -7,13 +7,13 @@ from routes.label_routes import label_router
 from routes.scanner_routes import scanner_router
 from routes.pallet_crud_routes import pallet_crud_router
 from routes.pallet_modifications_routes import combine_pallets_router
-# from routes.pallet_lists_routes import pa
+from routes.pallet_lists_routes import pallet_list_router
 from routes.pallet_item_crud_routes import pallet_item_crud_router
 from routes.pallet_item_list_routes import pallet_item_list_router
 from routes.assembly_info_routes import assembly_router
 from routes.finished_product_crud_routes import finished_product_router
 from routes.finished_product_list_routes import finished_product_list_router
-# from routes.production_overview import app as fin
+from routes.production_overview import app as production_overview
 from routes.production_schedule_routes import schedule_router
 
 import os
@@ -51,5 +51,5 @@ app.include_router(pallet_item_list_router)
 app.include_router(assembly_router)
 app.include_router(finished_product_router)
 app.include_router(finished_product_list_router)
-# app.include_router()
+app.include_router(production_overview)
 app.include_router(schedule_router)
