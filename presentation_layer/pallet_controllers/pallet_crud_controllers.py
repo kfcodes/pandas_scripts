@@ -21,10 +21,12 @@ async def get_pallet(id):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-async def update_pallet(id, data):
+async def update_pallet(id, new_pallet_data):
     try:
-        pallet = db(f"{os.getenv('UPDATEPALLET')}'{id}'")
-        return pallet
+        new_pallet_data = str(new_pallet_data).replace(' ', ' ,').replace('None', 'Null')
+        update_string = str(os.getenv('UPDATEPALLET'))
+        updated_pallet_info = db(update_string.format(new_pallet_data,id))
+        return updated_pallet_info
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 

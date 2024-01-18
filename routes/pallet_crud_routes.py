@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Request
+from data_models_layer.object_models import Pallet
 from presentation_layer.pallet_controllers.pallet_crud_controllers import create_pallet, get_pallet, update_pallet, delete_pallet
 
 pallet_crud_router = APIRouter();
@@ -14,9 +15,8 @@ async def find_pallet_function(id):
     return pallet
 
 @pallet_crud_router.put("/pallet/{id}")
-async def update_pallet_function(id: int, request: Request):
-    data =  await request.json();
-    pallet = await update_pallet(id, data)
+async def update_pallet_function(id: int, updated_pallet_info: Pallet):
+    pallet = await update_pallet(id, updated_pallet_info)
     return pallet
 
 @pallet_crud_router.delete("/pallet/{id}")
