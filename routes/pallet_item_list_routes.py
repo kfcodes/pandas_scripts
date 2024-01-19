@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from presentation_layer.pallet_controllers.pallet_item_crud_controllers import get_all_pallet_items, get_new_pallet_items
+from presentation_layer.pallet_controllers.pallet_item_list_controllers import get_all_pallet_items, get_new_pallet_items
 
 pallet_item_list_router = APIRouter();
 
