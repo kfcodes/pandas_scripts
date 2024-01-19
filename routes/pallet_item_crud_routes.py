@@ -16,8 +16,8 @@ async def find_pallet_items_function(id):
 
 @pallet_item_crud_router.put("/pallet_item/{id}")
 async def update_pallet_item_function(id: int, updated_pallet_item_info: Pallet_item):
-    item = await update_pallet_item(id, updated_pallet_item_info)
-    return item
+    updated_item = await update_pallet_item(id, updated_pallet_item_info)
+    return updated_item
 
 @pallet_item_crud_router.delete("/pallet_item/{id}")
 async def delete_pallet_item_function(id):
