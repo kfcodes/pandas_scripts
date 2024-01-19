@@ -1,12 +1,10 @@
-from fastapi import FastAPI, Request, status, WebSocket, WebSocketDisconnect
-from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from routes.pallet_crud_routes import pallet_crud_router
-# from routes.pallet_modifications_routes import combine_pallets_router
 # from routes.pallet_lists_routes import pallet_list_router
-# from routes.pallet_item_crud_routes import pallet_item_crud_router
-# from routes.pallet_item_list_routes import pallet_item_list_router
+from routes.pallet_item_crud_routes import pallet_item_crud_router
+from routes.pallet_item_list_routes import pallet_item_list_router
 
 # from routes.data_processing_routes import data_processing_router
 # from routes.label_routes import label_router
@@ -17,6 +15,9 @@ from routes.pallet_crud_routes import pallet_crud_router
 # from routes.finished_product_list_routes import finished_product_list_router
 # from routes.production_overview import app as production_overview
 # from routes.production_schedule_routes import schedule_router
+
+# NOT WORKING
+# from routes.pallet_modifications_routes import combine_pallets_router
 
 import os
 from dotenv import load_dotenv
@@ -45,8 +46,8 @@ app.add_middleware(
 app.include_router(pallet_crud_router)
 # app.include_router(combine_pallets_router)
 # app.include_router(pallet_list_router)
-# app.include_router(pallet_item_crud_router)
-# app.include_router(pallet_item_list_router)
+app.include_router(pallet_item_crud_router)
+app.include_router(pallet_item_list_router)
 # app.include_router(data_processing_router)
 # app.include_router(label_router)
 # app.include_router(scanner_router)
@@ -55,3 +56,4 @@ app.include_router(pallet_crud_router)
 # app.include_router(finished_product_list_router)
 # app.include_router(production_overview)
 # app.include_router(schedule_router)
+
