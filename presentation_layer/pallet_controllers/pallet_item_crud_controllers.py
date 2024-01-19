@@ -1,5 +1,4 @@
-from types import NoneType
-from data_access_layer.read_database_functions import read_selection_to_list, read_to_list_index
+from data_access_layer.read_database_functions import read_to_list_index
 from data_access_layer.write_database_functions import db
 import math
 
@@ -28,9 +27,11 @@ async def get_items_on_pallet(pallet_id):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-async def update_pallet_item(item_id):
+async def update_pallet_item(item_id, new_item_data):
     try:
-        updated_item = db(f"{os.getenv('UPDATEPALLETITEM')}'{item_id}'")
+        new_item_data = str(new_item_data).replace(' ', ' ,').replace('None', 'Null')
+        update_string = str(os.getenv('UPDATEPALLETITEM'))
+        updated_item = db(update_string.format(new_item_data, item_id))
         return updated_item
     except Exception as ex:
         print("Data could not be processed: \n", ex)
@@ -41,25 +42,3 @@ async def delete_pallet_item(item_id):
         return items
     except Exception as ex:
         print("Data could not be processed: \n", ex)
-
-# PALLET ITEMS LIST FUNCTIONS
-async def get_new_pallet_items():
-    try:
-        resultlist = [];
-        pallet_items = read_to_list_index(f"{os.getenv('GETNEWPALLETITEMS')}")
-        for key, val in pallet_items.items():
-            resultlist.append(val)
-        return resultlist;
-    except Exception as ex:
-        print("Data could not be processed: \n", ex)
-
-async def get_all_pallet_items():
-    try:
-        resultlist = [];
-        pallet_items = read_to_list_index(f"{os.getenv('GETALLPALLETITEMS')}")
-        for key, val in pallet_items.items():
-            resultlist.append(val)
-        return resultlist;
-    except Exception as ex:
-        print("Data could not be processed: \n", ex)
-
