@@ -9,7 +9,7 @@ def create_blank_label_outline():
                 ^XA^CFD
                 ^FWR
                 ^LH30,20
-                ^PQ1000,10,1,Y
+                ^PQ1,10,1,Y
                 ^FO550,10^GB160,1170,5^FS
                 ^FO630,10^GB5,1170,5^FS
                 ^FO640,20^A0,40^FDPRODUCT:^FS

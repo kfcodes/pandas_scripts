@@ -11,10 +11,14 @@ async def print_small_product_label_function(id: int):
 
 @label_router.post("/print_large_product_label/{id}")
 async def print_large_product_label_function(id: int, body: Request):
-    body =  await body.json();
-    quantity = int(body["quantity"])
-    response = await print_large_product_label(id, quantity);
-    return response;
+    # if body:
+    #     body =  await body.json();
+    #     quantity = int(body["quantity"])
+    #     response = await print_large_product_label(id, quantity);
+    #     return response;
+    # else:
+    response = await print_large_product_label(id, 1);
+    return "No Quantity", response
 
 @label_router.post("/print_large_combined_label")
 async def print_large_combined_label_function(data: Request):
