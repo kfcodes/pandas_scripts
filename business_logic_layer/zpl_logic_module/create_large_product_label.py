@@ -6,14 +6,30 @@ def create_large_product_label_outline():
     try:
         zpl = f"""
                 ^XA^CFD^FWR^LH2,20
-                ^FO650,20^A0,50^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD1")}:^FS
-                ^FO600,20^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD2")}:^FS
-                ^FO550,20^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD3")}:^FS
-                ^FO500,20^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD4")}:^FS
-                ^FO450,20^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD5")}:^FS
-                ^FO400,20^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD6")}:^FS
-                ^FO350,20^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD7")}:^FS
-                ^FO300,20^A@90,50,50,E:ARIALBLB.TTF^FD{os.getenv("LABELFIELD8")}:^FS
+                ^FO650,20^A0,50^FD{os.getenv("LABELFIELD1")}:^FS
+                ^FO651,20^A0,50^FD{os.getenv("LABELFIELD1")}:^FS
+                ^FO652,20^A0,50^FD{os.getenv("LABELFIELD1")}:^FS
+                ^FO600,20^A0,50^FD{os.getenv("LABELFIELD2")}:^FS
+                ^FO601,20^A0,50^FD{os.getenv("LABELFIELD2")}:^FS
+                ^FO602,20^A0,50^FD{os.getenv("LABELFIELD2")}:^FS
+                ^FO550,20^A0,50^FD{os.getenv("LABELFIELD3")}:^FS
+                ^FO551,20^A0,50^FD{os.getenv("LABELFIELD3")}:^FS
+                ^FO552,20^A0,50^FD{os.getenv("LABELFIELD3")}:^FS
+                ^FO500,20^A0,50^FD{os.getenv("LABELFIELD4")}:^FS
+                ^FO501,20^A0,50^FD{os.getenv("LABELFIELD4")}:^FS
+                ^FO502,20^A0,50^FD{os.getenv("LABELFIELD4")}:^FS
+                ^FO450,20^A0,50^FD{os.getenv("LABELFIELD5")}:^FS
+                ^FO451,20^A0,50^FD{os.getenv("LABELFIELD5")}:^FS
+                ^FO452,20^A0,50^FD{os.getenv("LABELFIELD5")}:^FS
+                ^FO400,20^A0,50^FD{os.getenv("LABELFIELD6")}:^FS
+                ^FO401,20^A0,50^FD{os.getenv("LABELFIELD6")}:^FS
+                ^FO402,20^A0,50^FD{os.getenv("LABELFIELD6")}:^FS
+                ^FO350,20^A0,50^FD{os.getenv("LABELFIELD7")}:^FS
+                ^FO351,20^A0,50^FD{os.getenv("LABELFIELD7")}:^FS
+                ^FO352,20^A0,50^FD{os.getenv("LABELFIELD7")}:^FS
+                ^FO300,20^A0,50^FD{os.getenv("LABELFIELD8")}:^FS
+                ^FO301,20^A0,50^FD{os.getenv("LABELFIELD8")}:^FS
+                ^FO302,20^A0,50^FD{os.getenv("LABELFIELD8")}:^FS
             """
         return(zpl)
     except Exception as ex:
