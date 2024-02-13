@@ -6,15 +6,15 @@ label_router = APIRouter();
 # LABEL PRINTER API ROUTES
 @label_router.get("/print_small_product_label/{id}")
 async def print_small_product_label_function(id: int):
-    await print_small_product_label(id);
-    return "PRINTED LABEL"
+    response = await print_small_product_label(id);
+    return response;
 
 @label_router.post("/print_large_product_label/{id}")
 async def print_large_product_label_function(id: int, body: Request):
     body =  await body.json();
     quantity = int(body["quantity"])
-    await print_large_product_label(id, quantity);
-    return "PRINTED LABEL"
+    response = await print_large_product_label(id, quantity);
+    return response;
 
 @label_router.post("/print_large_combined_label")
 async def print_large_combined_label_function(data: Request):
@@ -33,6 +33,6 @@ async def print_pallet_label_function_function(id: int):
     return response
 
 @label_router.get("/label_info/{id}")
-async def label_info_function(id:str):
+async def label_info_function(id: str):
     response = await get_label_info(id);
     return response

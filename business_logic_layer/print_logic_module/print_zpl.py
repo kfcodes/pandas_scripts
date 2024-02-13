@@ -19,8 +19,7 @@ def print_large_label(label_data):
 
 		return f"Printed the Label to {host}, {port}"
 	except Exception as ex:
-		print("Could not print label due to the following: \n", ex)
-		return "Not printed"
+		return "Could not print label due to the following: \n", ex
 
 def print_small_label(label_data):
 	try:
@@ -32,6 +31,6 @@ def print_small_label(label_data):
 		# mysocket.send(label)#using bytes
 		# mysocket.close () #closing connection
 		# return f"Printed the Label to {host}, {port}"
-		print(label_data)
+		return label_data
 	except Exception as ex:
-		print("Could not print label due to the following: \n", ex)
+		return "Could not print label due to the following: \n", ex

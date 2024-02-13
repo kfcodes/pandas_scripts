@@ -28,7 +28,8 @@ async def print_small_product_label(id):
         outline = create_small_label_outline()
         body = create_small_label_data(label_info, 1)
         label_data = outline + body
-        print_small_label(label_data)
+        response = print_small_label(label_data)
+        return response
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
@@ -38,22 +39,24 @@ async def print_large_product_label(id, quantity):
         outline = create_large_product_label_outline()
         body = create_large_product_label_data(label_info[0], quantity)
         label_data = outline + body
-        print_large_label(label_data)
+        response = print_large_label(label_data)
+        return response
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
 async def print_blank_pallet_label():
     try:
         label_outline = create_blank_label_outline()
-        print_large_label(label_outline)
-        return "Printed multiple blank labels"
+        response = print_large_label(label_outline)
+        return response
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
 async def print_combined_pallet_label(data):
     try:
         label_info = str(data["label_info"])
-        print_large_label(label_info)
+        response = print_large_label(label_info)
+        return response
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
