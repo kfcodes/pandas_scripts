@@ -74,7 +74,7 @@ def create_large_product_label_data(label_info, qty):
                 ^BY4
                 ^FO40,300
                 ^BCR,200,N,N,,D
-                ^FD{label_info[field_18]}^FS
+                ^FD{label_info[field__18]}^FS
                 ^XZ
             """
         return(zpl)
