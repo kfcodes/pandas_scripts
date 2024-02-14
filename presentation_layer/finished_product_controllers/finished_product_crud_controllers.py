@@ -1,6 +1,7 @@
-from data_access_layer.read_database_functions import read_selection_to_list
+from data_access_layer.read_database_functions import read_selection_to_list, read_to_list_index
 from data_access_layer.write_database_functions import db, insert_db_data, update_db_data
 from data_models_layer.table_models import finished_product_table
+from data_models_layer.object_models import Finished_product
 
 import os
 from dotenv import load_dotenv
@@ -8,16 +9,23 @@ load_dotenv("../../.env")
 
 async def create_finished_product(product_data):
     try:
-        table =  finished_product_table();
-        insert_db_data(table, product_data)
-        return f"inserted data into the database for: {product_data}"
+        new_item_data = str(product_data).replace(' ', ' ,').replace('None', 'Null')
+        create_finished_product_string = f"{os.getenv('CREATEFINISHEDPRODUCT')}{new_item_data}"
+        create_finished_product_string = create_finished_product_string.replace("eol_id=Null ,", "")
+        db(create_finished_product_string)
+        product = read_selection_to_list(f"{os.getenv('GETNEWESTPRODUCTID')}")
+        print(product)
+        new_finished_product_id = product['eol_id'][0]
+        return new_finished_product_id
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
 async def get_finished_product(product_id):
     try:
-        finished_product = read_selection_to_list(f"{os.getenv('GETFINISHEDPRODUCT')}'{product_id}'")
-        return finished_product
+        finished_product = read_to_list_index(f"{os.getenv('GETFINISHEDPRODUCT')}'{product_id}'")
+        return_product = []
+        return_product.append(finished_product[0])
+        return return_product
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
