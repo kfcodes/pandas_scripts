@@ -1,4 +1,4 @@
-from data_access_layer.read_database_functions import read_selection_to_list
+from data_access_layer.read_database_functions import read_selection_to_list, read_to_list_index
 import os
 from dotenv import load_dotenv
 load_dotenv("../.env")
@@ -19,8 +19,8 @@ async def get_all_finished_products():
 
 async def get_product_by_id(id):
     try:
-        product_info = read_selection_to_list(f"{os.getenv('GETPRODUCTBYID')}'{id}'")
-        return product_info
+        product_info = read_to_list_index(f"{os.getenv('GETPRODUCTBYID')}'{id}'")
+        return product_info[0]
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 

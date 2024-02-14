@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from presentation_layer.product_controllers.product_controllers import get_product_by_id
+
 # WORKING ROUTES
 from routes.pallet_crud_routes import pallet_crud_router
 from routes.pallet_lists_routes import pallet_list_router
@@ -34,10 +36,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# @app.get("/product/{id}")
-# async def get_product_function(id: str):
-#     response = await get_product(id);
-#     return response
+@app.get("/product/{id}")
+async def get_product_function(id: str):
+    response = await get_product_by_id(id);
+    return response;
 
 # @app.get("/packing_lists")
 # async def find_all_packing_lists():
