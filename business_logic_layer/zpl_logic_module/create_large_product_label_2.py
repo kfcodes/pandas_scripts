@@ -19,9 +19,9 @@ def create_large_product_label_outline():
                 ^FO551,20^A0,50^FD{os.getenv("LABELFIELD1")}:^FS
                 ^FO552,20^A0,50^FD{os.getenv("LABELFIELD1")}:^FS
 
-                ^FO500,20^A0,50^FD{os.getenv("LABELFIELD_0")}::^FS
-                ^FO501,20^A0,50^FD{os.getenv("LABELFIELD_0")}::^FS
-                ^FO502,20^A0,50^FD{os.getenv("LABELFIELD_0")}::^FS
+                ^FO500,20^A0,50^FD{os.getenv("LABELFIELD_0")}:^FS
+                ^FO501,20^A0,50^FD{os.getenv("LABELFIELD_0")}:^FS
+                ^FO502,20^A0,50^FD{os.getenv("LABELFIELD_0")}:^FS
 
                 ^FO450,20^A0,50^FD{os.getenv("LABELFIELD_3")}:^FS
                 ^FO451,20^A0,50^FD{os.getenv("LABELFIELD_3")}:^FS
@@ -49,28 +49,33 @@ def create_large_product_label_outline():
 
 def create_large_product_label_data(label_info, qty):
     try:
+
         field_9 = os.getenv("LABELFIELD9")
         field_10 = os.getenv("LABELFIELD10")
         field_11 = os.getenv("LABELFIELD11")
         field_12 = os.getenv("LABELFIELD12")
         field_13 = os.getenv("LABELFIELD13")
-        field_14 = os.getenv("LABELFIELD14")
-        field_15 = os.getenv("LABELFIELD15")
         field_16 = os.getenv("LABELFIELD16")
         field_17 = os.getenv("LABELFIELD17")
         field_18 = os.getenv("LABELFIELD18")
+        field__18 = os.getenv("LABELFIELD_18")
+
         zpl = f"""
                 ^PQ{qty},10,1,Y
                 ^FO700,250^A0,90^FD{label_info[field_9]}^FS
-                ^FO650,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_10]}^FS
-                ^FO600,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_11]}^FS
-                ^FO550,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_12]}^FS
-                ^FO500,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_13]}^FS
-                ^FO450,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_14]}^FS
-                ^FO400,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_15]}^FS
-                ^FO350,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_16]}^FS
+                ^FO650,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_11]}^FS
+                ^FO600,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_12]}^FS
+                ^FO550,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_10]}^FS
+                ^FO500,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_18]}^FS
+                ^FO450,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_13]}^FS
                 ^FO300,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_17]}^FS
-                ^BY8^FO70,200^BER,210,Y,N,N,N,N^FD{label_info[field_18]}^FS ^XZ
+                ^FO250,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_16]}^FS
+
+                ^BY4
+                ^FO40,300
+                ^BCR,200,N,N,,D
+                ^FD{label_info[field_18]}^FS
+                ^XZ
             """
         return(zpl)
     except Exception as ex:
