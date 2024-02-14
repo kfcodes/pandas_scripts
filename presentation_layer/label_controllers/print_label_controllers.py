@@ -34,11 +34,11 @@ async def print_small_product_label(id):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-async def print_large_product_label(id, quantity):
+async def print_large_product_label(id, quantity, quantity_in_a_box):
     try:
         label_info = read_to_list_index(f"{os.getenv('PRODUCTIONLABELINFO')}{id}")
         outline = create_large_product_label_outline()
-        body = create_large_product_label_data(label_info[0], quantity)
+        body = create_large_product_label_data(label_info[0], quantity, quantity_in_a_box)
         label_data = outline + body
         response = print_large_label(label_data)
         return response

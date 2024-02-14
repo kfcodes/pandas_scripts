@@ -47,7 +47,7 @@ def create_large_product_label_outline():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-def create_large_product_label_data(label_info, qty):
+def create_large_product_label_data(label_info, qty, quantity_in_a_box):
     try:
 
         field_9 = os.getenv("LABELFIELD9")
@@ -67,14 +67,14 @@ def create_large_product_label_data(label_info, qty):
                 ^FO600,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_12]}^FS
                 ^FO550,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_10]}^FS
                 ^FO500,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_18]}^FS
-                ^FO450,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_13]}^FS
+                ^FO450,450^A@90,50,50,E:ARIALB.TTF^FD{quantity_in_a_box}^FS
                 ^FO300,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_17]}^FS
                 ^FO250,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_16]}^FS
 
                 ^BY4
                 ^FO40,300
                 ^BCR,200,N,N,,D
-                ^FD{label_info[field__18]}^FS
+                ^FD{label_info[field_18]}^FS
                 ^XZ
             """
         return(zpl)

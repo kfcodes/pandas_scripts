@@ -11,14 +11,17 @@ async def print_small_product_label_function(id: int):
 
 @label_router.post("/print_large_product_label/{id}")
 async def print_large_product_label_function(id: int, body: Request):
-    # if body:
-    #     body =  await body.json();
-    #     quantity = int(body["quantity"])
-    #     response = await print_large_product_label(id, quantity);
-    #     return response;
-    # else:
-    response = await print_large_product_label(id, 1);
-    return "No Quantity", response
+    if body:
+        body =  await body.json();
+        quantity = int(body["qty"])
+        if body["qtyPerBox"] == 0 or body["qtyPerBox"] == None:
+            quantity_in_a_box = 0;
+        else: 
+            quantity_in_a_box = int(body["qtyPerBox"])
+        response = await print_large_product_label(id, quantity, quantity_in_a_box);
+        return response;
+    else:
+        return "Request Body cannot be empty"
 
 @label_router.post("/print_large_combined_label")
 async def print_large_combined_label_function(data: Request):
