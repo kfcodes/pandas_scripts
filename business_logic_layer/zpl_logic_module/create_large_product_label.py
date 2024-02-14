@@ -35,7 +35,7 @@ def create_large_product_label_outline():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-def create_large_product_label_data(label_info, qty):
+def create_large_product_label_data(label_info, qty, quantity_in_a_box):
     try:
         field_9 = os.getenv("LABELFIELD9")
         field_10 = os.getenv("LABELFIELD10")
