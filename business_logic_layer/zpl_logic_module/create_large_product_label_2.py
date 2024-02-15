@@ -58,7 +58,7 @@ def create_large_product_label_data(label_info, qty, quantity_in_a_box):
         field_16 = os.getenv("LABELFIELD16")
         field_17 = os.getenv("LABELFIELD17")
         field_18 = os.getenv("LABELFIELD18")
-        field__18 = os.getenv("LABELFIELD_18")
+        field__18 = os.getenv("LABELFIELD__18")
 
         zpl = f"""
                 ^PQ{qty},10,1,Y
@@ -74,7 +74,7 @@ def create_large_product_label_data(label_info, qty, quantity_in_a_box):
                 ^BY4
                 ^FO40,300
                 ^BCR,200,N,N,,D
-                ^FD{label_info[field_18]}^FS
+                ^FD{label_info[field__18]}^FS
                 ^XZ
             """
         return(zpl)
