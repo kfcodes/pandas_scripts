@@ -12,8 +12,7 @@ def process_label_file():
         processed_data = process_label_data(data);
         data_2 = read_data_in_sheet('LABELSFILE', os.getenv('SHEETNAME_2'))
         processed_data_2 = process_label_data_2(data_2);
-        update_labels(processed_data);
-        update_labels(processed_data_2);
+        update_labels(processed_data, processed_data_2);
 
     except Exception as ex:
         print("Data could not be processed: \n", ex)
