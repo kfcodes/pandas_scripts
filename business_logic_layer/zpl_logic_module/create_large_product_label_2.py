@@ -69,8 +69,8 @@ def create_large_product_label_data(label_info, qty, quantity_in_a_box, exp):
                 ^FO410,520^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_17]}^FS
                 ^FO410,880^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_16]}^FS
 
-                ^BY2,2.5,170
-                ^FO70,100
+                ^BY2,2.5,200
+                ^FO70,10
                 ^BCR,,N,N,N,A
                 ^FD>:>801{label_info[field__18]}>810{label_info[field_17]}>815{exp}>
                 ^FS 
