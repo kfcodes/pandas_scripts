@@ -5,7 +5,7 @@ load_dotenv("../../.env")
 def create_large_product_label_outline():
     try:
         zpl = f"""
-                ^XA^CFD^FWR^LH2,20
+                ^XA^CFD^FWR^LH2,5
              
                 ^FO582,0^GB5,1200,2^FS
                 ^FO520,0^GB5,1200,2^FS
