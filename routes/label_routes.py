@@ -14,11 +14,12 @@ async def print_large_product_label_function(id: int, body: Request):
     if body:
         body =  await body.json();
         quantity = int(body["qty"])
+        exp = "260218"
         if body["qtyPerBox"] == 0 or body["qtyPerBox"] == None:
             quantity_in_a_box = 0;
         else: 
             quantity_in_a_box = int(body["qtyPerBox"])
-        response = await print_large_product_label(id, quantity, quantity_in_a_box);
+        response = await print_large_product_label(id, quantity, quantity_in_a_box, exp);
         return response;
     else:
         return "Request Body cannot be empty"

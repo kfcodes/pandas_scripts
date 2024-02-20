@@ -14,17 +14,6 @@ def create_large_product_label_outline():
                 ^FO400,440^GB120,5,2^FS
                 ^FO400,840^GB120,5,2^FS
              
-             
-                ^FO650,20^A0,40^FDPROUDCT^FS
-                ^FO651,20^A0,40^FDPROUDCT^FS
-                ^FO652,20^A0,40^FDPROUDCT^FS
-                ^FO590,20^A0,40^FDSIZE^FS
-                ^FO591,20^A0,40^FDSIZE^FS
-                ^FO592,20^A0,40^FDSIZE^FS
-                ^FO590,280^A0,40^FDFLAVOUR^FS
-                ^FO591,280^A0,40^FDFLAVOUR^FS
-                ^FO592,280^A0,40^FDFLAVOUR^FS
-
                 ^FO530,20^A0,40^FD{os.getenv("LABELFIELD1")}:^FS
                 ^FO531,20^A0,40^FD{os.getenv("LABELFIELD1")}:^FS
                 ^FO532,20^A0,40^FD{os.getenv("LABELFIELD1")}:^FS
@@ -52,7 +41,7 @@ def create_large_product_label_outline():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-def create_large_product_label_data(label_info, qty, quantity_in_a_box):
+def create_large_product_label_data(label_info, qty, quantity_in_a_box, exp):
     try:
 
         field_9 = os.getenv("LABELFIELD9")
@@ -70,9 +59,8 @@ def create_large_product_label_data(label_info, qty, quantity_in_a_box):
 
                 ^FO700,300^A0,90^FD{label_info[field_9]}^FS
 
-                ^FO650,210^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_11]}^FS
-                ^FO590,120^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_13]}^FS
-                ^FO590,460^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_12]}^FS
+                ^FO650,20^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_11]} ({label_info[field_13]})^FS
+                ^FO590,20^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_12]}^FS
 
                 ^FO530,150^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_10]}^FS
                 ^FO530,700^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_18]}^FS
@@ -81,15 +69,18 @@ def create_large_product_label_data(label_info, qty, quantity_in_a_box):
                 ^FO410,520^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_17]}^FS
                 ^FO410,880^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_16]}^FS
 
-                ^BY5,2.5,170
-                ^FO70,300
+                ^BY2,2.5,170
+                ^FO70,100
                 ^BCR,,N,N,N,A
-                ^FD>;>801{label_info[field__18]}^FS
-                ^FT35,450
+                ^FD>:>801{label_info[field__18]}>810{label_info[field_17]}>815{exp}>
+                ^FS 
+                ^FT35,170
                 ^ABR,20,20
-                ^FD(01){label_info[field__18]}^FS
+                ^FD(01){label_info[field__18]}(10){label_info[field_17]}(15){exp}^FS
                 ^XZ
             """
         return(zpl)
     except Exception as ex:
         print("Data could not be processed: \n", ex)
+                # ^FD>;>801{label_info[field__18]}>810>6{label_info[field_17]}>815>8260218^FS
+                # ^FD(01){label_info[field__18]}(10){label_info[field_17]}(15)260218^FS
