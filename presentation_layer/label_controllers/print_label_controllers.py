@@ -42,7 +42,8 @@ async def print_large_product_label(id, quantity, quantity_in_a_box, exp):
         # print(label_info[{os.getenv("LABELFIELD18")}])
         # if label_info[{os.getenv("LABELFIELD18")}] != None:
         outline = create_large_product_label_outline()
-        body = create_large_product_label_data(label_info[0], quantity, quantity_in_a_box, exp)
+        # body = create_large_product_label_data(label_info[0], quantity, quantity_in_a_box, exp)
+        body = create_large_product_label_data(label_info[0], quantity, quantity_in_a_box)
         # print(body)
         label_data = outline + body
         response = print_large_label(label_data)
