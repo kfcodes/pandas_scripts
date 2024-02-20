@@ -56,7 +56,6 @@ def create_large_product_label_data(label_info, qty, quantity_in_a_box, exp):
 
         zpl = f"""
                 ^PQ{qty},10,1,Y
-
                 ^FO700,300^A0,90^FD{label_info[field_9]}^FS
 
                 ^FO650,20^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_11]} ({label_info[field_13]})^FS
