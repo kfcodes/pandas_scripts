@@ -6,42 +6,47 @@ def create_large_product_label_outline():
     try:
         zpl = f"""
                 ^XA^CFD^FWR^LH2,20
+             
+                ^FO582,0^GB5,1200,2^FS
+                ^FO520,0^GB5,1200,2^FS
+                ^FO400,0^GB5,1200,2^FS
+                ^FO523,520^GB60,5,2^FS
+                ^FO400,440^GB120,5,2^FS
+                ^FO400,840^GB120,5,2^FS
+             
+             
+                ^FO650,20^A0,40^FDPROUDCT^FS
+                ^FO651,20^A0,40^FDPROUDCT^FS
+                ^FO652,20^A0,40^FDPROUDCT^FS
+                ^FO590,20^A0,40^FDSIZE^FS
+                ^FO591,20^A0,40^FDSIZE^FS
+                ^FO592,20^A0,40^FDSIZE^FS
+                ^FO590,280^A0,40^FDFLAVOUR^FS
+                ^FO591,280^A0,40^FDFLAVOUR^FS
+                ^FO592,280^A0,40^FDFLAVOUR^FS
 
-                ^FO650,20^A0,50^FD{os.getenv("LABELFIELD2")}:^FS
-                ^FO651,20^A0,50^FD{os.getenv("LABELFIELD2")}:^FS
-                ^FO652,20^A0,50^FD{os.getenv("LABELFIELD2")}:^FS
+                ^FO530,20^A0,40^FD{os.getenv("LABELFIELD1")}:^FS
+                ^FO531,20^A0,40^FD{os.getenv("LABELFIELD1")}:^FS
+                ^FO532,20^A0,40^FD{os.getenv("LABELFIELD1")}:^FS
+                ^FO530,590^A0,40^FD{os.getenv("LABELFIELD_0")}:^FS
+                ^FO531,590^A0,40^FD{os.getenv("LABELFIELD_0")}:^FS
+                ^FO532,590^A0,40^FD{os.getenv("LABELFIELD_0")}:^FS
 
-                ^FO600,20^A0,50^FD{os.getenv("LABELFIELD3")}:^FS
-                ^FO601,20^A0,50^FD{os.getenv("LABELFIELD3")}:^FS
-                ^FO602,20^A0,50^FD{os.getenv("LABELFIELD3")}:^FS
-
-                ^FO550,20^A0,50^FD{os.getenv("LABELFIELD1")}:^FS
-                ^FO551,20^A0,50^FD{os.getenv("LABELFIELD1")}:^FS
-                ^FO552,20^A0,50^FD{os.getenv("LABELFIELD1")}:^FS
-
-                ^FO500,20^A0,50^FD{os.getenv("LABELFIELD_0")}:^FS
-                ^FO501,20^A0,50^FD{os.getenv("LABELFIELD_0")}:^FS
-                ^FO502,20^A0,50^FD{os.getenv("LABELFIELD_0")}:^FS
-
-                ^FO450,20^A0,50^FD{os.getenv("LABELFIELD_3")}:^FS
-                ^FO451,20^A0,50^FD{os.getenv("LABELFIELD_3")}:^FS
-                ^FO452,20^A0,50^FD{os.getenv("LABELFIELD_3")}:^FS
-
-                ^FO400,20^A0,50^FD{os.getenv("LABELFIELD_1")}:^FS
-                ^FO401,20^A0,50^FD{os.getenv("LABELFIELD_1")}:^FS
-                ^FO402,20^A0,50^FD{os.getenv("LABELFIELD_1")}:^FS
-
-                ^FO350,20^A0,50^FD{os.getenv("LABELFIELD_2")}:^FS
-                ^FO351,20^A0,50^FD{os.getenv("LABELFIELD_2")}:^FS
-                ^FO352,20^A0,50^FD{os.getenv("LABELFIELD_2")}:^FS
-
-                ^FO300,20^A0,50^FD{os.getenv("LABELFIELD6")}:^FS
-                ^FO301,20^A0,50^FD{os.getenv("LABELFIELD6")}:^FS
-                ^FO302,20^A0,50^FD{os.getenv("LABELFIELD6")}:^FS
-
-                ^FO250,20^A0,50^FD{os.getenv("LABELFIELD7")}:^FS
-                ^FO251,20^A0,50^FD{os.getenv("LABELFIELD7")}:^FS
-                ^FO252,20^A0,50^FD{os.getenv("LABELFIELD7")}:^FS
+                ^FO460,20^A0,40^FD{os.getenv("LABELFIELD_3")}^FS
+                ^FO461,20^A0,40^FD{os.getenv("LABELFIELD_3")}^FS
+                ^FO462,20^A0,40^FD{os.getenv("LABELFIELD_3")}^FS
+                ^FO460,560^A0,40^FD{os.getenv("LABELFIELD6")}^FS
+                ^FO461,560^A0,40^FD{os.getenv("LABELFIELD6")}^FS
+                ^FO462,560^A0,40^FD{os.getenv("LABELFIELD6")}^FS
+                ^FO460,920^A0,40^FD{os.getenv("LABELFIELD7")}^FS
+                ^FO461,920^A0,40^FD{os.getenv("LABELFIELD7")}^FS
+                ^FO462,920^A0,40^FD{os.getenv("LABELFIELD7")}^FS
+                ^FO350,120^A0,40^FD{os.getenv("LABELFIELD_2")}^FS
+                ^FO351,120^A0,40^FD{os.getenv("LABELFIELD_2")}^FS
+                ^FO352,120^A0,40^FD{os.getenv("LABELFIELD_2")}^FS
+                ^FO350,740^A0,40^FD{os.getenv("LABELFIELD_1")}^FS
+                ^FO351,740^A0,40^FD{os.getenv("LABELFIELD_1")}^FS
+                ^FO352,740^A0,40^FD{os.getenv("LABELFIELD_1")}^FS
             """
         return(zpl)
     except Exception as ex:
@@ -54,6 +59,7 @@ def create_large_product_label_data(label_info, qty, quantity_in_a_box):
         field_10 = os.getenv("LABELFIELD10")
         field_11 = os.getenv("LABELFIELD11")
         field_12 = os.getenv("LABELFIELD12")
+        field_13 = os.getenv("LABELFIELD13")
         field_16 = os.getenv("LABELFIELD16")
         field_17 = os.getenv("LABELFIELD17")
         field_18 = os.getenv("LABELFIELD18")
@@ -64,20 +70,22 @@ def create_large_product_label_data(label_info, qty, quantity_in_a_box):
 
                 ^FO700,300^A0,90^FD{label_info[field_9]}^FS
 
-                ^FO650,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_11]}^FS
-                ^FO600,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_12]}^FS
-                ^FO550,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_10]}^FS
-                ^FO500,450^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_18]}^FS
-                ^FO450,550^A@90,50,50,E:ARIALB.TTF^FD{quantity_in_a_box}^FS
-                ^FO300,550^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_17]}^FS
-                ^FO250,550^A@90,50,50,E:ARIALB.TTF^FD{label_info[field_16]}^FS
+                ^FO650,210^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_11]}^FS
+                ^FO590,120^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_13]}^FS
+                ^FO590,460^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_12]}^FS
+
+                ^FO530,150^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_10]}^FS
+                ^FO530,700^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_18]}^FS
+
+                ^FO410,170^A@90,40,40,E:ARIALB.TTF^FD{quantity_in_a_box}^FS
+                ^FO410,520^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_17]}^FS
+                ^FO410,880^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_16]}^FS
 
                 ^BY5,2.5,170
                 ^FO70,300
                 ^BCR,,N,N,N,A
                 ^FD>;>801{label_info[field__18]}^FS
-
-                ^FT35,420
+                ^FT35,450
                 ^ABR,20,20
                 ^FD(01){label_info[field__18]}^FS
                 ^XZ
