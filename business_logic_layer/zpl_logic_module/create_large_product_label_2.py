@@ -50,7 +50,7 @@ def create_large_product_label_data(label_info, qty, quantity_in_a_box, exp):
         field_12 = os.getenv("LABELFIELD12")
         field_13 = os.getenv("LABELFIELD13")
         field_16 = os.getenv("LABELFIELD16")
-        field_17 = os.getenv("LABELFIELD17")
+        field_15 = os.getenv("LABELFIELD15")
         field_18 = os.getenv("LABELFIELD18")
         field__18 = os.getenv("LABELFIELD__18")
 
@@ -65,16 +65,16 @@ def create_large_product_label_data(label_info, qty, quantity_in_a_box, exp):
                 ^FO530,700^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_18]}^FS
 
                 ^FO410,170^A@90,40,40,E:ARIALB.TTF^FD{quantity_in_a_box}^FS
-                ^FO410,520^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_17]}^FS
+                ^FO410,520^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_15]}^FS
                 ^FO410,880^A@90,40,40,E:ARIALB.TTF^FD{label_info[field_16]}^FS
 
                 ^BY2,2.5,200
                 ^FO70,100
                 ^BCR,,N,N,N,A
-                ^FD>:>8010{label_info[field__18]}>810{label_info[field_17]}>815{exp}>^FS 
+                ^FD>:>8010{label_info[field__18]}>810{label_info[field_15]}>815{exp}>^FS 
                 ^FT35,170
                 ^ABR,20,20
-                ^FD(01)0{label_info[field__18]}(10){label_info[field_17]}(15){exp}^FS
+                ^FD(01)0{label_info[field__18]}(10){label_info[field_15]}(15){exp}^FS
                 ^XZ
             """
         return(zpl)
