@@ -70,11 +70,12 @@ def update_components(data):
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
 
-def update_labels(data, data_2):
+def update_labels(data, data_2, data_3):
     try:
         call_stored_procedure("STOREDPROCEDURE8");
         write_to_database(data, 'LABEL')
         write_to_database(data_2, 'LABEL')
+        write_to_database(data_3, 'LABEL')
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
 
