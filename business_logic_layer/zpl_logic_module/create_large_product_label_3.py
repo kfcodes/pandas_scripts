@@ -29,22 +29,19 @@ def create_large_product_label_outline():
 def create_large_product_label_data(label_info, qty, quantity_in_a_box, exp):
     print(label_info)
     try:
-
         field_18 = os.getenv("LABELFIELD18")
         field_15 = os.getenv("LABELFIELD15")
         field_16 = os.getenv("LABELFIELD16")
         field_10 = os.getenv("LABELFIELD10")
         field_11 = os.getenv("LABELFIELD11")
-
         zpl = f"""
 ^PQ{qty},10,1,Y
-^FO750,330^A0,40^FD{label_info[field_18]}^FS
+^FO750,200^A0,40^FD{label_info[field_18]}^FS
 ^FO680,60^A0,50^FD{label_info[field_11]}^FS
-^FO620,330^A0,40^FD{label_info[field_15]}^FS
-^FO570,330^A0,40^FD{label_info[field_16]}^FS
-^FO520,330^A0,40^FD{quantity_in_a_box}^FS
-^FO470,330^A0,40^FD{label_info[field_10]}^FS
-
+^FO620,200^A0,40^FD{label_info[field_15]}^FS
+^FO570,200^A0,40^FD{label_info[field_16]}^FS
+^FO520,200^A0,40^FD{quantity_in_a_box}^FS
+^FO470,200^A0,40^FD{label_info[field_10]}^FS
 ^BY3,2,180
 ^FO280,100
 ^BCR,,N,N,N,A
@@ -63,16 +60,3 @@ def create_large_product_label_data(label_info, qty, quantity_in_a_box, exp):
         return(zpl)
     except Exception as ex:
         print("data could not be processed: \n", ex)
-
-                # ^FD>:>801{label_info[field__18]}>810{label_info[field_15]}>815{exp}^FS 
-                # ^FD(01){label_info[field__18]} (10){label_info[field_15]}(15){exp}^FS
-                # ^FD>:>815{exp}>830{quantity_in_a_box}^FS 
-                # ^FD(15){[exp]} (30){quantity_in_a_box}^FS
-
-                # ^FO650,20^A0,40,40^FD{label_info[field_11]} ({label_info[field_14]})^FS
-                # ^FO590,20^A0,40,40^FD{label_info[field_12]}^FS
-                # ^FO530,150^A0,40,40^FD{label_info[field_10]}^FS
-                # ^FO530,700^A0,40,40^FD{label_info[field_18]}^FS
-                # ^FO410,170^A0,40,40^FD{quantity_in_a_box}^FS
-                # ^FO410,520^A0,40,40^FD{label_info[field_15]}^FS
-                # ^FO410,880^A0,40,40^FD{label_info[field_16]}^FS
