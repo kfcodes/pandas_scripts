@@ -20,7 +20,7 @@ from routes.finished_product_crud_routes import finished_product_router
 
 # NOT WORKING ROUTES
 # from routes.pallet_modifications_routes import combine_pallets_router
-# from routes.data_processing_routes import data_processing_router
+from routes.data_processing_routes import data_processing_router
 
 import os
 from dotenv import load_dotenv
@@ -57,7 +57,7 @@ app.include_router(finished_product_router)
 # app.include_router(finished_product_list_router)
 # app.include_router(production_overview)
 # app.include_router(schedule_router)
-# app.include_router(data_processing_router)
+app.include_router(data_processing_router)
 
 # ROUTES NOT WORKING
 # app.include_router(combine_pallets_router)

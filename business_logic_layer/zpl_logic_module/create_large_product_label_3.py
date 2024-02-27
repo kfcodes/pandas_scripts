@@ -51,10 +51,10 @@ def create_large_product_label_data(label_info, qty, quantity_in_a_box, exp):
 ^FD(01) {label_info[field_18]} (10) {label_info[field_15]}^FS
 ^FO50,100
 ^BCR,,N,N,N,A
-^FD>;>815{exp}>83000000{quantity_in_a_box}^FS 
+^FD>;>815{exp}>8300000000{quantity_in_a_box}^FS 
 ^FT20,200
 ^A0R,30,30
-^FD(15) {exp} (30) 00000{quantity_in_a_box}^FS
+^FD(15) {exp} (30) 0000000{quantity_in_a_box}^FS
 ^XZ
 """
         return(zpl)
