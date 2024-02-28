@@ -4,7 +4,9 @@ from business_logic_layer.zpl_logic_module.pallet_labels.generic_pallet_label im
 from business_logic_layer.zpl_logic_module.internal_labels.internal_pallet_label import create_blank_label_outline
 from business_logic_layer.print_logic_module.print_zpl import print_small_label, print_large_label
 # from business_logic_layer.zpl_logic_module.box_labels.large_type_1_box_label import create_large_product_label_data,  create_large_product_label_outline
-from business_logic_layer.zpl_logic_module.box_labels.large_type_2_box_label import create_large_product_label_data,  create_large_product_label_outline
+# from business_logic_layer.zpl_logic_module.box_labels.large_type_2_box_label import create_large_product_label_data,  create_large_product_label_outline
+import business_logic_layer.zpl_logic_module.box_labels.large_type_2_box_label as type_2_label
+
 # from ...business_logic_layer.zpl_logic_module.box_labels.large_type_3_box_label import create_large_product_label_data,  create_large_product_label_outline
 
 import os
@@ -42,8 +44,9 @@ async def print_large_product_label(id, quantity, quantity_in_a_box, exp):
         # print(label_info)
         # print(label_info[{os.getenv("LABELFIELD18")}])
         # if label_info[{os.getenv("LABELFIELD18")}] != None:
-        outline = create_large_product_label_outline()
-        body = create_large_product_label_data(label_info[0], quantity, quantity_in_a_box, exp)
+        label_type = get_label_type()
+        outline = label_type.create_large_product_label_outline()
+        body = label_type.create_large_product_label_data(label_info[0], quantity, quantity_in_a_box, exp)
         # print(body)
         label_data = outline + body
         response = print_large_label(label_data)
