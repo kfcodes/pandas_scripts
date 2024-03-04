@@ -7,7 +7,6 @@ import business_logic_layer.zpl_logic_module.box_labels.large_type_1_box_label a
 import business_logic_layer.zpl_logic_module.box_labels.large_type_2_box_label as label_type_2
 import business_logic_layer.zpl_logic_module.box_labels.large_type_3_box_label as label_type_3
 
-import pprint
 import os
 from dotenv import load_dotenv
 load_dotenv("../../.env")
@@ -48,23 +47,29 @@ async def print_large_product_label(id, quantity, quantity_in_a_box, exp):
             print(body)
             label_data = outline + body
             response = print_large_label(label_data)
+
         elif label_type == 2:
             outline = label_type_2.create_large_product_label_outline()
             body = label_type_2.create_large_product_label_data(label_info, quantity, quantity_in_a_box, exp)
             print(body)
             label_data = outline + body
             response = print_large_label(label_data)
+
         elif label_type == 3:
             outline = label_type_3.create_large_product_label_outline()
             body = label_type_3.create_large_product_label_data(label_info, quantity, quantity_in_a_box, exp)
             print(body)
             label_data = outline + body
             response = print_large_label(label_data)
+
         #elif label_type == 4:
         #    label_type_function = label_type_4();
+
         else:
-            return {"message" : "No label Data for this label"}
+            response = {"message" : "No label Data for this label"}
+
         return response
+
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
