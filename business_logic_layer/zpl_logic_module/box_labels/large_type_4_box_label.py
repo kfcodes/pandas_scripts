@@ -4,7 +4,7 @@ load_dotenv("../../.env")
 
 def create_large_product_label_outline():
     try:
-        zpl = f"""
+        zpl_outline = f"""
 ^XA^CFD^FWR^LH2,5
 ^FO625,20
 ^GB5,1160,2^FS
@@ -19,8 +19,8 @@ def create_large_product_label_outline():
 ^FO130,50^A0,40^FDMade in:^FS
 ^FO25,50^A0,40^FDWeb site:^FS
 """
-        data = os.getenv("LABELFIELDOUTLINE")
-        zpl = zpl + data
+        data = str(os.getenv("LABELFIELDOUTLINE"))
+        zpl = zpl_outline + data
         return(zpl)
     except Exception as ex:
         print("data could not be processed: \n", ex)
