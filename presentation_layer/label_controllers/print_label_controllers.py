@@ -6,6 +6,7 @@ from business_logic_layer.print_logic_module.print_zpl import print_small_label,
 import business_logic_layer.zpl_logic_module.box_labels.large_type_1_box_label as label_type_1
 import business_logic_layer.zpl_logic_module.box_labels.large_type_2_box_label as label_type_2
 import business_logic_layer.zpl_logic_module.box_labels.large_type_3_box_label as label_type_3
+import business_logic_layer.zpl_logic_module.box_labels.large_type_4_box_label as label_type_4
 
 import os
 from dotenv import load_dotenv
@@ -62,8 +63,12 @@ async def print_large_product_label(id, quantity, quantity_in_a_box, exp):
             label_data = outline + body
             response = print_large_label(label_data)
 
-        #elif label_type == 4:
-        #    label_type_function = label_type_4();
+        elif label_type == 4:
+            outline = label_type_4.create_large_product_label_outline()
+            body = label_type_4.create_large_product_label_data(label_info, quantity, quantity_in_a_box, exp)
+            print(body)
+            label_data = outline + body
+            response = print_large_label(label_data)
 
         else:
             response = {"message" : "No label Data for this label"}

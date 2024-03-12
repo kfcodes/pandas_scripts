@@ -14,7 +14,6 @@ async def create_finished_product(product_data):
         create_finished_product_string = create_finished_product_string.replace("eol_id=Null ,", "")
         db(create_finished_product_string)
         product = read_selection_to_list(f"{os.getenv('GETNEWESTPRODUCTID')}")
-        print(product)
         new_finished_product_id = product['eol_id'][0]
         return new_finished_product_id
     except Exception as ex:
