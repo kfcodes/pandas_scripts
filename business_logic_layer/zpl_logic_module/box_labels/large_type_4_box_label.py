@@ -13,11 +13,12 @@ def create_large_product_label_outline():
 ^FO550,50^A0,40^FDOrdered by:^FS
 ^FO480,50^A0,40^FDProduct Name:^FS
 ^FO410,50^A0,40^FDNet Weight:^FS
+^FO410,450^A0,40^FDKG^FS
 ^FO340,50^A0,40^FDBBE:^FS
 ^FO270,50^A0,40^FDLOT:^FS
 ^FO200,50^A0,40^FDMfg. Date:^FS
 ^FO130,50^A0,40^FDMade in:^FS
-^FO25,50^A0,40^FDWeb site:^FS
+^FO30,50^A0,40^FDWeb site:^FS
 """
         data = str(os.getenv("LABELFIELDOUTLINE"))
         zpl = zpl_outline + data
@@ -26,7 +27,6 @@ def create_large_product_label_outline():
         print("data could not be processed: \n", ex)
 
 def create_large_product_label_data(label_info, qty, quantity_in_a_box, exp):
-    print(label_info)
     try:
         field_15 = os.getenv("LABELFIELD15")
         field_16 = os.getenv("LABELFIELD16")
