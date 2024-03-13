@@ -10,7 +10,7 @@ def create_large_product_label_outline():
 ^FO550,50^A0,40^FDOrdered by:^FS
 ^FO480,50^A0,40^FDProduct Name:^FS
 ^FO410,50^A0,40^FDNet Weight:^FS
-^FO410,450^A0,40^FDKG^FS
+^FO410,400^A0,40^FDKG^FS
 ^FO340,50^A0,40^FDBBE:^FS
 ^FO270,50^A0,40^FDLOT:^FS
 ^FO200,50^A0,40^FDMfg. Date:^FS
