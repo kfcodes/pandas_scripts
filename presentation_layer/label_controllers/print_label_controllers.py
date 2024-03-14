@@ -66,8 +66,8 @@ async def print_large_product_label(id, quantity, quantity_in_a_box, exp):
         elif label_type == 4:
             outline = label_type_4.create_large_product_label_outline()
             body = label_type_4.create_large_product_label_data(label_info, quantity, quantity_in_a_box, exp)
-            print(body)
             label_data = outline + body
+            print(label_info)
             response = print_large_label(label_data)
 
         else:
