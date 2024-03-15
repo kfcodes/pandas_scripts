@@ -3,10 +3,13 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from presentation_layer.product_controllers.product_controllers import get_product_by_id
 
-# WORKING ROUTES
+# CRUD operation routes
 from routes.pallet_crud_routes import pallet_crud_router
-from routes.pallet_lists_routes import pallet_list_router
 from routes.pallet_item_crud_routes import pallet_item_crud_router
+from routes.pallet_list_crud_routes import pallet_list_crud_router
+
+# OTHER ROUTES
+from routes.pallet_lists_routes import pallet_list_router
 from routes.pallet_item_list_routes import pallet_item_list_router
 from routes.label_routes import label_router
 from routes.scanner_routes import scanner_router
@@ -46,9 +49,12 @@ async def get_product_function(id: str):
 #     get_all_packing_lists()
 #     return {"message": "found packing Lists"}
 
+# INCLUDE CRUD ROUTES
 app.include_router(pallet_crud_router)
-app.include_router(pallet_list_router)
 app.include_router(pallet_item_crud_router)
+app.include_router(pallet_list_crud_router)
+
+# INCLUDE OTHER ROUTES
 app.include_router(pallet_item_list_router)
 app.include_router(label_router)
 app.include_router(scanner_router)
