@@ -6,7 +6,7 @@ from presentation_layer.product_controllers.product_controllers import get_produ
 # CRUD operation routes
 from routes.pallet_crud_routes import pallet_crud_router
 from routes.pallet_item_crud_routes import pallet_item_crud_router
-from routes.pallet_list_crud_routes import pallet_list_crud_router
+from routes.pallet_group_crud_routes import pallet_group_crud_router
 
 # OTHER ROUTES
 from routes.pallet_lists_routes import pallet_list_router
@@ -52,7 +52,7 @@ async def get_product_function(id: str):
 # INCLUDE CRUD ROUTES
 app.include_router(pallet_crud_router)
 app.include_router(pallet_item_crud_router)
-app.include_router(pallet_list_crud_router)
+app.include_router(pallet_group_crud_router)
 
 # INCLUDE OTHER ROUTES
 app.include_router(pallet_item_list_router)
