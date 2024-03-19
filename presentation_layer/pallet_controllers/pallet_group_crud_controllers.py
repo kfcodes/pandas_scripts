@@ -15,7 +15,7 @@ async def create_new_pallet_group():
 
 async def get_pallet_group_info(id):
     try:
-        pallet_group = read_to_list_index(f"{os.getenv('GETPALLET_GROUP')}'{int(id)}'")
+        pallet_group = read_to_list_index(f"{os.getenv('GETPALLETGROUPINFO')}'{int(id)}'")
         return pallet_group
     except Exception as ex:
         print("Data could not be processed: \n", ex)
