@@ -5,10 +5,8 @@ load_dotenv(".env")
 def create_blank_label_outline():
     try:
         zpl = """
-^XA^CFD
-^FWR
-^LH30,20
-^PQ100,10,1,Y
+^XA^CFD^FWR^LH30,20
+^PQ250,10,1,Y
 ^FO550,10^GB160,1170,5^FS
 ^FO630,10^GB5,1170,5^FS
 ^FO640,20^A0,40^FDPRODUCT:^FS

@@ -55,6 +55,7 @@ app.include_router(pallet_item_crud_router)
 app.include_router(pallet_group_crud_router)
 
 # INCLUDE OTHER ROUTES
+app.include_router(pallet_list_router)
 app.include_router(pallet_item_list_router)
 app.include_router(label_router)
 app.include_router(scanner_router)

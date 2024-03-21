@@ -31,7 +31,7 @@ async def print_large_combined_label_function(data: Request):
     response = await print_combined_pallet_label(json_data);
     return response;
 
-@label_router.get("/print_blank_labels")
+@label_router.post("/print_blank_labels")
 async def print_blank_label_function():
     response = await print_blank_pallet_label();
     return response;
