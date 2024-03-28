@@ -8,7 +8,8 @@ load_dotenv("../../.env")
 
 async def create_pallet_item_with_id(pallet_id):
     try:
-        new_pallet_item = db(f"{os.getenv('CREATEPALLETITEM')}({int(pallet_id)})")
+        new_pallet_item_string = str(f"{os.getenv('CREATENEWPALLETITEM')}")
+        new_pallet_item = db(new_pallet_item_string.format(int(pallet_id)))
         return new_pallet_item
     except Exception as ex:
         print("Data could not be processed: \n", ex)
