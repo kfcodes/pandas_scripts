@@ -14,17 +14,12 @@ async def create_pallet_item_with_id(pallet_id):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-async def get_items_on_pallet(pallet_id):
+async def get_item_on_pallet(item_id):
     try:
-        pallet_items = [];
-        items = read_to_list_index(f"{os.getenv('GETPALLETITEMS')}{int(pallet_id)}")
-        for key, val in items.items():
-            if val["quantity"] is None or math.isnan(val["quantity"]):
-                val["quantity"] = None;
-            else:
-                val["quantity"] = int(val["quantity"]);
-            pallet_items.append(val)
-        return pallet_items;
+        item = read_to_list_index(f"{os.getenv('GETPALLETITEM')}{int(item_id)}")
+        item = item[0]
+        print(item)
+        return item;
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
@@ -40,6 +35,7 @@ async def update_pallet_item(item_id, new_item_data):
 async def delete_pallet_item(item_id):
     try:
         items = db(f"{os.getenv('DELETEPALLETITEM')}'{int(item_id)}'")
-        return items
+        print(items)
+        return f"Pallet item with id of {int(item_id)} has been deleted"
     except Exception as ex:
         print("Data could not be processed: \n", ex)
