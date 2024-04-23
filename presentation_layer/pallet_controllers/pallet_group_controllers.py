@@ -50,15 +50,18 @@ async def get_possible_pallets():
 async def get_pallet_data():
     try:
         pallets = read_to_list_index(f"{os.getenv('GETPALLETDATA')}")
+        print(pallets)
         pallet_list = [];
         previousPallet = "0";
         for key, item in pallets.items():
+            print(item)
             if (item["PALLET"] == previousPallet): 
                 item["WEIGHT"] = None
                 item["DIMENSIONS"] = None
                 item["PALLET"] = None
             else:
                 previousPallet = item["PALLET"]
+            # if (item["PALLET"] == previousPallet): 
             pallet_list.append(item)
         return pallet_list
     except Exception as ex:

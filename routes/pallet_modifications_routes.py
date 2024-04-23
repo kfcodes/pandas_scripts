@@ -1,10 +1,16 @@
 from fastapi import APIRouter, Request
-from data_models_layer.object_models import APIRouter, Request
 from presentation_layer.pallet_controllers.pallet_crud_controllers import combine_pallets_import
 
 combine_pallets_router = APIRouter();
 
-@combine_pallets_router.post("/combine_pallets")
-async def combine_function(pallet_list:list,height:int):
-    response = await combine_pallets_import(pallet_list, height)
-    return response
+@combine_pallets_router.put("/combine_pallets")
+async def combine_function(body: Request):
+    if body:
+        body =  await body.json();
+        pallet_id = int(max(body["pallet_list"]))
+        pallet_list = tuple(body["pallet_list"])
+        height = int(body["height"])
+        response = await combine_pallets_import(pallet_id, height, pallet_list)
+        return response
+    else:
+        return "Request Body cannot be empty"
