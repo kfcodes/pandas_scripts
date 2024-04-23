@@ -12,6 +12,7 @@ async def create_new_pallet_function():
 @pallet_crud_router.get("/pallet/{id}")
 async def find_pallet_function(id):
     pallet = await get_pallet(id)
+    pallet = pallet[0]
     return pallet
 
 @pallet_crud_router.put("/pallet/{id}")
