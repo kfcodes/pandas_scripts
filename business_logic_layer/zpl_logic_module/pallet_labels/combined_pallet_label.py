@@ -23,12 +23,13 @@ def create_combined_pallet_label_outline():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-def create_combined_pallet_label_data(label_info):
+def create_combined_pallet_label_data(label_info, pallets):
+    print("new",label_info)
     try:
         zpl = f"""
-^FO50,260^A0,80^FD${label_info.weight}^FS
-^FO50,860^A0,80^FD${label_info.height}^FS
-^FO350,80^A0,70^FD ${label_info.pallets}^FS
+^FO50,260^A0,80^FD{int(label_info["weight"])}^FS
+^FO50,860^A0,80^FD{int(label_info["height"])}^FS
+^FO350,80^A0,70^FD{str(pallets)}^FS
 ^XZ"""
         return(zpl)
     except Exception as ex:
