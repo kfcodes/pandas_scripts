@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from presentation_layer.pallet_controllers.pallet_group_controllers import get_pallet_group, get_all_pallets, get_pallet_details, get_possible_pallets, get_recent_pallets, get_pallet_data, get_latest_pallet_data, get_data_for_id, get_data, get_picklist
+from presentation_layer.pallet_controllers.pallet_group_controllers import get_pallet_group, get_all_pallets, get_pallet_details, get_possible_pallets, get_recent_pallets, get_pallet_data, get_latest_pallet_data, get_data_for_id, get_data, get_picklist, get_pallet_summary
 
 pallet_list_router = APIRouter();
 
@@ -33,6 +33,14 @@ async def find_recent_pallets_function():
 async def find_pallet_data_function():
     pallet_data = await get_pallet_data()
     return pallet_data;
+
+@pallet_list_router.get("/pallet_summary")
+async def find_pallet_summary():
+    like = ""
+    lot = ""
+    product_summary = await get_pallet_summary(like, lot)
+    print(product_summary)
+    return "pallet_data";
 
 @pallet_list_router.get("/latest_pallet_data")
 async def find_latest_pallet_data_function():
