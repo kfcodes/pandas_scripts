@@ -1,5 +1,7 @@
-from data_access_layer.read_database_functions import read_selection_to_list, read_to_list_index
 from data_access_layer.write_database_functions import db
+from data_access_layer.read_database_functions import read_selection_to_list, read_to_list_index
+from business_logic_layer.zpl_logic_module.pallet_labels.combined_pallet_label import create_combined_pallet_label_outline, create_combined_pallet_label_data
+from business_logic_layer.print_logic_module.print_zpl import print_large_label
 
 import os
 from dotenv import load_dotenv
@@ -40,7 +42,18 @@ async def delete_pallet(id):
 async def combine_pallets_import(pallet_id ,height, pallet_list):
     try:
         update_string = str(os.getenv('COMBINEPALLETDATA'))
-        pallets = db(update_string.format(pallet_id, height, pallet_list))
-        return pallets
+        update_pallets_response = db(update_string.format(pallet_id, height, pallet_list))
+        print(update_pallets_response)
+        sql = str(os.getenv('GETCOMBINEDPALLETDATA'))
+        combined_label_outline = create_combined_pallet_label_outline()
+        combined_pallet_data = read_to_list_index(sql.format(pallet_id))
+        ids = str(pallet_list)
+        ids = ids.replace("(","")
+        ids = ids.replace(")","")
+        ids = ids.replace("'","")
+        combined_label_body = create_combined_pallet_label_data(combined_pallet_data[0], ids)
+        label_data = str(combined_label_outline) + str(combined_label_body)
+        response = print_large_label(label_data)
+        return response
     except Exception as ex:
         print("Data could not be processed: \n", ex)
