@@ -53,26 +53,24 @@ async def get_pallet_summary(like, lot):
         like = str(like)
         # print(lot)
         lot = str(lot)
-        update_string = str(os.getenv('SUMMARY_1'))
+        pallet_summary = str(os.getenv('SUMMARY_1'))
         # print(update_string)
-        products_string = update_string.format(like,lot)
+        products_string = pallet_summary.format(like,lot)
         # print(products_string)
         products = db2(products_string)
-        print(products[0])
+        # products = products.mappings().all()
+        # print(products)
         product_list = [];
-        previous_product = "0";
-        previous_lot = "0";
-        previous_product = "0";
+        previous_product = "";
         for item in products:
-            print(item.product_id)
-            # if (item"product_id"] == previous_product): 
-            #     item["product_description"] = None
-            #     item["product_id"] = None
-            # if (item["lot"] == previous_lot): 
-            #     item["lot"] = None
-            # else:
-            #     previous_product = item["product_id"]
-            #     previous_lot = item["lot"]
+            # print(list(item))
+            item = item._asdict()
+            print(item)
+            if (item["product_id"] == previous_product): 
+                item["product_description"] = None
+                item["product_id"] = None
+            else:
+                previous_product = item["product_id"]
             product_list.append(item)
         return product_list
         print(products)
