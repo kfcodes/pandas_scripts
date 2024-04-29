@@ -26,6 +26,7 @@ def get_production_info(selection):
 
 def read_selection_to_list(selection):
     try:
+        print("selection:",selection)
         info = pd.read_sql(selection ,database_connection())
         values = info.to_dict(orient='list')
         return values
@@ -34,6 +35,7 @@ def read_selection_to_list(selection):
 
 def read_to_list_index(selection):
     try:
+        print("selection:",selection)
         info = pd.read_sql(selection ,database_connection())
         values = info.to_dict(orient='index')
         return values

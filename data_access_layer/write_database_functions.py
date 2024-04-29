@@ -6,13 +6,22 @@ import os
 from dotenv import load_dotenv
 load_dotenv("../.env")
 
+def db2(sql):
+    result = ''
+    try:
+        with database_connection().connect() as connection:
+            result = connection.execute(text(sql))
+    except Exception as ex:
+        result = "Connection could not be made due to the following error: \n", ex
+    return result
+
 def db(sql):
     result = ''
     try:
         with database_connection().connect() as connection:
             connection.execute(text(sql))
-            connection.commit()
-        result = "Data written to database"
+        result = connection.commit()
+        # result = "Data written to database"
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
     return result
