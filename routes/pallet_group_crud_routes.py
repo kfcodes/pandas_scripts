@@ -1,13 +1,22 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
 from data_models_layer.object_models import Pallet_group
 from presentation_layer.pallet_controllers.pallet_group_crud_controllers import create_new_pallet_group, get_pallet_group_info, update_pallet_group, delete_pallet_group
 
 pallet_group_crud_router = APIRouter();
 
 @pallet_group_crud_router.post("/pallet_group")
-async def create_new_pallet_function():
-    pallet_group_id = await create_new_pallet_group()
-    return pallet_group_id
+async def create_new_pallet_function(body: Request):
+    if body:
+        body =  await body.json();
+        name = body["name"]
+        if body["name"] == 0 or body["name"] == None:
+            name = "Next";
+        else: 
+            name = body["name"]
+        response = await create_new_pallet_group(name)
+        return response;
+    else:
+        return "Request Body cannot be empty"
 
 @pallet_group_crud_router.get("/pallet_group/{id}")
 async def find_pallet_group_function(id):
