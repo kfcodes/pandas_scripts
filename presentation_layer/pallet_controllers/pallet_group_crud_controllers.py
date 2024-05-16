@@ -1,15 +1,17 @@
 from data_access_layer.read_database_functions import read_selection_to_list, read_to_list_index
-from data_access_layer.write_database_functions import db
+from data_access_layer.write_database_functions import db, db2
 
 import os
 from dotenv import load_dotenv
 load_dotenv("../../.env")
 
-async def create_new_pallet_group():
+async def create_new_pallet_group(name):
     try:
-        db(f"{os.getenv('CREATENEWPALLETGROUP')}")
-        pallet_group_info = read_selection_to_list(f"{os.getenv('GETNEWESTPALLETGROUP')}")
-        return pallet_group_info
+        create_pallet_group_info = str(os.getenv('CREATENEWPALLETGROUP'))
+        result = db(create_pallet_group_info.format(str(name)))
+        print(result)
+        # pallet_group_info = db(create_pallet_group_info.format(str(name)))
+        return "Created a new pallet group"
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
