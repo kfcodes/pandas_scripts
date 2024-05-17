@@ -16,12 +16,13 @@ def db2(sql):
     return result
 
 def db(sql):
+    print(sql)
     result = ''
     try:
         with database_connection().connect() as connection:
             connection.execute(text(sql))
-        result = connection.commit()
-        # result = "Data written to database"
+            connection.commit()
+        result = "Data written to database"
     except Exception as ex:
         print("Connection could not be made due to the following error: \n", ex)
     return result
