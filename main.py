@@ -3,27 +3,27 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from presentation_layer.product_controllers.product_controllers import get_product_by_id
 
-# CRUD operation routes
-from routes.pallet_crud_routes import pallet_crud_router
-from routes.pallet_item_crud_routes import pallet_item_crud_router
-from routes.pallet_group_crud_routes import pallet_group_crud_router
+# CRUD operation api_route_layer
+from api_route_layer.pallet_crud_routes import pallet_crud_router
+from api_route_layer.pallet_item_crud_routes import pallet_item_crud_router
+from api_route_layer.pallet_group_crud_routes import pallet_group_crud_router
 
 # OTHER ROUTES
-from routes.pallet_lists_routes import pallet_list_router
-from routes.pallet_item_list_routes import pallet_item_list_router
-from routes.label_routes import label_router
-from routes.scanner_routes import scanner_router
+from api_route_layer.pallet_lists_routes import pallet_list_router
+from api_route_layer.pallet_item_list_routes import pallet_item_list_router
+from api_route_layer.label_routes import label_router
+from api_route_layer.scanner_routes import scanner_router
 
 # TESTING
-# from routes.assembly_info_routes import assembly_router
-from routes.finished_product_crud_routes import finished_product_router
-# from routes.finished_product_list_routes import finished_product_list_router
-# from routes.production_overview import app as production_overview
-# from routes.production_schedule_routes import schedule_router
+# from api_route_layer.assembly_info_routes import assembly_router
+from api_route_layer.finished_product_crud_routes import finished_product_router
+# from api_route_layer.finished_product_list_routes import finished_product_list_router
+# from api_route_layer.production_overview import app as production_overview
+# from api_route_layer.production_schedule_routes import schedule_router
 
 # NOT WORKING ROUTES
-from routes.pallet_modifications_routes import combine_pallets_router
-from routes.data_processing_routes import data_processing_router
+from api_route_layer.pallet_modifications_routes import combine_pallets_router
+from api_route_layer.data_processing_routes import data_processing_router
 
 import os
 from dotenv import load_dotenv
