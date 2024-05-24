@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from presentation_layer.data_controller_layer.pallet_controllers.pallet_group_controllers import get_open_pallet_groups
+from data_presentation_layer.data_controller_layer.pallet_controllers.pallet_group_controllers import get_open_pallet_groups
 
 pallet_group_crud_router = APIRouter();
 

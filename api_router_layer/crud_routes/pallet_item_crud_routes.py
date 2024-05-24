@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from physical_layer.data_models_layer.object_models import Pallet_item
-from presentation_layer.data_controller_layer.pallet_controllers.pallet_item_crud_controllers import create_pallet_item_with_id, get_item_on_pallet , update_pallet_item, delete_pallet_item
+from data_presentation_layer.data_controller_layer.pallet_controllers.pallet_item_crud_controllers import create_pallet_item_with_id, get_item_on_pallet , update_pallet_item, delete_pallet_item
 
 pallet_item_crud_router = APIRouter();
 

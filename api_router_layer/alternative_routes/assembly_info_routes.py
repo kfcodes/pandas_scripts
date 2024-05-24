@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request
-from presentation_layer.data_controller_layer.assembly_controllers.assembly_information_controllers import get_all_brands, get_products_from_brand, get_assembly_information
+from data_presentation_layer.data_controller_layer.assembly_controllers.assembly_information_controllers import get_all_brands, get_products_from_brand, get_assembly_information
 
 assembly_router = APIRouter();
 
