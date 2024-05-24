@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from presentation_layer.product_controllers.product_controllers import get_product_by_id
+from data_presentation_layer.data_controller_layer.product_controllers.product_controllers import get_product_by_id
 
 # CRUD operation api_router_layer
 from api_router_layer.crud_routes.pallet_crud_routes import pallet_crud_router
