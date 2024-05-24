@@ -9,8 +9,8 @@ from api_router_layer.crud_routes.pallet_item_crud_routes import pallet_item_cru
 from api_router_layer.crud_routes.pallet_group_crud_routes import pallet_group_crud_router
 
 # OTHER ROUTES
-from api_router_layer.alternative_routes.pallet_lists_routes import pallet_list_router
-from api_router_layer.alternative_routes.pallet_item_list_routes import pallet_item_list_router
+from api_router_layer.data_list_routes.pallet_lists_routes import pallet_list_router
+from api_router_layer.data_list_routes.pallet_item_list_routes import pallet_item_list_router
 from api_router_layer.alternative_routes.label_routes import label_router
 from api_router_layer.alternative_routes.scanner_routes import scanner_router
 
