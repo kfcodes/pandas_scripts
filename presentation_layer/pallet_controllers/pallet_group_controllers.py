@@ -128,3 +128,10 @@ async def get_data():
         return pallets
     except Exception as ex:
         print("Data could not be processed: \n", ex)
+
+async def get_open_pallet_groups():
+    try:
+        pallets = read_selection_to_list(f"{os.getenv('GETOPENPALLETLISTS')}")
+        return pallets
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)

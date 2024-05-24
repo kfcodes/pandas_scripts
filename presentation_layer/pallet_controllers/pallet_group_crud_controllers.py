@@ -10,7 +10,6 @@ async def create_new_pallet_group(name):
         create_pallet_group_info = str(os.getenv('CREATENEWPALLETGROUP'))
         result = db(create_pallet_group_info.format(str(name)))
         print(result)
-        # pallet_group_info = db(create_pallet_group_info.format(str(name)))
         return "Created a new pallet group"
     except Exception as ex:
         print("Data could not be processed: \n", ex)
