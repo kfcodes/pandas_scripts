@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Request
-from presentation_layer.finished_product_controllers.finished_product_crud_controllers import create_finished_product, get_finished_product, update_finished_product, delete_finished_product_by_id
-from data_models_layer.object_models import Finished_product
+from presentation_layer.data_controller_layer.finished_product_controllers.finished_product_crud_controllers import create_finished_product, get_finished_product, update_finished_product, delete_finished_product_by_id
+from physical_layer.data_models_layer.object_models import Finished_product
 
 finished_product_router = APIRouter();
 

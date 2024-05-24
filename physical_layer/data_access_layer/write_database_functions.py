@@ -1,6 +1,6 @@
 from sqlalchemy import text, insert, update
-from data_access_layer.stored_procedure_function import call_stored_procedure
-from data_access_layer.database_connection import database_connection
+from physical_layer.data_access_layer.stored_procedure_function import call_stored_procedure
+from physical_layer.data_access_layer.database_connection import database_connection
 
 import os
 from dotenv import load_dotenv

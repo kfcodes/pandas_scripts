@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from presentation_layer.product_controllers.product_controllers import get_all_products, get_product_by_id, get_finished_product_by_id, get_all_finished_products
+from presentation_layer.data_controller_layer.product_controllers.product_controllers import get_all_products, get_product_by_id, get_finished_product_by_id, get_all_finished_products
 
 finished_product_list_router = APIRouter();
 

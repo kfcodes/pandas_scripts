@@ -1,4 +1,4 @@
-from data_access_layer.database_connection import database_connection as db
+from physical_layer.data_access_layer.database_connection import database_connection as db
 
 import os
 from dotenv import load_dotenv
