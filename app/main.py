@@ -8,16 +8,16 @@ from router_layer.api.v1.crud_routes.pallet_group_crud_routes import pallet_grou
 # OTHER ROUTES
 from router_layer.api.v1.data_list_routes.pallet_lists_routes import pallet_list_router
 from router_layer.api.v1.data_list_routes.pallet_item_list_routes import pallet_item_list_router
-# from router_layer.api.v1.alternative_routes.label_routes import label_router
+from router_layer.api.v1.alternative_routes.label_routes import label_router
 # from router_layer.api.v1.alternative_routes.scanner_routes import scanner_router
 # TESTING
-# from router_layer.api.v1.assembly_info_routes import assembly_router
-# from router_layer.api.v1.finished_product_list_routes import finished_product_list_router
+from router_layer.api.v1.alternative_routes.assembly_info_routes import assembly_router
+# from router_layer.api.v1.alternative_routes.finished_product_list_router #import finished_product_list_router
 # from router_layer.api.v1.production_overview import app as production_overview
 # from router_layer.api.v1.production_schedule_routes import schedule_router
 # NOT WORKING ROUTES
-# from router_layer.api.v1.alternative_routes.pallet_modifications_routes import combine_pallets_router
-# from router_layer.api.v1.alternative_routes.data_processing_routes import data_processing_router
+from router_layer.api.v1.alternative_routes.pallet_modifications_routes import combine_pallets_router
+from router_layer.api.v1.alternative_routes.data_processing_routes import data_processing_router
 
 import os
 from dotenv import load_dotenv
@@ -54,13 +54,13 @@ app.include_router(pallet_group_crud_router)
 # INCLUDE OTHER ROUTES
 app.include_router(pallet_list_router)
 app.include_router(pallet_item_list_router)
-# app.include_router(label_router)
+app.include_router(label_router)
 # app.include_router(scanner_router)
-# app.include_router(assembly_router)
+app.include_router(assembly_router)
 # app.include_router(finished_product_list_router)
 # app.include_router(production_overview)
 # app.include_router(schedule_router)
-# app.include_router(data_processing_router)
+app.include_router(data_processing_router)
 
 # ROUTES NOT WORKING
-# app.include_router(combine_pallets_router)
+app.include_router(combine_pallets_router)
