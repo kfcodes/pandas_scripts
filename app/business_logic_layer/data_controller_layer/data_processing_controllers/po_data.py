@@ -1,6 +1,6 @@
-from business_logic_layer.xlsx_logic_module.read_xlsx_file import read_data, read_data_after_first_row
-from business_logic_layer.pandas_logic_module.process_po_data import process_po_data
-from data_access_layer.write_database_functions import update_po, update_poi
+from business_logic_layer.external_module_controllers.excel_file_logic.read_xlsx_file import read_data, read_data_after_first_row
+from business_logic_layer.external_module_controllers.data_analysis_logic.process_po_data import process_po_data
+from physical_layer.data_access_layer.write_database_functions import update_po, update_poi
 
 def process_po_files():
     try:

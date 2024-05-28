@@ -1,6 +1,6 @@
-from business_logic_layer.xlsx_logic_module.read_xlsx_file import read_data
-from business_logic_layer.pandas_logic_module.process_component_data import process_component_data
-from data_access_layer.write_database_functions import update_components
+from business_logic_layer.external_module_controllers.excel_file_logic.read_xlsx_file import read_data
+from business_logic_layer.external_module_controllers.data_analysis_logic.process_component_data import process_component_data
+from physical_layer.data_access_layer.write_database_functions import update_components
 
 def process_components_file():
     try:

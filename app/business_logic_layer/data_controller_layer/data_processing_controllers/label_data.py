@@ -1,6 +1,6 @@
-from business_logic_layer.xlsx_logic_module.read_xlsx_file import read_data_in_sheet
-from business_logic_layer.pandas_logic_module.process_label_data import process_label_data, process_label_data_2, process_label_data_3
-from data_access_layer.write_database_functions import update_labels
+from business_logic_layer.external_module_controllers.excel_file_logic.read_xlsx_file import read_data_in_sheet
+from business_logic_layer.external_module_controllers.data_analysis_logic.process_label_data import process_label_data, process_label_data_2, process_label_data_3 
+from physical_layer.data_access_layer.write_database_functions import update_labels
 
 import os
 from dotenv import load_dotenv

@@ -1,7 +1,7 @@
-from data_access_layer.read_database_functions import read_selection_to_list, read_to_list_index
-from data_access_layer.write_database_functions import db, insert_db_data, update_db_data
-from data_models_layer.table_models import finished_product_table
-from data_models_layer.object_models import Finished_product
+from physical_layer.data_access_layer.read_database_functions import read_selection_to_list, read_to_list_index
+from physical_layer.data_access_layer.write_database_functions import db, insert_db_data, update_db_data
+from physical_layer.data_models_layer.table_models import finished_product_table
+from physical_layer.data_models_layer.object_models import Finished_product
 
 import os
 from dotenv import load_dotenv

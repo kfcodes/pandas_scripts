@@ -1,5 +1,5 @@
-from data_access_layer.read_database_functions import read_selection_to_list
-from data_access_layer.write_database_functions import db
+from physical_layer.data_access_layer.read_database_functions import read_selection_to_list
+from physical_layer.data_access_layer.write_database_functions import db
 
 import os
 from dotenv import load_dotenv

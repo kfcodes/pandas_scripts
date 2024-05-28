@@ -1,6 +1,6 @@
-from ..database_controllers.read_db_index import get_production_info, get_production_components
-from ..pdf_controllers.create_production_info_pdf import create_production_info_pdf
-from ..print_controllers.print_pdf import print_a4_pdf
+from physical_layer.data_access_layer.read_database_functions import get_production_info, get_production_components
+from business_logic_layer.external_module_controllers.pdf_logic.create_production_info_pdf import create_production_info_pdf
+from business_logic_layer.external_module_controllers.print_logic.print_pdf import print_a4_pdf
 
 import os
 from dotenv import load_dotenv
