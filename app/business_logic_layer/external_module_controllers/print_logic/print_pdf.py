@@ -1,4 +1,4 @@
-import cups
+# import cups
 
 import os
 from dotenv import load_dotenv
