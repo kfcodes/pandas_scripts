@@ -1,6 +1,6 @@
-from physical_layer.data_access_layer.read_database_functions import read_to_dataframe, read_selected_data_to_dataframe, read_selection_to_list
-from physical_layer.data_access_layer.write_database_functions import db
-from business_logic_layer.external_module_controllers.html_logic.scanner_html_components #import packing_lists_html, pallet_list_html, pallet_info_html
+# from physical_layer.data_access_layer.read_database_functions import read_to_dataframe, read_selected_data_to_dataframe, read_selection_to_list
+# from physical_layer.data_access_layer.write_database_functions import db
+# from business_logic_layer.external_module_controllers.html_logic.scanner_html_components #import packing_lists_html, pallet_list_html, pallet_info_html
 
 import os
 from dotenv import load_dotenv
