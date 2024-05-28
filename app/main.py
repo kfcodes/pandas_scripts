@@ -1,29 +1,29 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from data_presentation_layer.data_controller_layer.product_controllers.product_controllers import get_product_by_id
+from business_logic_layer.data_controller_layer.product_controllers.product_controllers import get_product_by_id
 
-# CRUD operation api_router_layer
-from api_router_layer.crud_routes.pallet_crud_routes import pallet_crud_router
-from api_router_layer.crud_routes.pallet_item_crud_routes import pallet_item_crud_router
-from api_router_layer.crud_routes.pallet_group_crud_routes import pallet_group_crud_router
+# CRUD operation router_layer.api.v1
+from router_layer.api.v1.crud_routes.pallet_crud_routes import pallet_crud_router
+from router_layer.api.v1.crud_routes.pallet_item_crud_routes import pallet_item_crud_router
+from router_layer.api.v1.crud_routes.pallet_group_crud_routes import pallet_group_crud_router
 
 # OTHER ROUTES
-from api_router_layer.data_list_routes.pallet_lists_routes import pallet_list_router
-from api_router_layer.data_list_routes.pallet_item_list_routes import pallet_item_list_router
-from api_router_layer.alternative_routes.label_routes import label_router
-from api_router_layer.alternative_routes.scanner_routes import scanner_router
+from router_layer.api.v1.data_list_routes.pallet_lists_routes import pallet_list_router
+from router_layer.api.v1.data_list_routes.pallet_item_list_routes import pallet_item_list_router
+from router_layer.api.v1.alternative_routes.label_routes import label_router
+from router_layer.api.v1.alternative_routes.scanner_routes import scanner_router
 
 # TESTING
-# from api_router_layer.assembly_info_routes import assembly_router
-from api_router_layer.crud_routes.finished_product_crud_routes import finished_product_router
-# from api_router_layer.finished_product_list_routes import finished_product_list_router
-# from api_router_layer.production_overview import app as production_overview
-# from api_router_layer.production_schedule_routes import schedule_router
+# from router_layer.api.v1.assembly_info_routes import assembly_router
+from router_layer.api.v1.crud_routes.finished_product_crud_routes import finished_product_router
+# from router_layer.api.v1.finished_product_list_routes import finished_product_list_router
+# from router_layer.api.v1.production_overview import app as production_overview
+# from router_layer.api.v1.production_schedule_routes import schedule_router
 
 # NOT WORKING ROUTES
-from api_router_layer.alternative_routes.pallet_modifications_routes import combine_pallets_router
-from api_router_layer.alternative_routes.data_processing_routes import data_processing_router
+from router_layer.api.v1.alternative_routes.pallet_modifications_routes import combine_pallets_router
+from router_layer.api.v1.alternative_routes.data_processing_routes import data_processing_router
 
 import os
 from dotenv import load_dotenv

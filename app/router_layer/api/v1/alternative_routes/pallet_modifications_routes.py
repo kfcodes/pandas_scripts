@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request
-from data_presentation_layer.data_controller_layer.pallet_controllers.pallet_crud_controllers import combine_pallets_import
+from business_logic_layer.data_controller_layer.pallet_controllers.pallet_crud_controllers import combine_pallets_import
 
 combine_pallets_router = APIRouter();
 

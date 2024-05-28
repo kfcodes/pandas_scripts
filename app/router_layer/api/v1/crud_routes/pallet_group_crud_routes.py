@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Request
 from physical_layer.data_models_layer.object_models import Pallet_group
-from data_presentation_layer.data_controller_layer.pallet_controllers.pallet_group_crud_controllers import create_new_pallet_group, get_pallet_group_info, update_pallet_group, delete_pallet_group
+from business_logic_layer.data_controller_layer.pallet_controllers.pallet_group_crud_controllers import create_new_pallet_group, get_pallet_group_info, update_pallet_group, delete_pallet_group
 
 pallet_group_crud_router = APIRouter();
 
