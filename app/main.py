@@ -5,19 +5,21 @@ from router_layer.api.v1.crud_routes.finished_product_crud_routes import finishe
 from router_layer.api.v1.crud_routes.pallet_crud_routes import pallet_crud_router
 from router_layer.api.v1.crud_routes.pallet_item_crud_routes import pallet_item_crud_router
 from router_layer.api.v1.crud_routes.pallet_group_crud_routes import pallet_group_crud_router
-# OTHER ROUTES
+# DATA MANIPULATION OPERATIONS
+from router_layer.api.v1.alternative_routes.pallet_modifications_routes import combine_pallets_router
+from router_layer.api.v1.alternative_routes.data_processing_routes import data_processing_router
+# GET DATA LIST OPERATIONS
 from router_layer.api.v1.data_list_routes.pallet_lists_routes import pallet_list_router
 from router_layer.api.v1.data_list_routes.pallet_item_list_routes import pallet_item_list_router
+# PRINT OPERATIONS
 from router_layer.api.v1.alternative_routes.label_routes import label_router
+from router_layer.api.v1.alternative_routes.create_and_print_certificate_routes import cert_router
 # from router_layer.api.v1.alternative_routes.scanner_routes import scanner_router
 # TESTING
 from router_layer.api.v1.alternative_routes.assembly_info_routes import assembly_router
 # from router_layer.api.v1.alternative_routes.finished_product_list_router #import finished_product_list_router
 # from router_layer.api.v1.production_overview import app as production_overview
 # from router_layer.api.v1.production_schedule_routes import schedule_router
-# NOT WORKING ROUTES
-from router_layer.api.v1.alternative_routes.pallet_modifications_routes import combine_pallets_router
-from router_layer.api.v1.alternative_routes.data_processing_routes import data_processing_router
 
 import os
 from dotenv import load_dotenv
@@ -55,7 +57,7 @@ app.include_router(pallet_group_crud_router)
 app.include_router(pallet_list_router)
 app.include_router(pallet_item_list_router)
 app.include_router(label_router)
-# app.include_router(scanner_router)
+app.include_router(cert_router)
 app.include_router(assembly_router)
 # app.include_router(finished_product_list_router)
 # app.include_router(production_overview)
