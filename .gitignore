@@ -128,4 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-app/physical_layer/data_models_layer/*
+app/physical_layer/data_models_layer/object_models.py
+app/physical_layer/data_models_layer/table_models.py
