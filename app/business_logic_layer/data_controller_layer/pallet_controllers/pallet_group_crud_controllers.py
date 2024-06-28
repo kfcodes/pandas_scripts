@@ -5,6 +5,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv("../../.env")
 
+# CREATE THE NEW GROUP IN THE DB
 async def create_new_pallet_group(name):
     try:
         create_pallet_group_info = str(os.getenv('CREATENEWPALLETGROUP'))
@@ -14,6 +15,7 @@ async def create_new_pallet_group(name):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
+# GET THE DETAILS OF THE INDIVIDUAL PALLET GROUP
 async def get_pallet_group_info(id):
     try:
         pallet_group = read_to_list_index(f"{os.getenv('GETPALLETGROUPINFO')}'{int(id)}'")
@@ -21,6 +23,7 @@ async def get_pallet_group_info(id):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
+# UPDATE THE DETAILS OF THE INDIVIDUAL PALLET GROUP
 async def update_pallet_group(id, new_pallet_group_data):
     try:
         new_pallet_group_data = str(new_pallet_group_data).replace(' ', ' ,').replace('None', 'Null')
@@ -30,6 +33,7 @@ async def update_pallet_group(id, new_pallet_group_data):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
+#  DELETE PALLET GROUP
 async def delete_pallet_group(id):
     try:
         pallet_group = db(f"{os.getenv('DELETEPALLETGROUP')}{id}")

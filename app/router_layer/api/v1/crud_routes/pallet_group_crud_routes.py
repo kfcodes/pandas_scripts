@@ -9,7 +9,7 @@ async def create_new_pallet_function(body: Request):
     if body:
         body =  await body.json();
         name = body["name"]
-        if body["name"] == 0 or body["name"] == None:
+        if body["name"] == 0 or body["name"] == None or body["name"] == "":
             name = "Next";
         else: 
             name = body["name"]

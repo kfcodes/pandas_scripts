@@ -3,6 +3,7 @@ from business_logic_layer.data_controller_layer.pallet_controllers.pallet_group_
 
 pallet_group_crud_router = APIRouter();
 
+# ROUTE TO RETURN ALL OF THE OPEN PACKING LISTS IN THE DB
 @pallet_group_crud_router.get("/open_packing_lists")
 async def find_open_pallet_groups_function():
     pallet_group_list = await get_open_pallet_groups()
