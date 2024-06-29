@@ -136,3 +136,17 @@ async def get_open_pallet_groups():
         return pallets
     except Exception as ex:
         print("Data could not be processed: \n", ex)
+
+async def get_open_pallets():
+    try:
+        pallets = read_selection_to_list(f"{os.getenv('GETOPENPALLETS')}")
+        return pallets
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
+
+async def get_packing_list_pallets():
+    try:
+        pallets = read_selection_to_list(f"{os.getenv('GETPACKINGLISTPALLETS')}")
+        return pallets
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)

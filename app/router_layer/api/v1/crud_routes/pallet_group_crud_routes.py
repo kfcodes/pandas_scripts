@@ -4,30 +4,34 @@ from business_logic_layer.data_controller_layer.pallet_controllers.pallet_group_
 
 pallet_group_crud_router = APIRouter();
 
-@pallet_group_crud_router.post("/pallet_group")
-async def create_new_pallet_function(body: Request):
-    if body:
-        body =  await body.json();
-        name = body["name"]
-        if body["name"] == 0 or body["name"] == None or body["name"] == "":
-            name = "Next";
-        else: 
-            name = body["name"]
-        response = await create_new_pallet_group(name)
-        return response;
-    else:
-        return "Request Body cannot be empty"
+# CREATE A PACKING LIST USING NAME
+@pallet_group_crud_router.post("/pallet_group/{name}")
+async def create_new_pallet_function(name: str):
+    # if body:
+    #     body =  await body.json();
+    #     name = body["name"]
+    #     if body["name"] == 0 or body["name"] == None or body["name"] == "":
+    #         name = "Next";
+    #     else: 
+    #         name = body["name"]
+    response = await create_new_pallet_group(name)
+    return response;
+    # else:
+    #     return "Request Body cannot be empty"
 
+# GET PACKING LIST SUMARY VIEW
 @pallet_group_crud_router.get("/pallet_group/{id}")
 async def find_pallet_group_function(id):
     pallet_list = await get_pallet_group_info(id)
     return pallet_list
 
+# UPDATE PACKING LIST NAME
 @pallet_group_crud_router.put("/pallet_group/{id}")
 async def update_pallet_list(id: int, updated_pallet_group_info: Pallet_group):
     pallet_list = await update_pallet_group(id, updated_pallet_group_info)
     return pallet_list
 
+# DELETE A PACKING LIST
 @pallet_group_crud_router.delete("/pallet_group/{id}")
 async def delete_pallet_group_function(id):
     pallet_list = await delete_pallet_group(id)
