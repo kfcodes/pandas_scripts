@@ -5,13 +5,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from router_layer.api.v1.crud_routes.finished_product_crud_routes import finished_product_router
 from router_layer.api.v1.crud_routes.pallet_crud_routes import pallet_crud_router
 from router_layer.api.v1.crud_routes.pallet_item_crud_routes import pallet_item_crud_router
-from router_layer.api.v1.crud_routes.pallet_group_crud_routes import pallet_group_crud_router
+from router_layer.api.v1.crud_routes.packing_list_crud_routes import packing_list_crud_router
 # DATA MANIPULATION OPERATIONS
 from router_layer.api.v1.alternative_routes.pallet_modifications_routes import combine_pallets_router
 from router_layer.api.v1.alternative_routes.data_processing_routes import data_processing_router
 # GET DATA LIST OPERATIONS
 from router_layer.api.v1.data_list_routes.pallet_lists_routes import pallet_list_router
 from router_layer.api.v1.data_list_routes.pallet_item_list_routes import pallet_item_list_router
+from router_layer.api.v1.data_list_routes.packing_list_info_routes import packing_list_data_router
 # PRINT OPERATIONS
 from router_layer.api.v1.alternative_routes.label_routes import label_router
 from router_layer.api.v1.alternative_routes.create_and_print_certificate_routes import cert_router
@@ -52,7 +53,7 @@ async def get_product_function(id: str):
 app.include_router(finished_product_router)
 app.include_router(pallet_crud_router)
 app.include_router(pallet_item_crud_router)
-app.include_router(pallet_group_crud_router)
+app.include_router(packing_list_crud_router)
 
 # INCLUDE OTHER ROUTES
 app.include_router(pallet_list_router)
