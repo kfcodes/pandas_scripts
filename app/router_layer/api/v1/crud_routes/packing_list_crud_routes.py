@@ -1,12 +1,12 @@
 from fastapi import APIRouter, Request
 from physical_layer.data_models_layer.object_models import Pallet_group
-from business_logic_layer.data_controller_layer.pallet_controllers.pallet_group_crud_controllers import create_new_pallet_group, get_pallet_group_info, update_pallet_group, delete_pallet_group
+from business_logic_layer.data_controller_layer.packing_list_controllers.packing_list_crud_controllers import create_new_packing_list, get_packing_list_info, update_packing_list_name, delete_packing_list, dispatch_packing_list
 
 packing_list_crud_router = APIRouter();
 
 # CREATE A PACKING LIST USING NAME
 @packing_list_crud_router.post("/packing_list/{name}")
-async def create_new_pallet_function(name: str):
+async def create_new_packing_list_function(name: str):
     # if body:
     #     body =  await body.json();
     #     name = body["name"]
@@ -14,7 +14,7 @@ async def create_new_pallet_function(name: str):
     #         name = "Next";
     #     else: 
     #         name = body["name"]
-    response = await create_new_pallet_group(name)
+    response = await create_new_packing_list(name)
     return response;
     # else:
     #     return "Request Body cannot be empty"
@@ -22,13 +22,13 @@ async def create_new_pallet_function(name: str):
 # GET PACKING LIST SUMARY INFO
 @packing_list_crud_router.get("/packing_list/summary/{id}")
 async def find_summary_info_for_packing_list(id):
-    packing_list_info = await get_packing_list_summary(id)
+    packing_list_info = await get_packing_list_info(id)
     return packing_list_info
 
 # UPDATE PACKING LIST NAME
-@packing_list_crud_router.put("/packing_list/name/{id}")
-async def update_packing_list_name(id: int, updated_pallet_group_info: Pallet_group):
-    packing_list_info = await update_packing_list_name_function(id, updated_pallet_group_info)
+@packing_list_crud_router.put("/packing_list/{id}/{name}")
+async def update_packing_list_name_route(id: int, name: str):
+    packing_list_info = await update_packing_list_name(id, name)
     return packing_list_info
 
 # MARK PACKING LIST AS DISPATCHED
