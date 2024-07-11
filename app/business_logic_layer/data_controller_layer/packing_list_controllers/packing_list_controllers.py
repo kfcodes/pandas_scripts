@@ -28,7 +28,7 @@ async def get_pallets_not_on_a_packing_list():
 
 async def get_packing_list_pallets(id):
     try:
-        packing_list_pallets = read_selection_to_list(f"{os.getenv('PACKINGLISTPALLETS')}{int(id)}")
+        packing_list_pallets = read_selection_to_list(f"{os.getenv('PACKINGLISTPALLETS')}{int(id), int(id)}")
         return packing_list_pallets;
     except Exception as ex:
         print("Data could not be processed: \n", ex)

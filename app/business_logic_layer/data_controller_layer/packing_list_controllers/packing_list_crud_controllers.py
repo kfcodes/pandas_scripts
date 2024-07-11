@@ -9,8 +9,7 @@ load_dotenv("../../.env")
 async def create_new_packing_list(name):
     try:
         create_packing_list = str(os.getenv('CREATENEWPACKINGLIST'))
-        result = db(create_packing_list.format(str(name)))
-        print(result)
+        db(create_packing_list.format(str(name)))
         return f"Created new packing list {name}"
     except Exception as ex:
         print("Data could not be processed: \n", ex)
@@ -18,7 +17,8 @@ async def create_new_packing_list(name):
 # GET SUMMARY INFORMATION ABOUT THE PACKING LIST
 async def get_packing_list_info(id):
     try:
-        packing_list_info = read_to_list_index(f"{os.getenv('GETPACKINGLISTINFO')}'{int(id)}'")
+        get_packing_list_info = str(os.getenv('GETPACKINGLISTINFO'))
+        packing_list_info = read_to_list_index(get_packing_list_info.format(int(id)))
         return packing_list_info
     except Exception as ex:
         print("Data could not be processed: \n", ex)
