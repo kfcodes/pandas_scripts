@@ -7,28 +7,29 @@ load_dotenv(".env")
 
 async def get_open_packing_lists():
     try:
-        packing_lists = read_selection_to_list(f"{os.getenv('OPENPACKINGLISTS')}")
+        packing_lists = read_to_list_index(f"{os.getenv('OPENPACKINGLISTS')}")
         return packing_lists;
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
 async def get_open_packing_list_names():
     try:
-        packing_list_names = read_selection_to_list(f"{os.getenv('OPENPACKINGLISTNAMES')}")
+        packing_list_names = read_to_list_index(f"{os.getenv('OPENPACKINGLISTNAMES')}")
         return packing_list_names;
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
 async def get_pallets_not_on_a_packing_list():
     try:
-        pallets = read_selection_to_list(f"{os.getenv('PALLETSNOTONPACKINGLIST')}")
+        pallets = read_to_list_index(f"{os.getenv('PALLETSNOTONPACKINGLIST')}")
         return pallets;
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
 async def get_packing_list_pallets(id):
     try:
-        packing_list_pallets = read_selection_to_list(f"{os.getenv('PACKINGLISTPALLETS')}{int(id), int(id)}")
+        packing_list_pallets_str = str(f"{os.getenv('PACKINGLISTPALLETS')}")
+        packing_list_pallets = read_to_list_index(packing_list_pallets_str.format(int(id)))
         return packing_list_pallets;
     except Exception as ex:
         print("Data could not be processed: \n", ex)
