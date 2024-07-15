@@ -9,7 +9,8 @@ load_dotenv("../../.env")
 async def create_new_packing_list(name):
     try:
         create_packing_list = str(os.getenv('CREATENEWPACKINGLIST'))
-        db(create_packing_list.format(str(name)))
+        response = db(create_packing_list.format(str(name)))
+        print(response)
         return f"Created new packing list {name}"
     except Exception as ex:
         print("Data could not be processed: \n", ex)
@@ -44,7 +45,10 @@ async def dispatch_packing_list(id):
 #  DELETE PACKING LIST
 async def delete_packing_list(id):
     try:
-        result = db(f"{os.getenv('DELETEPACKINGLIST')}{int(id)}")
-        return result
+        prepare_string = str(os.getenv('PREPARETODELETEPACKINGLIST'))
+        delete_string = str(os.getenv('DELETEPACKINGLIST'))
+        result = db(prepare_string.format(int(id)))
+        result_2 = db(delete_string.format(int(id)))
+        return result, result_2
     except Exception as ex:
         print("Data could not be processed: \n", ex)

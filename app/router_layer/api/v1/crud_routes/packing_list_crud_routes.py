@@ -5,7 +5,7 @@ from business_logic_layer.data_controller_layer.packing_list_controllers.packing
 packing_list_crud_router = APIRouter();
 
 # CREATE A PACKING LIST USING NAME
-@packing_list_crud_router.post("/packing_list/{name}")
+@packing_list_crud_router.post("/packing_list/create/{name}")
 async def create_new_packing_list_function(name: str):
     # if body:
     #     body =  await body.json();
@@ -26,7 +26,7 @@ async def find_summary_info_for_packing_list(id):
     return packing_list_info
 
 # UPDATE PACKING LIST NAME
-@packing_list_crud_router.put("/packing_list/{id}/{name}")
+@packing_list_crud_router.put("/packing_list/update/{id}/{name}")
 async def update_packing_list_name_route(id: int, name: str):
     packing_list_info = await update_packing_list_name(id, name)
     return packing_list_info
@@ -38,7 +38,7 @@ async def mark_packing_list_as_dispatched(id: int):
     return pallet_list
 
 # DELETE A PACKING LIST
-@packing_list_crud_router.delete("/packing_list/{id}")
+@packing_list_crud_router.delete("/packing_list/delete/{id}")
 async def delete_a_packing_list(id):
     pallet_list = await delete_packing_list(id)
     return pallet_list
