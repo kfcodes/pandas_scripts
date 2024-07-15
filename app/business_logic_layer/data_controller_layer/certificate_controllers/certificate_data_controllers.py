@@ -6,13 +6,12 @@ import os
 from dotenv import load_dotenv
 load_dotenv("../../.env")
 
-async def create_and_print_certificate(id):
+async def print_pdf_cert_for_packing_list(id):
     try:
-        data = read_to_list_index(f"{os.getenv('CERTIFICATE_DATA')}{int(id)}")
+        data = read_to_list_index(f"{os.getenv('GETCERTIFICATEDATA')}{int(id)}")
         pdf_data_file = create_certificate_pdf(data)
-        # response = print_a4_pdf(pdf_data_file)
-        # return response
-        return "response"
+        response = print_a4_pdf(pdf_data_file)
+        return response
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
