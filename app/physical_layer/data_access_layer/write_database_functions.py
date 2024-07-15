@@ -16,7 +16,7 @@ def db2(sql):
     return result
 
 def db(sql):
-    print(sql)
+    print("printing SQL stmt:", sql)
     result = ''
     try:
         with database_connection().connect() as connection:
