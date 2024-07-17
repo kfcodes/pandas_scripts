@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Request
-from business_logic_layer.data_controller_layer.label_controllers.print_label_controllers import print_large_product_label, print_small_product_label, print_pallet_label, print_combined_pallet_label, print_blank_pallet_label, get_label_info, print_this_label, print_specific_label_now
-# , print_specific_label_now_2
+from business_logic_layer.data_controller_layer.label_controllers.print_label_controllers import print_large_product_label, print_small_product_label, print_pallet_label, print_combined_pallet_label, print_blank_pallet_label, get_label_info, print_this_label, print_specific_label_now, print_specific_label_now_2
 
 
 label_router = APIRouter();
@@ -59,8 +58,8 @@ async def print_specific_label_function():
     response = await print_specific_label_now();
     return response;
 
-# @label_router.post("/new_product_labe/{id}")
-# async def print_specific_label_function(id):
-#     response = await print_specific_label_now_2(id);
-#     return response;
+@label_router.post("/new_product_labe/{id}")
+async def print_specific_label_function(id):
+    response = await print_specific_label_now_2(id);
+    return response;
 

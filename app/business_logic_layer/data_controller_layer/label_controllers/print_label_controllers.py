@@ -130,14 +130,13 @@ async def print_specific_label_now():
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
-# This is the function to print the new product labels
-# async def print_specific_label_now_2(id):
-#     try:
-#         label_info = read_to_list_index(f"{os.getenv('TESTNEWLABEL')}'{id}'")
-#         label_outline = label_type_5.create_large_product_label_2(label_info[0])
-#         print(label_outline)
-#         response = print_specific_label(label_outline)
-#         return response
-#     except Exception as ex:
-#         print("Data could not be processed: \n", ex)
-#
+# THIS IS THE FUNCTION TO PRINT THE NEW PRODUCT LABELS
+async def print_specific_label_now_2(id):
+    try:
+        label_info = read_to_list_index(f"{os.getenv('TESTNEWLABEL')}'{id}'")
+        label_outline = label_type_5.create_large_product_label_2(label_info[0])
+        print(label_outline)
+        response = print_specific_label(label_outline)
+        return response
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
