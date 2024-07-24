@@ -2,7 +2,7 @@ import pandas as pd
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../../.env")
+load_dotenv("../../.server_config_files/fastAPI.env")
 
 def process_schedule_data(data):
     try:

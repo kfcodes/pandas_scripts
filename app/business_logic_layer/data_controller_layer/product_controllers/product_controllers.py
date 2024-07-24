@@ -1,7 +1,7 @@
 from physical_layer.data_access_layer.read_database_functions import read_selection_to_list, read_to_list_index
 import os
 from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv("../../.server_config_files/fastAPI.env")
 
 async def get_all_products():
     try:

@@ -2,7 +2,7 @@
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../../.env")
+load_dotenv("../../.server_config_files/fastAPI.env")
 
 def create_certificate_pdf(data):
     try:

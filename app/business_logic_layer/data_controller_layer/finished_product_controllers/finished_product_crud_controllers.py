@@ -5,7 +5,7 @@ from physical_layer.data_models_layer.object_models import Finished_product
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.env")
+load_dotenv("../../.server_config_files/fastAPI.env")
 
 async def create_finished_product(product_data):
     try:

@@ -4,7 +4,7 @@ from business_logic_layer.external_module_controllers.html_logic.scanner_html_co
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.env")
+load_dotenv("../../.server_config_files/fastAPI.env")
 
 def update_production_overview():
     try:

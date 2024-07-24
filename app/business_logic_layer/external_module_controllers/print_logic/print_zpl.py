@@ -1,7 +1,7 @@
 import socket              
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.env")
+load_dotenv("../../.server_config_files/fastAPI.env")
 
 def print_large_label(label_data):
 	try:

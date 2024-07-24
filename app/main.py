@@ -25,7 +25,7 @@ from router_layer.api.v1.alternative_routes.assembly_info_routes import assembly
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv("../../.server_config_files/fastAPI.env")
 
 from business_logic_layer.data_controller_layer.product_controllers.product_controllers import get_product_by_id
 

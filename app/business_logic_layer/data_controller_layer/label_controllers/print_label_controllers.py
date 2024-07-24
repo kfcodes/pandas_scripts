@@ -12,7 +12,7 @@ import business_logic_layer.external_module_controllers.zpl_logic.product_box_lo
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.env")
+load_dotenv("../../.server_config_files/fastAPI.env")
 
 async def print_pallet_label(id):
     try:

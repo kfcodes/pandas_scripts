@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.env")
+load_dotenv("../../.server_config_files/fastAPI.env")
 
 def create_large_product_label_2(data):
     try:
