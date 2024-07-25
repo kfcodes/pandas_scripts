@@ -4,7 +4,7 @@ from physical_layer.data_access_layer.write_database_functions import update_lab
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.env")
+load_dotenv("../.env")
 
 def process_label_file():
     try:
