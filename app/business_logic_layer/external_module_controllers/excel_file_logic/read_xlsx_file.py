@@ -2,7 +2,7 @@ import pandas as pd
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.server_config_files/fastAPI.env")
+load_dotenv("../.env")
 
 def read_data(file):
     try:

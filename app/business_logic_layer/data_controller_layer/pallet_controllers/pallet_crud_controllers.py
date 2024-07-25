@@ -5,7 +5,7 @@ from business_logic_layer.external_module_controllers.print_logic.print_zpl impo
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.server_config_files/fastAPI.env")
+load_dotenv("../.env")
 
 async def create_pallet():
     try:

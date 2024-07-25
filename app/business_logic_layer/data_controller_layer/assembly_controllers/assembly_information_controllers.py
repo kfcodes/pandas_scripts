@@ -2,7 +2,7 @@ from physical_layer.data_access_layer.read_database_functions import read_select
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.server_config_files/fastAPI.env")
+load_dotenv("../.env")
 
 async def get_all_brands():
     try:

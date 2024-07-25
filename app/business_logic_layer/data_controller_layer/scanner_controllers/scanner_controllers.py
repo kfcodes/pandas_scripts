@@ -4,7 +4,7 @@
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.server_config_files/fastAPI.env")
+load_dotenv("../.env")
 
 def get_all_packing_lists():
     try:

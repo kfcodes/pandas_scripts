@@ -2,7 +2,7 @@ from fpdf import FPDF
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.server_config_files/fastAPI.env")
+load_dotenv("../.env")
 
 def create_production_info_pdf(finished_product, product_components):
     try:

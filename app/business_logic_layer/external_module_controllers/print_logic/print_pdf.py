@@ -2,7 +2,7 @@
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.server_config_files/fastAPI.env")
+load_dotenv("../.env")
 
 def print_a4_pdf(file):
     printer = os.getenv('A4PRINTER')

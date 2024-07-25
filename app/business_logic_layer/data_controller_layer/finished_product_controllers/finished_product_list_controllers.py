@@ -3,7 +3,7 @@ from physical_layer.data_access_layer.write_database_functions import db
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.server_config_files/fastAPI.env")
+load_dotenv("../.env")
 
 async def get_finished_product_group(group_id):
     try:

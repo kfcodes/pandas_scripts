@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../../.server_config_files/fastAPI.env")
+load_dotenv("../.env")
 
 usr = os.getenv("USR")
 pwd = os.getenv("PASSWORD")
