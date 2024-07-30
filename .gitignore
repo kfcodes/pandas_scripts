@@ -133,3 +133,4 @@ app/physical_layer/data_models_layer/table_models.py
 
 *.env
 *logging_config.json*
+logging_config.json

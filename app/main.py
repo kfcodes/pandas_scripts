@@ -31,7 +31,7 @@ import logging
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv(".env")
 
 from business_logic_layer.data_controller_layer.product_controllers.product_controllers import get_product_by_id
 

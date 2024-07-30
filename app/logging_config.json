@@ -1,1 +1,11 @@
-/home/m/.application/server_config_files/logging_config.json
+{
+  "logger": {
+    "path": "/var/log/fastAPI",
+    "filename": "access.log",
+    "level": "info",
+    "rotation": "20 days",
+    "retention": "1 months",
+    "format": "<level>{level: <8}</level> <green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> request id: {extra[request_id]} - <cyan>{name}</cyan>:<cyan>{function}</cyan> - <level>{message}</level>"
+
+  }
+}
