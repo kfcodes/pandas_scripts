@@ -2,7 +2,7 @@
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv(".env")
 
 def print_a4_pdf(file):
     printer = os.getenv('A4PRINTER')

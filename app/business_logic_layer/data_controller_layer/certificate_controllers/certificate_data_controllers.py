@@ -4,7 +4,7 @@ from business_logic_layer.external_module_controllers.pdf_logic.create_certifica
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv(".env")
 
 async def create_and_print_certificate(id):
     try:
