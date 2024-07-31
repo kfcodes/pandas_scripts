@@ -1,11 +1,8 @@
 # docker-compose.yml
-
-version: '3.8'
-
 services:
   api:
     build: .
-    container_name: "api"
+    container_name: "fastAPI"
     volumes:
       - ./app:/app
     ports:
