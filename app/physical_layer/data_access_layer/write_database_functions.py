@@ -4,7 +4,7 @@ from physical_layer.data_access_layer.database_connection import database_connec
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv(".env")
 
 def db2(sql):
     result = ''

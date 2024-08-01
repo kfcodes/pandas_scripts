@@ -4,7 +4,7 @@ import math
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv(".env")
 
 async def create_pallet_item_with_id(pallet_id):
     try:

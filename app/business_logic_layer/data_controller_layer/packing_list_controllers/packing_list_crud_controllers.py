@@ -3,7 +3,7 @@ from physical_layer.data_access_layer.write_database_functions import db, db2
 
 import os
 from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv(".env")
 
 # CREATE NEW PACKING LIST
 async def create_new_packing_list(name):
