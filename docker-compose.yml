@@ -6,4 +6,6 @@ services:
     volumes:
       - ./app:/app
     ports:
-      - 8000:8000
+      - 8001:8000
+    restart: unless-stopped
+
