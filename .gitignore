@@ -130,6 +130,7 @@ dmypy.json
 
 app/physical_layer/data_models_layer/object_models.py
 app/physical_layer/data_models_layer/table_models.py
+app/physical_layer/data_models_layer/*
 
 *.env
 *logging_config.json*
