@@ -25,6 +25,7 @@ async def find_pallet_items_for_pallet_function(id):
     try:
         resultlist = [];
         pallet_items = read_to_list_index(f"{os.getenv('GETNPALLETITEMSFORPALLET')}{id}")
+        print(pallet_items)
         for key, val in pallet_items.items():
             resultlist.append(val)
         return resultlist;
