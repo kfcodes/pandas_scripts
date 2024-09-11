@@ -17,4 +17,7 @@ RUN pip install -r requirements.txt
 # copy project
 COPY . .
 
-CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
+# Run this uvicorn command to start the application in the container
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
+

@@ -33,3 +33,19 @@ async def get_packing_list_pallets(id):
         return packing_list_pallets;
     except Exception as ex:
         print("Data could not be processed: \n", ex)
+
+async def get_packing_list_summary_information(id):
+    try:
+        packing_list_summary_str = str(f"{os.getenv('PACKINGLISTSUMMARY')}")
+        packing_list_summary = read_to_list_index(packing_list_summary_str.format(int(id)))
+        return packing_list_summary;
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
+
+async def get_picklist_status_information(id):
+    try:
+        picklist_status_str = str(f"{os.getenv('PICKLISTSTATUS')}")
+        picklist_status_data = read_to_list_index(picklist_status_str.format(int(id)))
+        return picklist_status_data;
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
