@@ -12,8 +12,6 @@ import business_logic_layer.external_module_controllers.zpl_logic.product_box_lo
 import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.small_type_3_box_label as type_3_label
 import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.small_type_4_box_label as type_4_label
  
-
-
 import os
 from dotenv import load_dotenv
 load_dotenv(".env")

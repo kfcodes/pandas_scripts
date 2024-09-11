@@ -33,7 +33,7 @@ async def find_packing_list_summary_information(id: int):
     pallets = await get_packing_list_summary_information(id)
     return pallets;
 
-# GET PACKING LIST SUMMARY INFORMATION
+# GET PICKLIST STATUS INFORMATION
 @packing_list_data_router.get("/picklist_status/{id}")
 async def find_picklist_status_information(id: int):
     pallets = await get_picklist_status_information(id)
