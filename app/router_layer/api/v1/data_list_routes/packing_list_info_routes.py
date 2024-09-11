@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from business_logic_layer.data_controller_layer.packing_list_controllers.packing_list_controllers import get_open_packing_lists, get_open_packing_list_names, get_pallets_not_on_a_packing_list, get_packing_list_pallets
+from business_logic_layer.data_controller_layer.packing_list_controllers.packing_list_controllers import get_open_packing_lists, get_open_packing_list_names, get_pallets_not_on_a_packing_list, get_packing_list_pallets, get_packing_list_summary_information, get_picklist_status_information
 
 packing_list_data_router = APIRouter();
 
@@ -25,4 +25,16 @@ async def find_pallets_not_assigned_to_paking_list_information():
 @packing_list_data_router.get("/packing_list_pallets/{id}")
 async def find_pallet_information_for_individual_packing_list(id: int):
     pallets = await get_packing_list_pallets(id)
+    return pallets;
+
+# GET PACKING LIST SUMMARY INFORMATION
+@packing_list_data_router.get("/packing_list_summary/{id}")
+async def find_packing_list_summary_information(id: int):
+    pallets = await get_packing_list_summary_information(id)
+    return pallets;
+
+# GET PICKLIST STATUS INFORMATION
+@packing_list_data_router.get("/picklist_status/{id}")
+async def find_picklist_status_information(id: int):
+    pallets = await get_picklist_status_information(id)
     return pallets;

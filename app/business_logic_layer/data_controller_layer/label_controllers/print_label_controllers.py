@@ -7,9 +7,11 @@ import business_logic_layer.external_module_controllers.zpl_logic.product_box_lo
 import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.large_type_2_box_label as label_type_2
 import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.large_type_3_box_label as label_type_3
 import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.large_type_4_box_label as label_type_4
-import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.small_type_2_box_label as type_2_label
 import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.large_type_5_box_label as label_type_5
-
+import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.small_type_2_box_label as type_2_label
+import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.small_type_3_box_label as type_3_label
+import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.small_type_4_box_label as type_4_label
+ 
 import os
 from dotenv import load_dotenv
 load_dotenv(".env")
@@ -111,9 +113,11 @@ async def print_this_label(qty):
     try:
         print("data_layer")
         label_outline = type_2_label.create_this_label(qty)
+        label_outline = type_4_label.create_this_label(qty)
         print("print_label_data")
         print(label_outline)
         response = print_small_label(label_outline)
+        response = print_large_label(label_outline)
         return response
     except Exception as ex:
         print("Data could not be processed: \n", ex)
