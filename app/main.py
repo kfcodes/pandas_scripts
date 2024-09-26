@@ -23,11 +23,6 @@ from router_layer.api.v1.alternative_routes.assembly_info_routes import assembly
 # from router_layer.api.v1.production_overview import app as production_overview
 # from router_layer.api.v1.production_schedule_routes import schedule_router
 
-from physical_layer.logging.custom_logging import CustomizeLogger
-from pathlib import Path
-from fastapi import Request
-import uvicorn
-
 import os
 from dotenv import load_dotenv
 load_dotenv(".env")
