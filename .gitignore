@@ -135,4 +135,6 @@ app/physical_layer/data_models_layer/*
 *.env
 *logging_config.json*
 logging_config.json
->>>>>>> dev
+
+update.sh
+docker-compose.yml

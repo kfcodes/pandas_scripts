@@ -1,5 +1,7 @@
 from fastapi import APIRouter
 from business_logic_layer.data_controller_layer.packing_list_controllers.packing_list_controllers import get_open_packing_lists, get_open_packing_list_names, get_pallets_not_on_a_packing_list, get_packing_list_pallets, get_packing_list_summary_information, get_picklist_status_information
+from fastapi import APIRouter, Request
+from business_logic_layer.data_controller_layer.packing_list_controllers.packing_list_controllers import get_open_packing_lists, get_open_packing_list_names, get_pallets_not_on_a_packing_list, get_packing_list_pallets, get_packing_list_summary_information, get_picklist_status_information, set_pallet_packing_list
 
 packing_list_data_router = APIRouter();
 
@@ -38,3 +40,10 @@ async def find_packing_list_summary_information(id: int):
 async def find_picklist_status_information(id: int):
     pallets = await get_picklist_status_information(id)
     return pallets;
+
+# Set packing list for pallet
+@packing_list_data_router.put("/set_pallet_packing_list/")
+async def set_pallet_packing_list_function(request: Request):
+    data =  await request.json();
+    updated_pallet = await set_pallet_packing_list(data)
+    return updated_pallet;
