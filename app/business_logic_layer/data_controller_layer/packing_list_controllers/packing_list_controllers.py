@@ -70,3 +70,14 @@ async def set_pallet_packing_list(data):
     except Exception as ex:
         print("Data could not be processed: \n", ex)
 
+async def get_packing_list_pallet_information(id):
+    try:
+        packing_list_array = []
+        packing_list_pallet_info_str = str(f"{os.getenv('PACKINGLISTPALLETINFO')}")
+        packing_list_pallet_info = read_to_list_index(packing_list_pallet_info_str.format(int(id)))
+        for key, val in packing_list_pallet_info.items():
+            packing_list_array.append(val)
+        packing_list_array = jsonable_encoder(packing_list_array)
+        return packing_list_array
+    except Exception as ex:
+        print("Data could not be processed: \n", ex)
