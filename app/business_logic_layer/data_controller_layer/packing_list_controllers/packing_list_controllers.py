@@ -1,6 +1,7 @@
 from physical_layer.data_access_layer.read_database_functions import read_selection_to_list, read_to_list_index
 from physical_layer.data_access_layer.write_database_functions import db, db2
 from fastapi.encoders import jsonable_encoder
+import pprint 
 
 import os
 from dotenv import load_dotenv
@@ -78,6 +79,7 @@ async def get_packing_list_pallet_information(id):
         for key, val in packing_list_pallet_info.items():
             packing_list_array.append(val)
         packing_list_array = jsonable_encoder(packing_list_array)
+        pprint.pp(packing_list_array)
         return packing_list_array
     except Exception as ex:
         print("Data could not be processed: \n", ex)
