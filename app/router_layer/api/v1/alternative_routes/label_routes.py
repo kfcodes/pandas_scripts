@@ -10,10 +10,15 @@ async def print_this_label_function(qty: int):
     return response;
 
 # LABEL PRINTER API ROUTES
-@label_router.get("/print_small_product_label/{id}")
-async def print_small_product_label_function(id: int):
-    response = await print_small_product_label(id);
-    return response;
+@label_router.post("/print_small_product_label/{id}")
+async def print_small_product_label_function(id: int, body: Request):
+    if body:
+        body =  await body.json();
+        quantity = int(body["qty"])
+        response = await print_small_product_label(id, quantity);
+        return response;
+    else:
+        return "Request Body cannot be empty"
 
 @label_router.post("/print_large_product_label/{id}")
 async def print_large_product_label_function(id: int, body: Request):
@@ -21,7 +26,6 @@ async def print_large_product_label_function(id: int, body: Request):
         body =  await body.json();
         quantity = int(body["qty"])
         exp = str(body["exp"])
-        # exp = "260218"
         if body["qtyPerBox"] == 0 or body["qtyPerBox"] == None:
             quantity_in_a_box = 0;
         else: 

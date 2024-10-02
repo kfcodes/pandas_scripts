@@ -8,9 +8,11 @@ import business_logic_layer.external_module_controllers.zpl_logic.product_box_lo
 import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.large_type_3_box_label as label_type_3
 import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.large_type_4_box_label as label_type_4
 import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.large_type_5_box_label as label_type_5
+import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.large_type_6_box_label as label_type_6
 import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.small_type_2_box_label as type_2_label
 import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.small_type_3_box_label as type_3_label
 import business_logic_layer.external_module_controllers.zpl_logic.product_box_logic.small_type_4_box_label as type_4_label
+import pprint
  
 import os
 from dotenv import load_dotenv
@@ -45,7 +47,7 @@ async def print_small_product_label(id):
 async def print_large_product_label(id, quantity, quantity_in_a_box, exp):
     try:
         label_info = read_to_list_index(f"{os.getenv('PRODUCTIONLABELINFO')}{id}")
-        label_type = label_info[0][f'{os.getenv("LABELFIELD20")}']
+        label_type = int(label_info[0][f'{os.getenv("LABELFIELD20")}'])
         label_info = label_info[0]
 
         if label_type == 1:
@@ -76,6 +78,10 @@ async def print_large_product_label(id, quantity, quantity_in_a_box, exp):
             print(label_info)
             response = print_large_label(label_data)
 
+        elif label_type == 6:
+            body = label_type_6.create_large_product_label(label_info, quantity)
+            pprint.pp(body)
+            response = print_small_label(body)
         else:
             response = {"message" : "No label Data for this label"}
 
