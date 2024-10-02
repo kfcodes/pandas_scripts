@@ -45,7 +45,5 @@ async def set_pallet_packing_list_function(request: Request):
 # GET PACKING LIST PALLET INFORMATION
 @packing_list_data_router.get("/packing_list_pallets/{id}")
 async def find_packing_list_pallet_information(id: int):
-    print(id)
     pallets_info = await get_packing_list_pallet_information(id)
-    print(pallets_info)
     return pallets_info;
